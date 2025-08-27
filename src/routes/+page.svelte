@@ -1,24 +1,21 @@
 <script>
     import chest from '$lib/assets/chest1.png';
     import books from '$lib/assets/books.png';
+    import oldBooks from '$lib/assets/old-books.png';
+    import handsOnLaptop from '$lib/assets/hands-on-laptop.png';
+    import penInHand from '$lib/assets/pen-in-hand.png';
 	import { onMount } from 'svelte';
-    let majorText;
+    
 
-    const handleScroll = () => {
-        majorText.style.top = window.screenY * 0.5 + 'px';
-    }
-
-    onMount(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    });
 
 </script>
   	<div class="section-center">
-  		<h1 class="">A digital box for my treasured words.</h1>
+  		<h1 class="hero-header">A Digital Box for My Treasured Writings. <br><span>By Bofa Mpama</span></h1>
+        <img src="{penInHand}" alt="">
+        
   	</div>
     <div class="road w-2xl/3 md:w-1/2 mx-auto">
-    <h1 bind:this={majorText}>Hey There,</h1>
+    <h1>Hey There,</h1>
     <h2 id="minorText">
         I used to write in jotters and notebooks. But I often ran out of count on how many books I piled up over the years.
     </h2>
@@ -26,47 +23,96 @@
     <h2>
         Safe to say, that needed to change. I needed a better way to store all my written works, yes. But also a way to make them accessible for others to read and be blessed by.
     </h2>
-    <h2>
-        <b>The solution:</b> Digitalize my writings to make sure I can always keep track of all I write. The only thing left is for you too...
-    </h2>
+  <div class="box-group">
+      <div class="box">
+        <h1>Before:</h1>
+    <img src="{oldBooks}" alt="">
     </div>
-    <section class="sec1"></section>
+   <div class="box">
+     <h1>Now:</h1>
+    <img src="{handsOnLaptop}" alt="">
+  </div>
+   </div>
+    </div>
+    <section class="sec1">
+        <h3>Start reading</h3>
+
+        <div class="writing-group">
+            <div class="writing-box">
+                <h3>Poems</h3>
+                <p>Inspired by scripture, poured onto my page</p>
+                <button>Start reading</button>
+            </div>
+            <div class="writing-box">
+                <h3>Poems</h3>
+                <p>Inspired by scripture, poured onto my page</p>
+                <button>Start reading</button>
+            </div>
+            <div class="writing-box">
+                <h3>Poems</h3>
+                <p>Inspired by scripture, poured onto my page</p>
+                <button>Start reading</button>
+            </div>
+        </div>
+    </section>
     <style>
         
 .section-center{
     margin-top: 200px;
     left: 0;
   width: 100%;
+  height: 100dvh;
   z-index: 6;
   z-index: -1;
   position: relative;
+
+  img{
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, 40%);
+  }
+
 }
-h1{
-  font-family: 'Montserrat', sans-serif;
+.hero-header{
+  font-family:  serif;
   font-weight: 800;
-  font-size: 7rem;
+  font-size: 3rem;
+  border-top: 1px solid #ffeba7;
+  border-bottom: 1px solid #ffeba7;
   line-height: 1;
   color: #ffeba7;
-  text-align: center;
-  -webkit-text-stroke: 2px #ffeba7;
-  text-stroke: 2px #ffeba7;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-  color: transparent;
-  margin-bottom: 20px;
     position: fixed;
-    padding: 0 5%;
-    top: 35%;
+    text-align: center;
+    padding: 1% 5%;
+    width: 90%;
+    margin-left: 5%;
+    top: 25%;
 
+}
+span{
+     font-size: 20px;
+    top: 0px;
+    right: 5%;
+    width: 100px;
+    display: inline;  
+    font-family:  serif;
+  font-weight: 100;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #ffeba7;
 }
 
 .road{
-     transform: perspective(200px) rotateX(3deg);
+    position: sticky;
+     transform: perspective(200px) rotateX(2deg);
   transform-origin: bottom;
   width: 100%;
-  margin-top: 100dvh;
   border-radius: 20px 20px 0 0;
   background: linear-gradient(rgb(41, 46, 54) 10%, #1f2029);
+  background-attachment: fixed;  
   box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 1px;
   z-index: 111;
  
@@ -74,7 +120,15 @@ h1{
       h1{
         position: initial;
         padding: 50px 0px 0 0;
-        left: 0;
+         font-family:  serif;
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 1;
+  color: #ffeba7;
+  text-align: center;
+  margin-bottom: 20px;
+    padding: 5% 5% 5% 0;
+    top: 35%;
     }
     h2{
     color: #ffeba7;
@@ -88,14 +142,83 @@ img{
     width: 400px;
 }
 }
+
+.box-group{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 150px;
+}
+.box-group > *{
+    flex-grow: 1;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.box:nth-of-type(1){
+    opacity: 0.4;
+}
+.box:nth-of-type(2){
+    position: sticky;
+}
+.box img{
+    aspect-ratio: 16/16;
+}
 .sec1{
-    width: 100%;
     height: 400px;
-    background: #1f2029;
+    width: 100%;
+    position: relative;
+    z-index: 200;
+    height: fit-content;
+    padding: 50px;
+    background: #c2c196;
+    border-radius: 30px;
+
+    h3{
+        font-size: 60px;
+        font-weight: bold;
+        text-align: center;
+        z-index: 10;
+        color: black;
+        font-family: serif;
+    }
+    .writing-group{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+    }
+    .writing-box{   
+        background: #635e42;
+        border-radius: 30px;
+        padding: 30px;
+        h3{
+            font-size: 20px;
+            text-align: left;
+        }
+    }
+    .writing-box:nth-of-type(2){
+        background: #4c4731;
+    }
+     .writing-box:nth-of-type(3){
+        background: #313025ff;
+    }
 
 }
 
+
 @media(max-width: 1000px){
+    .section-center{
+        img{
+            transform: translate(-50%, 55%);
+            width: 250px;
+            height: 250px;
+        }
+    }
     h1{
         font-size: 5rem;
     }
@@ -103,6 +226,10 @@ img{
 @media(max-width: 600px){
     h1{
         font-size: 3em;
+    }
+    .road{
+          transform: perspective(200px) rotateX(1deg);
+          width: 100%;
     }
 }
 

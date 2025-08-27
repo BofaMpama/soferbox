@@ -22,7 +22,8 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   text-shadow: 4px 4px 4px black;
-    color: #ffeba7;
+  color: #ffeba7;
+  position: fixed;
 }
 
 [type="checkbox"]:checked,
@@ -33,7 +34,7 @@
 .menu-icon:checked + label,
 .menu-icon:not(:checked) + label{
   position: fixed;
-  top: 63px;
+  top: 50px;
   right: 75px;
   display: block;
   width: 30px;
@@ -103,7 +104,7 @@
 
 .nav{
   position: fixed;
-  top: 33px;
+  top: 18px;
   right: 50px;
   display: block;
   width: 80px;
@@ -242,7 +243,7 @@
 
 .logo {
 	position: absolute;
-	top: 60px;
+	top: 15px;
 	left: 50px;
 	display: block;
 	z-index: 11;
