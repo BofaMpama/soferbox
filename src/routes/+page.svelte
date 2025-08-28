@@ -4,13 +4,14 @@
     import oldBooks from '$lib/assets/old-books.png';
     import handsOnLaptop from '$lib/assets/hands-on-laptop.png';
     import penInHand from '$lib/assets/pen-in-hand.png';
+    import writingsData from '$lib/data/writings.json';
 	import { onMount } from 'svelte';
     
 
 
 </script>
   	<div class="section-center">
-  		<h1 class="hero-header">A Digital Box for My Treasured Writings. <br><span>By Bofa Mpama</span></h1>
+  		<h1 class="hero-header">A Digital Box for Storing My Treasured Writings. <br><span>By Bofa Mpama</span></h1>
         <img src="{penInHand}" alt="">
         
   	</div>
@@ -19,14 +20,14 @@
     <h2 id="minorText">
         I used to write in jotters and notebooks. But I often ran out of count on how many books I piled up over the years.
     </h2>
-    <img src="{books}" class="mx-auto" alt="">
+    <img src="{oldBooks}" class="mx-auto" alt="">
     <h2>
         Safe to say, that needed to change. I needed a better way to store all my written works, yes. But also a way to make them accessible for others to read and be blessed by.
     </h2>
   <div class="box-group">
       <div class="box">
         <h1>Before:</h1>
-    <img src="{oldBooks}" alt="">
+    <img src="{books}" alt="">
     </div>
    <div class="box">
      <h1>Now:</h1>
@@ -38,21 +39,14 @@
         <h3>Start reading</h3>
 
         <div class="writing-group">
-            <div class="writing-box">
-                <h3>Poems</h3>
-                <p>Inspired by scripture, poured onto my page</p>
-                <button>Start reading</button>
+           {#each writingsData as info}
+             <div class="writing-box">
+                <h3>{info.title}</h3>
+                <p>{info.description}</p>
+                <a href="{info.link}"><button>Start reading</button></a>
             </div>
-            <div class="writing-box">
-                <h3>Poems</h3>
-                <p>Inspired by scripture, poured onto my page</p>
-                <button>Start reading</button>
-            </div>
-            <div class="writing-box">
-                <h3>Poems</h3>
-                <p>Inspired by scripture, poured onto my page</p>
-                <button>Start reading</button>
-            </div>
+        {/each}
+            
         </div>
     </section>
     <style>
@@ -107,7 +101,7 @@ span{
 
 .road{
     position: sticky;
-     transform: perspective(200px) rotateX(2deg);
+     transform: perspective(200px) rotateX(1.5deg);
   transform-origin: bottom;
   width: 100%;
   border-radius: 20px 20px 0 0;
@@ -116,7 +110,6 @@ span{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 1px;
   z-index: 111;
  
-
       h1{
         position: initial;
         padding: 50px 0px 0 0;
@@ -191,21 +184,41 @@ img{
         justify-content: center;
         align-items: center;
         gap: 100px;
+        margin-top: 40px;
     }
     .writing-box{   
-        background: #635e42;
+        background: #a1975b;
+        width: 300px;
+        height: 300px;
+        color: #000;
         border-radius: 30px;
         padding: 30px;
+        position: relative;
         h3{
-            font-size: 20px;
+            font-size: 40px;
             text-align: left;
+        }
+
+        button{
+            background: white;
+            border-radius: 30px;
+            padding: 10px 15px;
+            color: #000;
+            font-weight: bold;
+            margin-top: 20px;
+            position: absolute;
+            bottom: 20%;
         }
     }
     .writing-box:nth-of-type(2){
-        background: #4c4731;
+        background: #1f1e1a;
+        color: #fff;
+        h3{
+            color: #fff;
+        }
     }
      .writing-box:nth-of-type(3){
-        background: #313025ff;
+        background: rgb(133, 110, 84);
     }
 
 }
@@ -228,7 +241,7 @@ img{
         font-size: 3em;
     }
     .road{
-          transform: perspective(200px) rotateX(1deg);
+          transform: perspective(200px) rotateX(0.2deg);
           width: 100%;
     }
 }
