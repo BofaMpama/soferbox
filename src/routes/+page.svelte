@@ -110,6 +110,9 @@ span{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 1px;
   z-index: 111;
  
+    #minorText{
+            margin-bottom: 40px;
+          }
       h1{
         position: initial;
         padding: 50px 0px 0 0;
@@ -140,6 +143,7 @@ img{
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 150px;
+    margin-top: 100px;
 }
 .box-group > *{
     flex-grow: 1;
@@ -246,11 +250,15 @@ img{
           width: 100%;
           position: relative;
 
+        
           img{
             width: 250px;
             
             left: 50%;
           }
+    }
+    .box-group{
+        gap: 100px;
     }
     .writing-box{
         height: fit-content;
