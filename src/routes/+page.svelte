@@ -237,12 +237,23 @@ img{
     }
 }
 @media(max-width: 600px){
+   
     h1{
         font-size: 3em;
     }
     .road{
           transform: perspective(200px) rotateX(0.2deg);
           width: 100%;
+          position: relative;
+
+          img{
+            width: 250px;
+            
+            left: 50%;
+          }
+    }
+    .writing-box{
+        height: fit-content;
     }
 }
 
