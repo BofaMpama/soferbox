@@ -193,7 +193,7 @@ img{
     .writing-box{   
         background: #a1975b;
         width: 300px;
-        height: 300px;
+        height: 350px;
         color: #000;
         border-radius: 30px;
         padding: 30px;
@@ -211,7 +211,7 @@ img{
             font-weight: bold;
             margin-top: 20px;
             position: absolute;
-            bottom: 20%;
+            bottom: 10%;
         }
     }
     .writing-box:nth-of-type(2){
