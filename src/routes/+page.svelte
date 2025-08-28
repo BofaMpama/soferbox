@@ -261,7 +261,8 @@ img{
         gap: 100px;
     }
     .writing-box{
-        height: fit-content;
+        height: 350px;
+        bottom: 10%;
     }
 }
 
