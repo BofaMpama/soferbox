@@ -18,7 +18,7 @@
 </header>
 <style>
 .logo{
-   font-size: 3rem;
+   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   text-shadow: 4px 4px 4px black;

@@ -2,6 +2,7 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from './Header.svelte';
+	import RetroHeader from './RetroHeader.svelte';
 	import { onMount } from 'svelte';
 
 	let { children } = $props();
@@ -13,7 +14,7 @@
 
 
 
-	<Header />
+	<RetroHeader />
 	
 	<main>
 		{@render children()}
