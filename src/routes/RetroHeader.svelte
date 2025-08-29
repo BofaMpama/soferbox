@@ -13,6 +13,7 @@
       header{
         position: fixed;
         width: 100%;
+        z-index: 1;
     }
     .btn{
     background: rgb(255, 255, 255);
@@ -26,6 +27,9 @@
     }
     button{
         padding: 10px;
+    }
+    .btn{
+        display: none;
     }
   }
 </style>
