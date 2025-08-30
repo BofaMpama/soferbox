@@ -1,7 +1,22 @@
 [
     {
         "image": "./src/lib/assets/books.png",
-        "heading": "Books",
+        "heading": "The ink that never ran dry",
+        "link": "/"
+    },
+       {
+        "image": "./src/lib/assets/books.png",
+        "heading": "The ink that never ran dry",
+        "link": "/"
+    },
+       {
+        "image": "./src/lib/assets/books.png",
+        "heading": "The ink that never ran dry",
+        "link": "/"
+    },
+       {
+        "image": "./src/lib/assets/books.png",
+        "heading": "The ink that never ran dry",
         "link": "/"
     }
 ]

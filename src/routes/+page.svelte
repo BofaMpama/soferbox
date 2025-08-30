@@ -9,7 +9,7 @@
 
 <section class="sec1 flex items-center justify-between pt-6 pl-4 pr-4 bg-gray-200">
     <div class="flex-col left-side text-black">
-        <h1 class="text-7xl font-bold">In this place my words are stored.</h1>
+        <h1 class="text-7xl font-bold text-shadow-teal-800">In this place my words are stored.</h1>
         <p class="text-xl">A virtual box where I store the blessed words I've been inspired to write and share over time.     
 </p>
   <button class="border-black border-2 h-13 w-30 text-xl text-white bg-black btn">Explore</button>
@@ -73,8 +73,8 @@
         {#each stories as story}
             <div class="card">
             <img src="{story.image}" alt="">
-            <h1>{story.heading}</h1>
-           <a href="{story.link}"> <button>Read</button></a>
+            <h1 class="font-bold">{story.heading}</h1>
+           <a href="{story.link}"> <button>Read More <span>&rightarrow;</span></button></a>
         </div>
         {/each}
     </div>
@@ -96,6 +96,10 @@
         display: flex;
         flex-direction: column;
         gap: 30px;
+
+        h1{
+            text-shadow: 4px 4px #1f8a8a;
+        }
         p{
             width: 80%;
         }
@@ -287,6 +291,35 @@
    .sec4{
     background: rgb(174, 165, 184);
     padding: 10% 5%;
+
+    .container{
+        margin-top: 40px;
+        width: 100%;
+        display: flex;
+        gap: 30px;
+        overflow-x: scroll;
+    }
+    .card{
+        width: 300px;
+        min-width: 300px;
+        height: fit-content;
+        border: 2px solid black;
+        border-radius: 10px;
+        box-shadow: 6px 6px black;
+        padding: 10px;
+
+        h1{
+            border-top: 2px solid black;
+            font-size: 30px;
+            font-family: monospace;
+            font-weight: bolder;
+            padding: 0 0 10px 0;
+        }
+        button{
+            margin-left: auto;
+            font-weight: bold;
+        }
+    }
    }     
    .header{
     display: flex;
@@ -305,6 +338,8 @@
         }
     }
    }
+
+   
 
 @media(max-width: 1100px){
         .sec2{
