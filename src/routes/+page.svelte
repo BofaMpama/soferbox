@@ -28,6 +28,38 @@
         {/each}
     </div>
 </section>
+<section class="sec3">
+    <div class="box"><div class="line1"></div><div class="line2"></div></div>
+    <div class="main-container">
+        <h1>Latest Poems</h1>
+
+        <div class="poem-list">
+            <div class="poem-box">
+                <h3>Once Upon a Time</h3>
+                <a href="/"><button>Read</button></a>
+            </div>
+             <div class="poem-box">
+                <h3>Gone too late</h3>
+                <a href="/"><button>Read</button></a>
+            </div>
+             <div class="poem-box">
+                <h3>The end from the beginning</h3>
+                <a href="/"><button>Read</button></a>
+            </div>
+             <div class="poem-box">
+                <h3>Oxymoron</h3>
+                <a href="/"><button>Read</button></a>
+            </div>
+             <div class="poem-box">
+                <h3>What a privilege it is to wait</h3>
+                <a href="/"><button>Read</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="box"><div class="line1"></div><div class="line2"></div></div>
+</section>
+
+
 
 
 <style lang="css">
@@ -56,7 +88,8 @@
     background: gainsboro;
     display: flex;
     flex-direction: column;
-    padding: 5% 5%;
+    padding: 10% 5%;
+    border-top: 2px solid black;
 
     .header{
         text-align: left;
@@ -68,7 +101,7 @@
         display: flex;
         width: 100%;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         gap: 32px;
         margin-top: 40px;
@@ -76,6 +109,7 @@
     .writing-box{   
         background: #8b5ba1;
         box-shadow: 6px 6px black;
+        border: 1px solid black;
         width: 300px;
         height: 350px;
         color: #000;
@@ -124,7 +158,92 @@
         background: rgb(83, 100, 148);
     }
 
+.sec3{
+    height: 100dvh;
+    border-top: 2px solid black;
+    padding: 20px;
+    background: #78a84a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
+    .box{
+        width: 25%;
+        height: 100%;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+
+        .line1{
+            height: 100%;
+            width: 2px;
+            background: #000;
+            transform: rotate(30deg);
+        }
+        .line2{
+            height: 100%;
+            width: 2px;
+            background: #000;
+             transform: rotate(-30deg);
+        }
+    }
+}
+.main-container{
+    h1{
+        font-size: 60px;
+        font-weight: bold;
+    }
+}
+.poem-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.poem-box{
+    height: 50px;
+    width: 100%;
+    background: white;
+    box-shadow: 4px 4px black;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+    h3{
+        font-size: large;
+        font-weight: bold;
+    }
+    button{
+        border: 2px solid rgb(0, 0, 0);
+        padding: 3px 7px;
+        color: white;
+        background: rgb(0, 0, 0);
+        border-radius: 10px;
+    }
+}
+
+@media(max-width: 1100px){
+        .sec2{
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+       .writing-group{
+        justify-content: center;
+    }
+    .writing-box{
+        justify-content: center;
+    }
+    .sec3{
+        .box{
+            width: 12.5%;
+        }
+    }
+}
 
 
 @media(max-width: 900px){
@@ -136,11 +255,23 @@
             width: 100%;
         }
     }
-    .sec2{
-        justify-content: center;
+
+    
+ 
+   .sec3{
+    gap: 50px;
+    height: fit-content;
+    .box{
+        width: 100%;
+        height: 50px;
+
+        .line1{
+            width: 100%;
+            height: 2px;
+            transform: rotate(75deg);
+        }
     }
-    .writing-box{
-        justify-content: center;
-    }
+    flex-direction: column;
+   }
 }
 </style>

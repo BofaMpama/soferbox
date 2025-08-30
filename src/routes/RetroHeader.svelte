@@ -1,5 +1,5 @@
 <script></script>
-<header class="flex justify-between gap-8 items-center px-6 py-3 bg-gray-100 border-2 border-black">
+<header class="flex justify-between gap-8 items-center px-6 py-3 bg-gray-100">
     <div class="logo text-5xl text-black">SoferBox</div>
     <nav class="text-xl  text-black flex gap-4">
         <a class="" href="/">Home</a>
@@ -13,7 +13,9 @@
       header{
         position: fixed;
         width: 100%;
+        top: 0;
         z-index: 1;
+        border: 2px solid black;
     }
     .btn{
     background: rgb(255, 255, 255);
