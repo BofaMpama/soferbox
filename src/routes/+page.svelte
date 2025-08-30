@@ -174,26 +174,37 @@
         display: flex;
         justify-content: center;
         overflow: hidden;
+        position: relative;
 
-        .line1{
-            height: 100%;
-            width: 2px;
-            background: #000;
-            transform: rotate(30deg);
-        }
-        .line2{
-            height: 100%;
-            width: 2px;
-            background: #000;
-             transform: rotate(-30deg);
-        }
+    }
+    .box::before, .box::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+     
+    }
+    .box::before{
+        transform: rotate(45deg);
+        border: 2px solid black;
+    }
+    .box::after{
+        transform: rotate(-45deg);
+        border: 2px solid black;
+  
     }
 }
 .main-container{
     h1{
         font-size: 60px;
         font-weight: bold;
+        line-height: 60px;
+        margin-bottom: 40px;
+
     }
+    
 }
 .poem-list{
     display: flex;
@@ -215,6 +226,11 @@
     h3{
         font-size: large;
         font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 1em;
+        flex-grow: 1;
     }
     button{
         border: 2px solid rgb(0, 0, 0);
@@ -261,15 +277,12 @@
    .sec3{
     gap: 50px;
     height: fit-content;
+    padding: 5%;
     .box{
         width: 100%;
         height: 50px;
 
-        .line1{
-            width: 100%;
-            height: 2px;
-            transform: rotate(75deg);
-        }
+       
     }
     flex-direction: column;
    }
