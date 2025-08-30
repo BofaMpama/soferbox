@@ -2,6 +2,7 @@
     import penInHand from '$lib/assets/pen-in-hand.png';
     import html from '$lib/assets/html.png';
     import writingsData from '$lib/data/writings.json';
+    import stories from '$lib/data/stories.json';
 
 
 </script>
@@ -23,7 +24,7 @@
              <div class="writing-box">
                 <h3>{info.title}</h3>
                 <p>{info.description}</p>
-                <a href="{info.link}"><button>Start reading <span> &rightarrow;</span></button></a>
+                <a href="{info.link}"><button class="button-style1">Start reading <span> &rightarrow;</span></button></a>
             </div>
         {/each}
     </div>
@@ -55,8 +56,28 @@
                 <a href="/"><button>Read</button></a>
             </div>
         </div>
+        <button class="read-more button-style2">See More <span> &rightarrow;</span></button>
     </div>
     <div class="box"><div class="line1"></div><div class="line2"></div></div>
+</section>
+<section class="sec4">
+    <div class="header">
+        <h1 class="text-5xl font-bold">Recent Stories</h1>
+        <div class="nav-buttons">
+            <button class="left"><span>&leftarrow;</span></button>
+            <button class="right"><span>&rightarrow;</span></button>
+        </div>
+    </div>
+
+    <div class="container">
+        {#each stories as story}
+            <div class="card">
+            <img src="{story.image}" alt="">
+            <h1>{story.heading}</h1>
+           <a href="{story.link}"> <button>Read</button></a>
+        </div>
+        {/each}
+    </div>
 </section>
 
 
@@ -69,6 +90,7 @@
 }
 .sec1{
     padding: 6rem 4rem 4rem 4rem;
+    background: rgb(149, 168, 173);
 
     .left-side{
         display: flex;
@@ -127,7 +149,9 @@
             font-size: 16px;
         }
 
-        button{
+      
+    }
+      .button-style1{
             background: white;
             border-radius: 30px;
             padding: 10px 15px;
@@ -146,7 +170,6 @@
                 line-height: 0;
             }
         }
-    }
     .writing-box:nth-of-type(2){
         background: #c9b257;
         color: #fff;
@@ -161,7 +184,7 @@
 .sec3{
     height: 100dvh;
     border-top: 2px solid black;
-    padding: 20px;
+    padding: 10% 5%;
     background: #78a84a;
     display: flex;
     align-items: center;
@@ -240,6 +263,48 @@
         border-radius: 10px;
     }
 }
+ .button-style2{
+            background: white;
+            border-radius: 10px;
+            padding: 10px 15px;
+            border: 1px solid black;
+            box-shadow:  2px;
+            color: #000;
+            font-weight: bold;
+            margin-top: 20px;
+            bottom: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span{
+                margin-left: 10px;
+                font-weight: bolder;
+                font-size: 30px;
+                line-height: 0;
+            }
+        }
+
+   .sec4{
+    background: rgb(174, 165, 184);
+    padding: 10% 5%;
+   }     
+   .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+   .nav-buttons{
+    display: flex;
+    gap: 20px;
+    button{
+        padding: 0px 10px;
+        border: 2px solid black;
+        span{
+        font-size: 30px;
+        font-weight: bolder;
+        }
+    }
+   }
 
 @media(max-width: 1100px){
         .sec2{

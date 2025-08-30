@@ -7,7 +7,10 @@
         <a href="/about">About Me</a>
         <a href="/contact">Contact</a>
     </nav>
-    <button class="border-black border-2 px-6 py-3 text-xl text-black btn">Random reading</button>
+   <div class="button-group">
+     <button class="border-black border-2 px-6 py-3 text-xl text-black btn">Sign Up</button>
+    <button class="border-black border-2 px-6 py-3 text-xl text-black btn">Sign In</button>
+   </div>
 </header>
 <style>
       header{
@@ -21,6 +24,17 @@
     background: rgb(255, 255, 255);
     color: black;
     box-shadow: 4px 4px black;
+}
+.button-group{
+    display: flex;
+    gap: 20px;
+
+    button:nth-child(2){
+box-shadow: 4px 4px  rgb(0, 0, 0);
+        background: rgb(54, 111, 126);
+
+color: white;
+    }
 }
   @media(max-width: 900px){
   
