@@ -299,6 +299,9 @@
         gap: 30px;
         overflow-x: scroll;
         scrollbar-width: none;
+        scroll-snap-type: mandatory;
+        scroll-snap-align: start;
+        scroll-initial-target: 0;
     }
     .card{
         width: 300px;
