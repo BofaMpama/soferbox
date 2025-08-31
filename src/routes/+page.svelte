@@ -298,6 +298,7 @@
         display: flex;
         gap: 30px;
         overflow-x: scroll;
+        scrollbar-width: none;
     }
     .card{
         width: 300px;
@@ -310,6 +311,9 @@
 
         h1{
             border-top: 2px solid black;
+            height: 110px;
+            overflow: hidden;
+            text-overflow: ellipsis;
             font-size: 30px;
             font-family: monospace;
             font-weight: bolder;

@@ -2,22 +2,22 @@
 [
     {
         "image": "/assets/books.png",
-        "heading": "The ink that never ran dry",
+        "heading": "The Ink that Never Ran Dry",
         "link": "/"
     },
        {
         "image": "$lib/assets/books.png",
-        "heading": "The ink that never ran dry",
+        "heading": "Wanting to Wait",
         "link": "/"
     },
        {
         "image": "$lib/assets/books.png",
-        "heading": "The ink that never ran dry",
+        "heading": "Not to Be Seen",
         "link": "/"
     },
        {
         "image": "$lib/assets/books.png",
-        "heading": "The ink that never ran dry",
+        "heading": "If I Had Known",
         "link": "/"
     }
 ]
