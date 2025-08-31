@@ -289,8 +289,9 @@
         }
 
    .sec4{
-    background: rgb(174, 165, 184);
+    background: rgb(250, 249, 250);
     padding: 10% 5%;
+    border-top: 2px solid black;
 
     .container{
         margin-top: 40px;
