@@ -8,15 +8,16 @@
   
     //Defining the poem type
     type Poem = {
-        id: number;
-        attributes: {
-            title: string;
-            content: string;
-            slug: string;
-            createdAt: string;
-            updatedAt: string;
-            publishedAt: string;
-        };
+         id: number;
+  Title: string;
+  Body: string;
+  Excerpt: string;
+  slug: string;
+  Featured: boolean;
+  PublishedDate: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
     };
 
     let poems: Poem[] = [];
@@ -26,7 +27,8 @@
     onMount(async () => {
         const res = await fetch("http://localhost:1337/api/poems?populate=*");
         const data = await res.json();
-        poems = data.data;
+        console.log(data);
+        poems = data.data as Poem[];
     });
 </script>
 
@@ -60,8 +62,8 @@
         <div class="poem-list">
            {#each poems as poem}                                  
                  <div class="poem-box">
-                <h3>{poem?.attributes?.title}</h3>
-                <a href={"/poems/" + poem?.attributes?.slug}><button>Read</button></a>
+                <h3>{poem?.Title}</h3>
+                <a href={"/poems/" + poem?.slug}><button>Read</button></a>
             </div>
              
            {/each}
