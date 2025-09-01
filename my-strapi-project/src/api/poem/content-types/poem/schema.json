@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "poems",
+  "info": {
+    "singularName": "poem",
+    "pluralName": "poems",
+    "displayName": "Poem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "Body": {
+      "type": "richtext"
+    },
+    "Excerpt": {
+      "type": "string"
+    },
+    "poems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::poem.poem"
+    },
+    "Featured": {
+      "type": "boolean"
+    },
+    "PublishedDate": {
+      "type": "date"
+    }
+  }
+}

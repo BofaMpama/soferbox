@@ -1,10 +1,33 @@
-<script>
+<script lang="ts">
     import penInHand from '$lib/assets/pen-in-hand.png';
     import html from '$lib/assets/html.png';
     import writingsData from '$lib/data/writings.json';
     import stories from '$lib/data/stories.json';
 
+    import { onMount } from "svelte";
+  
+    //Defining the poem type
+    type Poem = {
+        id: number;
+        attributes: {
+            title: string;
+            content: string;
+            slug: string;
+            createdAt: string;
+            updatedAt: string;
+            publishedAt: string;
+        };
+    };
 
+    let poems: Poem[] = [];
+
+
+
+    onMount(async () => {
+        const res = await fetch("http://localhost:1337/api/poems?populate=*");
+        const data = await res.json();
+        poems = data.data;
+    });
 </script>
 
 <section class="sec1 flex items-center justify-between pt-6 pl-4 pr-4 bg-gray-200">
@@ -14,7 +37,7 @@
 </p>
   <button class="border-black border-2 h-13 w-30 text-xl text-white bg-black btn">Explore</button>
     </div>
-    <img src="{penInHand}" alt="Pen in the hands of a writer">
+    <img src={penInHand} alt="Pen in the hands of a writer">
 
 </section>
 <section class="sec2 bg-gray-500">
@@ -24,7 +47,7 @@
              <div class="writing-box">
                 <h3>{info.title}</h3>
                 <p>{info.description}</p>
-                <a href="{info.link}"><button class="button-style1">Start reading <span> &rightarrow;</span></button></a>
+                <a href={info.link}><button class="button-style1">Start reading <span> &rightarrow;</span></button></a>
             </div>
         {/each}
     </div>
@@ -35,26 +58,16 @@
         <h1>Latest Poems</h1>
 
         <div class="poem-list">
-            <div class="poem-box">
-                <h3>Once Upon a Time</h3>
-                <a href="/"><button>Read</button></a>
+           {#each poems as poem}                                  
+                 <div class="poem-box">
+                <h3>{poem?.attributes?.title}</h3>
+                <a href={"/poems/" + poem?.attributes?.slug}><button>Read</button></a>
             </div>
-             <div class="poem-box">
-                <h3>Gone too late</h3>
-                <a href="/"><button>Read</button></a>
-            </div>
-             <div class="poem-box">
-                <h3>The end from the beginning</h3>
-                <a href="/"><button>Read</button></a>
-            </div>
-             <div class="poem-box">
-                <h3>Oxymoron</h3>
-                <a href="/"><button>Read</button></a>
-            </div>
-             <div class="poem-box">
-                <h3>What a privilege it is to wait</h3>
-                <a href="/"><button>Read</button></a>
-            </div>
+             
+           {/each}
+         
+        
+            
         </div>
         <button class="read-more button-style2">See More <span> &rightarrow;</span></button>
     </div>
@@ -72,7 +85,7 @@
     <div class="container">
         {#each stories as story}
             <div class="card">
-            <img src="{story.image}" alt="">
+            <img src={story.image} alt="">
             <h1 class="font-bold">{story.heading}</h1>
            <a href="{story.link}"> <button>Read More <span>&rightarrow;</span></button></a>
         </div>
@@ -251,6 +264,7 @@
     padding: 10px 20px;
 
     h3{
+        color: #000;
         font-size: large;
         font-weight: bold;
         white-space: nowrap;
