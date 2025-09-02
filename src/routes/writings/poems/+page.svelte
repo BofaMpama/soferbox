@@ -30,11 +30,7 @@
 
        if(data.data.length > 0){
          //Strapi returning an array in data.data
-        poem = {
-            id: data.data[0].id,
-            ...data.data[0].attributes
-
-        } as Poem;
+        poem = data.data[0] as Poem;
     
        }
         console.log("Fetched poem: ", poem);
