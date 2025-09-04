@@ -5,31 +5,9 @@
     import stories from '$lib/data/stories.json';
 
     import { onMount } from "svelte";
-  
-    //Defining the poem type
-    type Poem = {
-         id: number;
-  Title: string;
-  Body: string;
-  Excerpt: string;
-  slug: string;
-  Featured: boolean;
-  PublishedDate: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-    };
+    export let data;
+    const { poems } = data;
 
-    let poems: Poem[] = [];
-
-
-
-    onMount(async () => {
-        const res = await fetch("http://localhost:1337/api/poems?populate=*");
-        const data = await res.json();
-        console.log(data);
-        poems = data.data as Poem[];
-    });
 </script>
 
 <section class="sec1 flex items-center justify-between pt-6 pl-4 pr-4 bg-gray-200">
@@ -62,7 +40,7 @@
         <div class="poem-list">
            {#each poems as poem}                                  
                  <div class="poem-box">
-                <h3>{poem?.Title}</h3>
+                <h3>{poem.title}</h3>
                 <a href={"/poems/" + poem?.slug}><button>Read</button></a>
             </div>
              
@@ -85,11 +63,10 @@
     </div>
 
     <div class="container">
-        {#each stories as story}
+        {#each poems as poem}
             <div class="card">
-            <img src={story.image} alt="">
-            <h1 class="font-bold">{story.heading}</h1>
-           <a href="{story.link}"> <button>Read More <span>&rightarrow;</span></button></a>
+            <h1 class="font-bold">{poem.title}</h1>
+           <a href={`/writings/poems/${poem.slug}`}> <button>Read More <span>&rightarrow;</span></button></a>
         </div>
         {/each}
     </div>
