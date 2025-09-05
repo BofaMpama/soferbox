@@ -51,7 +51,7 @@ color: white;
     border: 2px solid black;
     padding: 3px;
 }
-  @media(max-width: 900px){
+  @media(max-width: 1000px){
   
     nav{
         display: none;

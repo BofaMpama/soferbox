@@ -1,5 +1,6 @@
 <script lang="ts">
     import penInHand from '$lib/assets/pen-in-hand.png';
+    import scrollMan from '$lib/assets/scroll.jpg';
     import html from '$lib/assets/html.png';
     import writingsData from '$lib/data/writings.json';
     import stories from '$lib/data/stories.json';
@@ -10,14 +11,14 @@
 
 </script>
 
-<section class="sec1 flex items-center justify-between pt-6 pl-4 pr-4 bg-gray-200">
+<section class="sec1 flex items-center justify-between pr-4 bg-gray-200">
     <div class="flex-col left-side text-black">
         <h1 class="text-7xl font-bold text-shadow-teal-800">In this place my words are stored.</h1>
         <p class="text-xl">A virtual box where I store the blessed words I've been inspired to write and share over time.     
 </p>
   <button class="border-black border-2 h-13 w-30 text-xl text-white bg-black btn">Explore</button>
     </div>
-    <img src={penInHand} alt="Pen in the hands of a writer">
+    <img src={scrollMan} alt="Pen in the hands of a writer">
 
 </section>
 <section class="sec2 bg-gray-500">
@@ -81,15 +82,22 @@
     padding: 0;
 }
 .sec1{
-    padding: 6rem 4rem 4rem 4rem;
+    padding: 0;
+    min-height: 100dvh;
+    max-height: 105dvh;
     background: rgb(149, 168, 173);
 
     .left-side{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        padding: 100px 5% 5% 5%;
         gap: 30px;
+        min-height: 100%;
+        width: 50%;
 
         h1{
+            padding-top: 100px;
             text-shadow: 4px 4px #1f8a8a;
         }
         p{
@@ -98,7 +106,15 @@
         .btn{
             background: rgb(54, 111, 126);
             box-shadow: 4px 4px black;
+            margin-bottom: 50px;
         }
+    }
+    img{
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+        border-left: 2px solid black;
+        border-bottom: 2px solid black;
     }
 }
 
@@ -366,10 +382,43 @@
 @media(max-width: 900px){
     .sec1{
         display: block;
+        min-height: fit-content;
         padding-top: 150px;
-        padding: 150px 2rem 2rem 2rem;
+
+        .left-side{
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            padding: 0 5% 5% 5%;
+            h1{
+                font-size: 50px;
+                line-height: 50px;
+                padding-top: 0;
+            }
+            p{
+                width: 100%;
+                margin: auto;
+            }
+            .btn{
+                margin: auto;
+                margin-bottom: 50px;
+            }
+        }
+         img{
+            width: 100%;
+            height: 300px;
+            border-left: none;
+            border-top: 2px solid black;
+        }
         p{
             width: 100%;
+        }
+
+        img{
+            width: 100%;
+            height: 300px;
+            border-left: none;
+            border-top: 2px solid black;
         }
     }
 
