@@ -235,15 +235,14 @@
     .card{
         width: 300px;
         min-width: 300px;
-        height: fit-content;
-        border: 2px solid black;
-        border-radius: 10px;
-        box-shadow: 6px 6px black;
+        height: 200px;
+        border: 4px solid black;
+        border-radius: 0px;
         padding: 10px;
+        position: relative;
         margin-bottom: 20px;
 
         h1{
-            border-top: 2px solid black;
             height: 110px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -254,7 +253,17 @@
         }
         button{
             margin-left: auto;
-
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 50px;
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border: 2px 2 solid black;
+            border-radius: 0;
             font-weight: bold;
         }
     }
@@ -394,17 +403,7 @@
    
     
  
-   .sec3{
-    gap: 50px;
-    height: fit-content;
-    padding: 5%;
-    .box{
-        width: 100%;
-        height: 50px;
 
-       
-    }
-    flex-direction: column;
-   }
+   
 }
 </style>
