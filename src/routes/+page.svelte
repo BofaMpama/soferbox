@@ -40,27 +40,7 @@
         {/each}
     </div>
 </section>
-<section class="sec3">
-    <div class="box"><div class="line1"></div><div class="line2"></div></div>
-    <div class="main-container">
-        <h1>Latest Poems</h1>
 
-        <div class="poem-list">
-           {#each poems as poem}                                  
-                 <div class="poem-box">
-                <h3>{poem.title}</h3>
-                <a href={"/poems/" + poem?.slug}><button>Read</button></a>
-            </div>
-             
-           {/each}
-         
-        
-            
-        </div>
-        <button class="read-more button-style2">See More <span> &rightarrow;</span></button>
-    </div>
-    <div class="box"><div class="line1"></div><div class="line2"></div></div>
-</section>
 <section class="sec4">
     <div class="header">
         <h1 class="text-5xl font-bold">Recent Stories</h1>
@@ -492,6 +472,19 @@
         display: flex;
         flex-direction: column;
     }
+    .writing-group{
+        flex-direction: column;
+        margin-top: 40px;
+        position: relative;
+    }
+    .writing-box{
+        width: 100%;
+        min-height: 300px;
+        position: sticky;
+        top: 100px;
+     
+    }
+   
     
  
    .sec3{
