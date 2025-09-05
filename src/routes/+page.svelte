@@ -45,8 +45,8 @@
     <div class="header">
         <h1 class="text-5xl font-bold">Recent Stories</h1>
         <div class="nav-buttons">
-            <button class="left"><span>&leftarrow;</span></button>
-            <button class="right"><span>&rightarrow;</span></button>
+
+            <button class="right">Read More<span>&rightarrow;</span></button>
         </div>
     </div>
 
@@ -207,123 +207,28 @@
         background: rgb(83, 100, 148);
     }
 
-.sec3{
-    height: 100dvh;
-    border-top: 2px solid black;
-    padding: 10% 5%;
-    background: #78a84a;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    .box{
-        width: 25%;
-        height: 100%;
-        border: 2px solid black;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
 
-    }
-    .box::before, .box::after{
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-     
-    }
-    .box::before{
-        transform: rotate(45deg);
-        border: 2px solid black;
-    }
-    .box::after{
-        transform: rotate(-45deg);
-        border: 2px solid black;
-  
-    }
-}
-.main-container{
-    h1{
-        font-size: 60px;
-        font-weight: bold;
-        line-height: 60px;
-        margin-bottom: 40px;
 
-    }
-    
-}
-.poem-list{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.poem-box{
-    height: 50px;
-    width: 100%;
-    background: white;
-    box-shadow: 4px 4px black;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
 
-    h3{
-        color: #000;
-        font-size: large;
-        font-weight: bold;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-right: 1em;
-        flex-grow: 1;
-    }
-    button{
-        border: 2px solid rgb(0, 0, 0);
-        padding: 3px 7px;
-        color: white;
-        background: rgb(0, 0, 0);
-        border-radius: 10px;
-    }
-}
- .button-style2{
-            background: white;
-            border-radius: 10px;
-            padding: 10px 15px;
-            border: 1px solid black;
-            box-shadow:  2px;
-            color: #000;
-            font-weight: bold;
-            margin-top: 20px;
-            bottom: 10%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            span{
-                margin-left: 10px;
-                font-weight: bolder;
-                font-size: 30px;
-                line-height: 0;
-            }
-        }
 
    .sec4{
-    background: rgb(250, 249, 250);
+    background: rgb(203, 214, 226);
     padding: 10% 5%;
     border-top: 2px solid black;
 
     .container{
         margin-top: 40px;
         width: 100%;
+        height: fit-content;
         display: flex;
         gap: 30px;
         overflow-x: scroll;
-        scrollbar-width: none;
-        scroll-snap-type: mandatory;
+        scrollbar-width: 10px;
+        scrollbar-color: black white;
+        scroll-padding: 10px;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
         scroll-snap-align: start;
         scroll-initial-target: 0;
     }
@@ -335,6 +240,7 @@
         border-radius: 10px;
         box-shadow: 6px 6px black;
         padding: 10px;
+        margin-bottom: 20px;
 
         h1{
             border-top: 2px solid black;
@@ -348,6 +254,7 @@
         }
         button{
             margin-left: auto;
+
             font-weight: bold;
         }
     }
@@ -358,14 +265,18 @@
     align-items: center;
    }
    .nav-buttons{
-    display: flex;
-    gap: 20px;
+  
     button{
-        padding: 0px 10px;
-        border: 2px solid black;
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: underline;
+        display: flex;
+        align-items: center;
+        gap: 10px;
         span{
         font-size: 30px;
         font-weight: bolder;
+        display: none;
         }
     }
    }
@@ -397,11 +308,7 @@
     .writing-box{
         justify-content: center;
     }
-    .sec3{
-        .box{
-            width: 12.5%;
-        }
-    }
+    
 }
 
 
