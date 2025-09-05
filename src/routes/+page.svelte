@@ -13,8 +13,22 @@
 </script>
 
 <section class="sec1 flex items-center justify-between pr-4 bg-gray-200">
+    
     <div class="flex-col left-side text-black">
-        <h1 class="text-7xl font-bold text-shadow-teal-800">In this place my words are stored.</h1>
+
+        <h1 class="text-7xl font-bold text-shadow-teal-800">        <p class="popout">
+	<span>In</span>
+	<span>This</span>
+	<span>Place</span><br>
+	<span>My</span>
+	<span>Words</span>
+	<span>Are</span><br>
+	<span>Stored</span>
+	
+</p>
+
+        
+        </h1>
         <p class="text-xl">A virtual box where I store the blessed words I've been inspired to write and share over time.     
 </p>
   <button class="border-black border-2 h-13 w-30 text-xl text-white bg-black btn">Explore</button>
@@ -61,5 +75,56 @@
     </div>
 </section>
 
+<style lang="scss">
+$t: 1s;
+$d: 0.08em;
+$n: 3;
+$e: cubic-bezier(0.860, 0.000, 0.070, 1.000); 
+$front: black;
+$back: lightblue;
+html{
+	background: white;
+}
+
+.popout{
+	font-family: Poppins, sans-serif;
+	font-weight: 900;
+    width: 100%;
+    display: inline;
+	
+
+	@keyframes ani{
+		0%{
+			transform: translate3d(0,0,0);
+			text-shadow: 0em 0em 0 $back;
+			color: $front;
+		}
+		30%{
+			transform: translate3d(0,0,0);
+			text-shadow: 0em 0em 0 $back;
+			color: $front;
+		}
+		70%{
+			transform: translate3d($d,-$d,0);
+			text-shadow: -$d $d $back;
+			color: $front;
+		}
+		100%{
+			transform: translate3d($d,-$d,0);
+			text-shadow: -$d $d $back;
+			color: $front;
+		}
+	}
+	span{
+		position: relative;
+		display: inline-block;
+		animation: ani $t infinite alternate $e;
+		@for $i from 1 through $n{
+			&:nth-last-child(#{$i}n){ animation-delay: -$t*$i/$n/2;}
+		}
+	}
+	
+}
+</style>
 
 
