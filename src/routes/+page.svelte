@@ -103,9 +103,10 @@
             width: 80%;
         }
         .btn{
-            background: rgb(54, 111, 126);
-            box-shadow: 4px 4px black;
+            background: rgb(255, 255, 255);
+            box-shadow: 4px 4px rgb(0, 0, 0);
             margin-bottom: 0px;
+            color: black;
         }
     }
     img{
