@@ -159,7 +159,7 @@
         align-items: center;
     }
     .writing-box{   
-        background: rgb(224, 180, 95);
+        background: rgb(75, 220, 94);
         border: 1px solid black;
         flex: 1;
         height: 350px;
@@ -201,10 +201,10 @@
             }
         }
     .writing-box:nth-of-type(2){
-        background: rgb(218, 92, 92);
+        background:rgb(255, 172, 85);
     }
      .writing-box:nth-of-type(3){
-        background: rgb(103, 66, 121);
+        background: rgb(131, 105, 241);
     }
 
 
