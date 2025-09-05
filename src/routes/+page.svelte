@@ -21,6 +21,13 @@
     <img src={scrollMan} alt="Pen in the hands of a writer">
 
 </section>
+<section class="about">
+    <h1>About The Author</h1>
+   <div class="right-side"> 
+    <p>My name's Bofa. I'm a Christian whose faith struggles to remain silent. I must give expression to the thoughts, beliefs, convictions, and ideas that dwell within me. This blog is the digital scroll on which I write.</p>
+    <button>More About The Author</button>
+</div>
+</section>
 <section class="sec2 bg-gray-500">
         <div class="header font-bold text-5xl">My Writings</div>
         <div class="writing-group">
@@ -116,6 +123,41 @@
         border-left: 2px solid black;
         border-bottom: 2px solid black;
     }
+}
+.about{
+    background: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5%;
+
+    h1{
+        font-size: 60px;
+        font-weight: bold;
+        width: 30%;
+    }
+   .right-side{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 65%;
+
+    p{
+        font-size: 18px;
+        line-height: 30px;
+    }
+    button{
+        width: fit-content;
+        padding: 10px 20px;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        font-weight: bold;
+        box-shadow: 4px 4px white;
+        border-radius: 10px;
+    }
+   }
 }
 
 .sec2{
@@ -431,6 +473,26 @@
             height: 300px;
             border-left: none;
             border-top: 2px solid black;
+        }
+    }
+    .about{
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        h1{
+            font-size: 40px;
+            line-height: 40px;
+            width: 100%;
+        }
+        .right-side{
+            width: 100%;
+            p{
+                font-size: 16px;
+                line-height: 28px;
+            }
+            button{
+                margin: auto;
+            }
         }
     }
 
