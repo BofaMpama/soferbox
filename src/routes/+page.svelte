@@ -335,6 +335,7 @@
             padding: 0 5% 5% 5%;
             h1{
                 font-size: 50px;
+                text-shadow: 2px 2px #ffffff;
                 line-height: 50px;
                 padding-top: 0;
             }
