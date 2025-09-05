@@ -163,13 +163,11 @@
 .sec2{
     background: gainsboro;
     display: flex;
-    flex-direction: column;
-    padding: 10% 5%;
+    flex-direction: field;
     border-top: 2px solid black;
 
     .header{
         text-align: left;
-       
     }
    
 }
@@ -179,17 +177,13 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        gap: 32px;
-        margin-top: 40px;
     }
     .writing-box{   
         background: #8b5ba1;
-        box-shadow: 6px 6px black;
         border: 1px solid black;
-        width: 300px;
+        flex: 1;
         height: 350px;
         color: #000;
-        border-radius: 30px;
         padding: 32px;
         position: relative;
         h3{
@@ -207,9 +201,11 @@
     }
       .button-style1{
             background: white;
-            border-radius: 30px;
+            border-radius: 10px;
             padding: 10px 15px;
             color: #000;
+            border: 2px solid black;
+            box-shadow:  2px 2px black;
             font-weight: bold;
             margin-top: 20px;
             position: absolute;
@@ -225,11 +221,7 @@
             }
         }
     .writing-box:nth-of-type(2){
-        background: #c9b257;
-        color: #fff;
-        h3{
-            color: #fff;
-        }
+        background: #a082a0;
     }
      .writing-box:nth-of-type(3){
         background: rgb(83, 100, 148);
@@ -496,6 +488,10 @@
         }
     }
 
+    .sec2{
+        display: flex;
+        flex-direction: column;
+    }
     
  
    .sec3{
