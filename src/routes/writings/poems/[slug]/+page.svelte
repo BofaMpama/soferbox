@@ -7,7 +7,7 @@
 
 <article class="prose lg:prose-xl mx-auto p-4">
     <h1 class="text-3xl font-bold mb-4">{poem.title}</h1>
-    <div>{poem.body}</div>
+    <div>{@html poem.body}</div>
 </article>
 
 <style>

@@ -159,7 +159,7 @@
         align-items: center;
     }
     .writing-box{   
-        background: #8b5ba1;
+        background: rgb(224, 180, 95);
         border: 1px solid black;
         flex: 1;
         height: 350px;
@@ -201,10 +201,10 @@
             }
         }
     .writing-box:nth-of-type(2){
-        background: #a082a0;
+        background: rgb(218, 92, 92);
     }
      .writing-box:nth-of-type(3){
-        background: rgb(83, 100, 148);
+        background: rgb(103, 66, 121);
     }
 
 
@@ -326,6 +326,7 @@
         display: block;
         min-height: fit-content;
         padding-top: 150px;
+    
 
         .left-side{
             width: 100%;
@@ -343,6 +344,7 @@
             }
             .btn{
                 margin: auto;
+                margin-bottom: 50px;
                 
             }
         }
@@ -367,6 +369,7 @@
         flex-direction: column;
         text-align: center;
         gap: 30px;
+        padding: 15% 5%;
         h1{
             font-size: 40px;
             line-height: 40px;

@@ -1,5 +1,6 @@
 import type {PageLoad} from './$types';
 import {client} from '$lib/contentful';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 export const load: PageLoad = async () => {
     const poems = await client.getEntries({
@@ -12,7 +13,7 @@ export const load: PageLoad = async () => {
         poems: poems.items.map((item) => ({
             id: item.sys.id,
             title: item.fields.title,
-            body: item.fields.body,
+            body: documentToHtmlString(item.fields.body),
             slug: item.fields.slug
         }))
     };
