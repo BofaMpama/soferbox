@@ -1,8 +1,11 @@
 import { createClient } from 'contentful';
+import { env } from '$env/dynamic/private';
+
+
 
 export const client = createClient({
-  space: '9lrp8l7metze',
+  space: env.CONTENTFUL_SPACE_ID,
   environment: 'master', // defaults to 'master' if not set
-  accessToken: 'B8lxu0t7iqY1TuCa1b2NTOPub9PRzTML06F6aDkYYms'
+  accessToken: env.CONTENTFUL_ACCESS_TOKEN
 });
 

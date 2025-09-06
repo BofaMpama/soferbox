@@ -1,17 +1,30 @@
 <script lang="ts">
-    import type { PageProps } from './$types';
+  import type { PageData } from './$types';
 
-    export let data;
-    const { poem } = data;
+  export let data: PageData;
 </script>
 
-<article class="prose lg:prose-xl mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4">{poem.title}</h1>
-    <div>{@html poem.body}</div>
-</article>
+<main>
+  {#if data.poem}
+    <h1>{data.poem.title}</h1>
+    
+    <div class="poem-body">
+      {@html data.poem.body}
+    </div>
+  {:else}
+    <p>Poem not found.</p>
+  {/if}
+</main>
 
 <style>
-    article {
-        margin-top: 10rem;
-    }
+  /* You can add CSS here to style your rendered HTML elements */
+  .poem-body :global(p) {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+  }
+  .poem-body :global(h2) {
+    margin-top: 2em;
+    color: #333;
+  }
 </style>

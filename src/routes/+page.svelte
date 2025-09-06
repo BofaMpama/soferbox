@@ -5,9 +5,10 @@
     import html from '$lib/assets/html.png';
     import writingsData from '$lib/data/writings.json';
     import stories from '$lib/data/stories.json';
+    import type { PageData } from './$types';
+    export let data: PageData;
 
     import { onMount } from "svelte";
-    export let data;
     const { poems } = data;
 
 </script>
