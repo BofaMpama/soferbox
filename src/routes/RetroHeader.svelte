@@ -4,7 +4,9 @@
 </script>
 
 <header class="flex justify-between gap-8 items-center px-6 py-3 bg-gray-100">
-    <div class="logo text-5xl text-black">SoferBox</div>
+    <div class="logo text-5xl text-black">
+        <a href="/">SoferBox</a>
+    </div>
     <nav class="text-xl  text-white flex gap-4">
         <a class="" href="/">Home</a>
         <a href="/writings">Writings</a>
