@@ -24,7 +24,9 @@ export const load: PageServerLoad = async ({ params }) => {
         items: response.items.map((item) => ({
             id: item.sys.id as string,
             title: item.fields.title as string,
-            slug: item.fields.slug as string
+            slug: item.fields.slug as string,
+            publishedDate: item.sys.createdAt as string,
+            excerpt: item.fields.excerpt as string
         }))
     };
 

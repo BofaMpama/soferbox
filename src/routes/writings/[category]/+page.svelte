@@ -13,7 +13,7 @@
     <div class="writings-list">
         {#each items as item}
             <a href={`/writings/${category}/${item.slug}`}>
-                <h2>{item.title}</h2>
+                <h2>{item.title}</h2> <span> &rightarrow;</span>
             </a>
         {/each}
     </div>
@@ -22,7 +22,12 @@
 <style>
     main {
         padding: 2rem 20%;
+        min-height: 100dvh;
+        height: fit-content;
+        overflow-y: scroll;
+        overflow: hidden;
         padding-top: 150px;
+        background-color: aqua;
     }
 
     h1 {
@@ -40,11 +45,19 @@
 
     .writings-list a {
         text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         color: inherit;
-        border: 1px solid #ccc;
+        border: 2px solid #383636;
+        background: #ffffff;
         padding: 1rem;
         border-radius: 8px;
         transition: background-color 0.3s, box-shadow 0.3s;
+        span{
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
     }
 
     .writings-list a:hover {

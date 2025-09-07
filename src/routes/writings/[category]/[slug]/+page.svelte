@@ -6,7 +6,7 @@
 
 <main>
     {#if poem}
-    <span>{poem.slug}</span>
+    <h2>{poem.publishedDate}</h2>
     <h1>{poem.title}</h1>
     <div class="poem-body">
         {@html poem.body}
@@ -20,9 +20,13 @@
     }
 main{
     padding: 5% 20%;
+    padding-top: 150px;
+}
+h2{
+    font-family: monospace;
+    font-size: 140px;
 }
 h1{
-    margin-top: 100px;
     font-size: 50px;
     font-weight: bold;
     border-top: 2px solid black;

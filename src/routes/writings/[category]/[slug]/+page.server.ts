@@ -28,7 +28,9 @@ export const load: PageServerLoad = async ({params}) => {
         poem: {
             title: poemItem.fields.title as string,
             body: processedBody,
-            slug: poemItem.fields.slug as string
+            slug: poemItem.fields.slug as string,
+            publishedDate: poemItem.sys.createdAt as string,
+            excerpt: poemItem.fields.excerpt as string
         }
     };
 }
