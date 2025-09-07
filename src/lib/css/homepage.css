@@ -65,8 +65,7 @@
         line-height: 30px;
     }
     button{
-        min-width: none;
-        display: inline;
+        width: fit-content;
         padding: 10px 20px;
         border: 2px solid white;
         background: transparent;
