@@ -43,6 +43,7 @@ h1{
 @media (max-width: 768px) {
     main{
         padding: 5% 10%;
+        padding-top: 150px;
     }
     h1{
         font-size: 36px;
