@@ -24,7 +24,7 @@ main{
 }
 h2{
     font-family: monospace;
-    font-size: 140px;
+    font-size: 14px;
 }
 h1{
     font-size: 50px;
