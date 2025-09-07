@@ -27,7 +27,7 @@
         overflow-y: scroll;
         overflow: hidden;
         padding-top: 150px;
-        background-color: aqua;
+        background-color: rgb(80, 159, 180);
     }
 
     h1 {
