@@ -1,7 +1,10 @@
 <script lang="ts">
+    import {page} from '$app/stores'; 
     import type { PageData } from './$types';
     export let data: PageData;
     const {items} = data;
+
+    $: category = $page.params.category;
 </script>
 
 <main>
@@ -9,7 +12,7 @@
 
     <div class="writings-list">
         {#each items as item}
-            <a href={`/writings/${$page.params.category}/${item.slug}`}>
+            <a href={`/writings/${category}/${item.slug}`}>
                 <h2>{item.title}</h2>
             </a>
         {/each}
