@@ -32,7 +32,7 @@
         </h1>
         <p class="text-xl">A virtual box where I store the blessed words I've been inspired to write and share over time.     
 </p>
-  <button class="border-black border-2 h-13 w-30 text-xl text-white bg-black btn">Explore</button>
+  <button class="border-black border-2 h-13 w-30 text-xl text-white bg-black btn">Start Reading</button>
     </div>
     <img src={scrollMan} alt="Pen in the hands of a writer">
 
