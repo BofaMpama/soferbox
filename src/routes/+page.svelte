@@ -75,6 +75,34 @@
         {/each}
     </div>
 </section>
+<section class="stories-section">
+    <h1>Short Stories</h1>
+    <p>Some are facts, some are fiction. But all are a reflection of deep conviction, pun-filled writing, and biblically inspired words.</p>
+
+    <div class="stories-container">
+        <div class="story-box">
+            <img src="" alt="" loading="lazy">
+            <div class="text-box">
+                <h2>demo</h2>
+                <button>Start reading</button>
+            </div>
+        </div>
+        <div class="story-box">
+            <img src="" alt="" loading="lazy">
+            <div class="text-box">
+                <h2>demo</h2>
+                <button>Start reading</button>
+            </div>
+        </div>
+        <div class="story-box">
+            <img src="" alt="" loading="lazy">
+            <div class="text-box">
+                <h2>demo</h2>
+                <button>Start reading</button>
+            </div>
+        </div>
+    </div>
+</section>    
 
 <style lang="scss">
 $t: 1s;

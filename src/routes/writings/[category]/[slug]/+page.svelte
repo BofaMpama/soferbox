@@ -30,11 +30,13 @@
     {/if}
 
     <div class="social-media">
-        <h1>Share This:</h1> 
+        <h1>Share <i class="fas fa-share-nodes"></i>
+
+</h1> 
        <div>
-         <a href="{twitterShare}" target="_blank" rel="noopener noreferrer">Share on X</a>
-        <a href="{facebookShare}" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
-        <a href="{linkedinShare}" target="_blank" rel="noopener noreferrer">Share on Linkedin</a>
+         <a href="{twitterShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i> Twitter</a>
+        <a href="{facebookShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="{linkedinShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> Linkedin</a>
 
        </div>
     </div>
@@ -78,6 +80,7 @@ h1{
         font-size: 24px;
         margin: 0;
         font-weight: bold;
+        border: none;
         width: fit-content;
     }
         div{
