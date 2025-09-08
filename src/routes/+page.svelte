@@ -81,21 +81,21 @@
 
     <div class="stories-container">
         <div class="story-box">
-            <img src="" alt="" loading="lazy">
+            <img src={scrollMan} alt="" loading="lazy">
             <div class="text-box">
                 <h2>demo</h2>
                 <button>Start reading</button>
             </div>
         </div>
         <div class="story-box">
-            <img src="" alt="" loading="lazy">
+            <img src={scrollMan} alt="" loading="lazy">
             <div class="text-box">
                 <h2>demo</h2>
                 <button>Start reading</button>
             </div>
         </div>
         <div class="story-box">
-            <img src="" alt="" loading="lazy">
+            <img src={scrollMan} alt="" loading="lazy">
             <div class="text-box">
                 <h2>demo</h2>
                 <button>Start reading</button>
