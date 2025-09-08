@@ -167,13 +167,22 @@
         display: flex;
         gap: 30px;
         overflow-x: scroll;
-        scrollbar-width: 10px;
-        scrollbar-color: black white;
         scroll-padding: 10px;
-        -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
         scroll-snap-align: start;
         scroll-initial-target: 0;
+    }
+    .container::-webkit-scrollbar{
+        height: 10px;
+    }
+    .container::-webkit-scrollbar-track{
+        background: white;
+    }
+    .container::-webkit-scrollbar-thumb{
+        background: black;
+    }
+    .container::-webkit-scrollbar > *{
+        scroll-snap-align: start;
     }
     .card{
         width: 300px;
