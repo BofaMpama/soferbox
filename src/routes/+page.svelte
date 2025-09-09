@@ -4,12 +4,11 @@
     import scrollMan from '$lib/assets/scroll.jpg';
     import html from '$lib/assets/html.png';
     import writingsData from '$lib/data/writings.json';
-    import stories from '$lib/data/stories.json';
     import type { PageData } from './$types';
     export let data: PageData;
 
     import { onMount } from "svelte";
-    const { poems } = data;
+    const { poems, stories } = data;
 
 </script>
 
@@ -79,28 +78,19 @@
     <h1>Short Stories</h1>
     <p>Some are facts, some are fiction. But all are a reflection of deep conviction, pun-filled writing, and biblically inspired words.</p>
 
-    <div class="stories-container">
-        <div class="story-box">
-            <img src={scrollMan} alt="" loading="lazy">
+    <div class="stories-container">    
+        {#each stories as story}
+         <div class="story-box">
+            <a href={`/writings/stories/${story.slug}`}>
+            <img src={story.coverImage} alt="{story.title}" loading="lazy">
             <div class="text-box">
-                <h2>demo</h2>
+                <h2>{story.title}</h2>
                 <button>Start reading</button>
-            </div>
+            </div></a>
         </div>
-        <div class="story-box">
-            <img src={scrollMan} alt="" loading="lazy">
-            <div class="text-box">
-                <h2>demo</h2>
-                <button>Start reading</button>
-            </div>
-        </div>
-        <div class="story-box">
-            <img src={scrollMan} alt="" loading="lazy">
-            <div class="text-box">
-                <h2>demo</h2>
-                <button>Start reading</button>
-            </div>
-        </div>
+        {/each}         
+       
+      
     </div>
 </section>    
 
