@@ -145,13 +145,13 @@
             box-shadow:  4px 4px black;
         }
         .writing-box:nth-of-type(1){
-            background: #A7D8F0
+            background: #578acc
         }
     .writing-box:nth-of-type(2){
-        background:#509FB4;
+        background: rgba(56, 133, 204, 0.849);
     }
      .writing-box:nth-of-type(3){
-        background: #1C5D77;
+        background: rgba(65, 105, 225, 0.836);
     }
 
 

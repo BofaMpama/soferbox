@@ -49,6 +49,7 @@
                 <div class="more-poem">
                     <a href={`/writings/poems/${extraPoem.slug}`}>{extraPoem.title} <span>&rightarrow;</span></a>
                 </div>
+                <hr>
             {/each}
         </div>
     </div>    
@@ -116,25 +117,43 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-top: 3px solid black;
     margin-top: 50px;
     h1{
         font-size: 44px;
-        margin: 0;
+        margin-top: 10px;
         font-weight: bold;
         border: none;
         width: fit-content;
+        background: none;
     }
+}
+.more-poems-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgb(243, 240, 240);
+    border: 3px solid black;
+    padding: 20px;
+    border-radius: 10px;
 }
  .more-poem{
         margin-top: 10px;
+        background: none;
+        padding: 10px;
+        min-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
         a{
             text-decoration: none;
             font-size: 20px;
             color: black;
             font-weight: bold;
+            background: none;
             padding: 10px;
             min-width: fit-content;
+            min-width: 100%;
             transition: background-color 0.3s, color 0.3s;
         }
     }
