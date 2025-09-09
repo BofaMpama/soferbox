@@ -159,11 +159,13 @@
     background: rgb(203, 214, 226);
     padding: 10% 5%;
     border-top: 2px solid black;
-    position: sticky;
+    position: static;
+    overflow: auto;
     z-index: -1;
     top: 100px;
 
     .container{
+        position: relative;
         margin-top: 40px;
         width: 100%;
         height: fit-content;

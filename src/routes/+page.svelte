@@ -82,7 +82,7 @@
         {#each stories as story}
          <div class="story-box">
             <a href={`/writings/stories/${story.slug}`}>
-            <img src={story.coverImage} alt="{story.title}" loading="lazy">
+            <img src={story.coverImage} alt={story.title} loading="lazy">
             <div class="text-box">
                 <h2>{story.title}</h2>
                 <button>Start reading</button>
