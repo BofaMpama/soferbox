@@ -144,7 +144,7 @@ h1{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+
         a{
             text-decoration: none;
             font-size: 20px;
@@ -155,6 +155,17 @@ h1{
             min-width: fit-content;
             min-width: 100%;
             transition: background-color 0.3s, color 0.3s;
+
+            span{
+                font-size: 24px;
+                font-weight: bold;
+                margin-left: auto;
+                background: none;
+            }
+        }
+        a:hover{
+            background: black;
+            color: white;
         }
     }
 @media (max-width: 768px) {
