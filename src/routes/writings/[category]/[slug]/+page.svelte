@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {PageData} from './$types';
     export let data: PageData;
-    const {poem} = data;
+    const {poem, extraPoems} = data;
 
     import {page} from '$app/stores';
     const baseUrl = 'http://soferbox.netlify.app/writings';
@@ -15,7 +15,7 @@
 
     //social media share links
     $: twitterShare = `https://twitter.com/intent/tweet?url=${encodeURIComponent(fullUrl)}&text=${encodeURIComponent('Check out my poem!')}`;
-    $: facebookShare = `https://www.facebook.com/sharer/.php?u=${encodeURIComponent(fullUrl)}`;
+    $: facebookShare = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(fullUrl)}`;
     $: linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`;
 </script>    
 
@@ -40,6 +40,18 @@
 
        </div>
     </div>
+
+    <div class="more">
+        <h1>More to read</h1>
+
+        <div class="more-poems-container">
+            {#each extraPoems as extraPoem}
+                <div class="more-poem">
+                    <a href={`/writings/poems/${extraPoem.slug}`}>{extraPoem.title} <span>&rightarrow;</span></a>
+                </div>
+            {/each}
+        </div>
+    </div>    
 </main>  
   
   
@@ -98,7 +110,34 @@ h1{
         min-width: fit-content;
         transition: background-color 0.3s, color 0.3s;
     }
+   
 }
+.more{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 3px solid black;
+    margin-top: 50px;
+    h1{
+        font-size: 44px;
+        margin: 0;
+        font-weight: bold;
+        border: none;
+        width: fit-content;
+    }
+}
+ .more-poem{
+        margin-top: 10px;
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            min-width: fit-content;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    }
 @media (max-width: 768px) {
     main{
         padding: 5% 10%;

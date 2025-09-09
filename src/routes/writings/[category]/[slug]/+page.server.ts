@@ -6,6 +6,7 @@ import type {Document} from '@contentful/rich-text-types';
 export const load: PageServerLoad = async ({params}) => {
     const {slug} = params;
 
+    //to fetch the current poem
     const response = await client.getEntries({
         content_type: 'poem',
         'fields.slug': slug,
@@ -24,6 +25,13 @@ export const load: PageServerLoad = async ({params}) => {
 
     const processedBody = bodyField ? documentToHtmlString(bodyField) : '';
 
+    // Fetching additional poems excluding the current one
+    const morePoemsResponse = await client.getEntries({
+        content_type: 'poem',
+        order: ['-sys.createdAt'],
+        'fields.slug[ne]': slug,
+        limit: 5
+    })
     return {
         poem: {
             title: poemItem.fields.title as string,
@@ -31,7 +39,13 @@ export const load: PageServerLoad = async ({params}) => {
             slug: poemItem.fields.slug as string,
             publishedDate: poemItem.sys.createdAt as string,
             excerpt: poemItem.fields.excerpt as string
-        }
+        },
+        extraPoems: morePoemsResponse.items.map((item) => ({
+            title: item.fields.title as string,
+            slug: item.fields.slug as string,
+            publishedDate: item.sys.createdAt as string
+        }))
     };
+    
 }
 
