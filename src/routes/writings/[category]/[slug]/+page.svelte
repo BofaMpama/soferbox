@@ -19,6 +19,7 @@
     $: linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`;
 </script>    
 
+{#key slug}
 <main>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     {#if poem}
@@ -26,8 +27,10 @@
     <h1>{poem.title}</h1>
     <div class="poem-body">
         {@html poem.body}
-    </div>    
+    </div>  
+
     {/if}
+   
 
     <div class="social-media">
         <h1>Share <i class="fas fa-share-nodes"></i>
@@ -47,13 +50,14 @@
         <div class="more-poems-container">
             {#each extraPoems as extraPoem}
                 <div class="more-poem">
-                    <a href={`/writings/poems/${extraPoem.slug}`}>{extraPoem.title} <span>&rightarrow;</span></a>
+                    <a href={`/writings/poems/${extraPoem.slug}`} sveltekit:prefetch>{extraPoem.title} <span>&rightarrow;</span></a>
                 </div>
                 <hr>
             {/each}
         </div>
     </div>    
 </main>  
+{/key}
   
   
 
@@ -139,7 +143,7 @@ h1{
  .more-poem{
         margin-top: 10px;
         background: none;
-        padding: 10px;
+        padding: 10px 0;
         min-width: 100%;
         display: flex;
         justify-content: space-between;
@@ -151,7 +155,7 @@ h1{
             color: black;
             font-weight: bold;
             background: none;
-            padding: 10px;
+            padding: 10px 0;
             min-width: fit-content;
             min-width: 100%;
             transition: background-color 0.3s, color 0.3s;
