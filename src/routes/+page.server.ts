@@ -24,7 +24,7 @@ export const load: PageServerLoad = async () => {
       slug: item.fields.slug as string,
     })),
       stories: storyResponse.items.map((item) => {
-          const cover = item.fields.coverImage as Asset | undefined;
+          const cover = item.fields.cover as Asset | undefined;
 
      return{
        title: item.fields.title as string,
