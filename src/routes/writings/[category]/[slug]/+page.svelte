@@ -71,8 +71,8 @@ h2{
 h1{
     font-size: 50px;
     font-weight: bold;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
 
 }
 .poem-body{
