@@ -264,6 +264,7 @@
 
     h1{
         font-size: 50px;   
+        font-weight: bold;
         line-height: 50px; 
     }
     p{
@@ -416,6 +417,13 @@
         position: sticky;
         top: 100px;
      
+    }
+
+    .sec4{
+        padding: 20% 5% 20% 5%;
+    }
+    .stories-section{
+        padding: 20% 5% 20% 5%;
     }
    
     
