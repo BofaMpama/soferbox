@@ -1,6 +1,7 @@
 <script lang="ts">
 </script>
-<footer class="footer">
+<main>
+  <footer class="footer">
   <div class="footer__parralax">
     <div class="footer__parralax-trees"></div>
     <div class="footer__parralax-moto"></div>
@@ -87,6 +88,7 @@
       </div>
   </div>
 </footer>
+</main>
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 html, body{
