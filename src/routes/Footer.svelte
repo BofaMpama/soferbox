@@ -97,7 +97,7 @@ body{
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding-top: 300px;
+  padding-top: 500px;
 }
 
 // Footer variables
@@ -130,7 +130,7 @@ $footerText: #fff;
       display: flex;
       align-items:center;
       * ~ span{
-        margin-left: 1rem;
+        margin-left: 0rem;
       }
     }
   }
@@ -140,7 +140,7 @@ $footerText: #fff;
     color: $footerText;
     text-decoration: none;    
       * ~ span{
-        margin-left: 1rem;
+        margin-left: 0rem;
       }
   }
   &__nav{
@@ -277,5 +277,6 @@ $footerText: #fff;
       gap: 3rem;
     }
   }
+  
 }
 </style>   
