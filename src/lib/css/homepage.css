@@ -148,10 +148,10 @@
             background: #578acc
         }
     .writing-box:nth-of-type(2){
-        background: rgba(56, 133, 204, 0.849);
+        background: rgb(56, 133, 204);
     }
      .writing-box:nth-of-type(3){
-        background: rgba(65, 105, 225, 0.836);
+        background: rgb(65, 105, 225);
     }
 
 
