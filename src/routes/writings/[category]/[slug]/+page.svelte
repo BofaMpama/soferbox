@@ -17,6 +17,7 @@
     $: twitterShare = `https://twitter.com/intent/tweet?url=${encodeURIComponent(fullUrl)}&text=${encodeURIComponent('Check out my poem!')}`;
     $: facebookShare = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(fullUrl)}`;
     $: linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`;
+    $: whatsappShare = `https://wa.me/?text=${encodeURIComponent(`Check out this poem! ${fullUrl}`)}`;
 </script>    
 
 {#key slug}
@@ -40,6 +41,7 @@
          <a href="{twitterShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i> Twitter</a>
         <a href="{facebookShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
         <a href="{linkedinShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> Linkedin</a>
+        <a href="{whatsappShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
 
        </div>
     </div>
