@@ -82,7 +82,11 @@
 .sec2{
     background: gainsboro;
     display: flex;
-    flex-direction: field;
+    flex-direction: column;
+    gap: 50px;
+    padding: 10% 5%;
+    align-items: center;
+    justify-content: center;
     border-top: 3px solid black;
 
     .header{
@@ -91,19 +95,24 @@
    
 }
     .writing-group{
-        display: flex;
-        width: 100%;
+        display: column;
+        width: fit-content;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
+        position: relative;
     }
     .writing-box{   
         border: 1px solid black;
         flex: 1;
+        width: 400px;
         height: 350px;
         color: #000;
+        border: 3px solid black;
         padding: 33px;
-        position: relative;
+        position: sticky;
+        top: 100px;
+        align-self: center;
         h3{
             font-size: 40px;
             font-weight: 600;
@@ -145,13 +154,17 @@
             box-shadow:  4px 4px black;
         }
         .writing-box:nth-of-type(1){
-            background: #578acc
+            background: #578acc;
+            transform: rotate(-4deg);
         }
     .writing-box:nth-of-type(2){
         background: rgb(56, 133, 204);
+            transform: rotate(4deg);
     }
      .writing-box:nth-of-type(3){
-        background: rgb(65, 105, 225);
+        background: rgb(65, 105, 225);            
+        transform: rotate(-2deg);
+
     }
 
 
