@@ -198,7 +198,8 @@
         min-width: 300px;
         height: 200px;
         border: 4px solid black;
-        border-radius: 0px;
+        border-radius: 10px;
+        background: white;
         padding: 10px;
         position: relative;
         margin-bottom: 20px;
@@ -232,7 +233,7 @@
     }
    }     
    .card:hover{
-    background: rgb(80, 159, 180);
+    background: rgb(220, 226, 228);
    }
    .header{
     display: flex;
