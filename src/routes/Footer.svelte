@@ -342,7 +342,7 @@ $footerText: #fff;
       position:absolute;
       bottom: 10px;
       left: 0%;
-      margin-left: 150px;
+      margin-left: 50px;
       height: 114px;
       width: 206px;
       background: url(https://i.ibb.co/0Qhp4DN/voiture-fumee.gif);
