@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/box.png';
 	import Header from './Header.svelte';
 	import RetroHeader from './RetroHeader.svelte';
+	import FooterPadding from './FooterPadding.svelte';
 	import Footer from './Footer.svelte';
 	import BubbleFooter from './bubbleFooter.svelte';
 	import { onMount } from 'svelte';
@@ -21,6 +22,7 @@
 	<main>
 		{@render children()}
 	</main>
+	<FooterPadding />
 	<Footer />
 
 	
