@@ -432,6 +432,12 @@
     .sec2{
         display: flex;
         flex-direction: column;
+
+        .header{
+            font-size: 60px;
+            text-align: center;
+        }
+        
     }
     .writing-group{
         flex-direction: column;
