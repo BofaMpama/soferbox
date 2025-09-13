@@ -16,7 +16,7 @@
         font-weight: bold;
         text-align: center;
         padding: 20px;
-        padding-top: 40px;
+        padding-top: 60px;
     }
 
     @media(max-width: 600px){

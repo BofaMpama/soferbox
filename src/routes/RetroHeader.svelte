@@ -1,6 +1,9 @@
 
 <script>
     import hamburger from '$lib/assets/burger.png';
+
+    	let show = false;
+
 </script>
 
 <header class="flex justify-between gap-8 items-center px-6 py-3 bg-gray-100">
@@ -15,12 +18,18 @@
     </nav>
       
    <div class="button-group">
-     <button><img src="{hamburger}" alt="Hamburger menu" class="burger"></button>
+     <button on:click={() => show = !show}><img src="{hamburger}" alt="Hamburger menu" class="burger"></button>
      <button class="text-xl text-white bg-black btn b1">Sign Up</button>
     <button class="text-xl text-black btn b2">Sign In</button>
    </div>
 
 </header>
+<ul class:show={show}>
+	<a href="/" on:click={() => show = !show}>Home</a>
+	<a href="/writings" on:click={() => show = !show}>Writings</a>
+	<a href="/services" on:click={() => show = !show}>About The Author</a>
+	<a href="/contact-us" on:click={() => show = !show}>Contact</a>
+</ul>
 <style>
       header{
         position: fixed;
@@ -57,6 +66,37 @@
     border-radius: 10px;
     padding: 3px;
 }
+ul{
+		display: none;
+	}
+ul.show{
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+		padding: 150px 30px 0 0;
+		position: fixed;
+		width: 400px;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: #000000;
+		transition: 0.5s;
+		z-index: 1000;
+
+		a{
+			color: #fff;		
+			font-size: 35px;
+            font-weight: bold;
+            text-decoration: underline;
+			padding-left: 40px;
+
+		}
+		
+	}
+	ul a:active{
+		text-decoration: underline;
+	}
+
   @media(max-width: 1000px){
   
     nav{
