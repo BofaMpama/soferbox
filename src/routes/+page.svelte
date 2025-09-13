@@ -3,6 +3,7 @@
     import penInHand from '$lib/assets/pen-in-hand.png';
     import scrollMan from '$lib/assets/scroll.jpg';
     import html from '$lib/assets/html.png';
+    import retro from '$lib/assets/retro3.jpg';
     import writingsData from '$lib/data/writings.json';
     import type { PageData } from './$types';
     export let data: PageData;
@@ -43,7 +44,8 @@
     <button>More About The Author</button>
 </div>
 </section>
-<section class="sec2 bg-gray-500">
+<section class="sec2 bg-gray-500" >
+    <img src={retro} alt="retro background">
         <div class="header font-bold text-5xl">My Writings</div>
         <div class="writing-group">
            {#each writingsData as info}
