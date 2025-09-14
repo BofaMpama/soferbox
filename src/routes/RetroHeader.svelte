@@ -35,7 +35,7 @@
         position: fixed;
         width: 100%;
         top: 0;
-        z-index: 11;
+        z-index: 1111;
         border: 2px solid black;
         padding: 20px 20px;
         background: black;
