@@ -49,7 +49,7 @@
       .writing-box2{
           background: #e0faff;
           border: 3px solid black;
-        width: 200px;
+        width: 300px;
         height: fit-content;
         color: #000;
         border-radius: 10px;
