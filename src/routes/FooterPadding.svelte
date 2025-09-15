@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   filter: blur(.5px);
-  position: relative;
+  position: sticky;
   padding: 5% 0;
 
 }
@@ -53,6 +53,8 @@
   animation: shake 150ms infinite;
   text-align: center;
   background:rgb(80, 159, 180);
+  padding: 20px;
+  border-radius: 10px;
   margin: 20px;
   font-weight: 900;
   background-position: 50% 0%;
