@@ -2,13 +2,7 @@
 </script>
 <main>
   <footer class="footer">
-  <div class="footer__parralax">
-    <div class="footer__parralax-trees"></div>
-    <div class="footer__parralax-moto"></div>
-    <div class="footer__parralax-secondplan"></div>
-    <div class="footer__parralax-premierplan"></div>
-    <div class="footer__parralax-voiture"></div>
-  </div>
+
   <div class="container">
     <div class="footer__columns">
       <div class="footer__col">
@@ -96,7 +90,7 @@ html, body{
 }
 body{
   font-family: 'Open Sans', sans-serif;
-  display: flex;
+   display: flex; flex-wrap: wrap;
   flex-wrap: wrap;
   flex-direction: column;
   padding-top: 500px;
@@ -122,14 +116,17 @@ $footerText: #fff;
   margin-top: auto;
   &__columns{
     display:flex;
+    flex-wrap: wrap;
+    gap: 50px;
     justify-content: space-between;
   }
   &__col{
     &-title{
       font-size: 1.6rem;
-      margin-bottom: 2rem;
+      margin-top: 30px;
+      margin-bottom: 1rem;
       text-transform: uppercase;
-      display: flex;
+       display: flex; flex-wrap: wrap;
       align-items:center;
       * ~ span{
         margin-left: 0rem;
@@ -137,7 +134,7 @@ $footerText: #fff;
     }
   }
   a{
-      display: flex;
+       display: flex; flex-wrap: wrap;
       align-items:center;
     color: $footerText;
     text-decoration: none;    
@@ -148,6 +145,7 @@ $footerText: #fff;
   &__nav{
     &-list{
       display:flex;
+      flex-wrap: wrap;
       flex-direction: column;
       gap: 1.5rem;
     }
@@ -233,12 +231,7 @@ $footerText: #fff;
   }
 }
 @media (max-width: 768px) {
-  .footer{
-    &__columns{
-      flex-direction: column;
-      gap: 3rem;
-    }
-  }
+
 
   .footer{
   width: 100%;
@@ -249,24 +242,11 @@ $footerText: #fff;
   color: $footerText;
   background : $footerBg;
   margin-top: auto;
-  &__columns{
-    display:flex;
-    justify-content: space-between;
-  }
-  &__col{
-    &-title{
-      font-size: 1.6rem;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      display: flex;
-      align-items:center;
-      * ~ span{
-        margin-left: 0rem;
-      }
-    }
-  }
+  
+
+  
   a{
-      display: flex;
+       display: flex; flex-wrap: wrap;
       align-items:center;
     color: $footerText;
     text-decoration: none;    
@@ -274,13 +254,7 @@ $footerText: #fff;
         margin-left: 0rem;
       }
   }
-  &__nav{
-    &-list{
-      display:flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-  }
+ 
   &__copyrights{
     padding-top: 3rem;
     margin-top: 3rem;
@@ -301,68 +275,12 @@ $footerText: #fff;
     }
   }
  
-  @keyframes voiture{
-    0%{
-     transform: rotate(0);
-    }
-    25%{
-     transform: rotate(-5deg);
-    }
-    50%{
-     transform: rotate(0);
-    }
-    75%{
-     transform: rotate(5deg);
-    }
-    100%{
-     transform: rotate(0);
-    }
-  }
-  &__parralax{
-    position:absolute;
-    left:0;
-    top:-300px;
-    height:300px;
-    width: 100%;
-    overflow:hidden;
-    &-premierplan{      
-     background-position: 260px;
-    }
-    &-trees,
-    &-premierplan,
-    &-secondplan{
-      position:absolute;
-      inset: 0;
-      background-repeat: repeat-x;
-      background-position-y: 100% !important;
-      animation: parralax 600s linear infinite;
-    }
+
    
-    &-voiture{
-      position:absolute;
-      bottom: 10px;
-      left: 0%;
-      margin-left: 50px;
-      height: 114px;
-      width: 206px;
-      background: url(https://i.ibb.co/0Qhp4DN/voiture-fumee.gif);
-      background-repeat: no-repeat;
-      animation: voiture 1s linear infinite;
-    }
-   
-    &-premierplan{
-      background-image: url(https://i.ibb.co/RQhDWbk/premierplanv3.png);
-      animation-duration: 500s;
-      //background-position-y: 27px !important;
-    }
-    &-secondplan{
-      background-image: url(https://i.ibb.co/J3TjC4W/second-plan.png);
-      height: 293px;
-      animation-duration: 600s;
-    }
+
   }
 }
   
   
-}
+
 </style>   
