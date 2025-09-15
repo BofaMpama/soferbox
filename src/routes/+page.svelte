@@ -68,13 +68,19 @@
     </div>
 
     <div class="container">
-        {#each poems as poem}
-            <div class="card"> <a href={`/writings/poems/${poem.slug}`}>
-            <h1 class="font-bold">{poem.title}</h1>
-           <button>Read More <span>&rightarrow;</span></button></a>
-        </div>
+
+           {#each poems as poem}
+             <div class="writing-box2">
+                <h3>{poem.title}</h3>
+                <a href={`/writings/poems/${poem.slug}`}><button>Start reading</button></a>
+            </div>
         {/each}
+            
+
     </div>
+
+    
+       
 </section>
 <section class="stories-section">
     <h1>Short Stories</h1>
