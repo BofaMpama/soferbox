@@ -10,25 +10,22 @@
     <div class="logo text-5xl text-black">
         <a href="/">SoferBox</a>
     </div>
-    <nav class="text-xl  text-white flex gap-4">
-        <a class="" href="/">Home</a>
-        <a href="/writings">Writings</a>
-        <a href="/about">About Me</a>
-        <a href="/contact">Contact</a>
+    <nav class="text-xl  text-black font-bold flex gap-4">
+        <a href="/writings">Poems</a>
+        <a href="/about">Stories</a>
+        <a href="/contact">Blogs</a>
     </nav>
       
    <div class="button-group">
      <button on:click={() => show = !show}><img src="{hamburger}" alt="Hamburger menu" class="burger"></button>
-     <button class="text-xl text-white bg-black btn b1">Sign Up</button>
-    <button class="text-xl text-black btn b2">Sign In</button>
+    <button class="text-xl text-black btn b2">Contact</button>
    </div>
 
 </header>
 <ul class:show={show}>
-	<a href="/" on:click={() => show = !show}>Home</a>
-	<a href="/writings" on:click={() => show = !show}>Writings</a>
-	<a href="/services" on:click={() => show = !show}>About The Author</a>
-	<a href="/contact-us" on:click={() => show = !show}>Contact</a>
+	<a href="/poems" on:click={() => show = !show}>Poems</a>
+	<a href="/stories" on:click={() => show = !show}>Stories</a>
+	<a href="/blog" on:click={() => show = !show}>Blogs</a>
 </ul>
 <style>
       header{
@@ -36,20 +33,26 @@
         width: 100%;
         top: 0;
         z-index: 1111;
-        border: 2px solid black;
+        border-bottom: 5px solid black;
         padding: 20px 20px;
-        background: black;
+        background: rgb(226, 224, 203);
         color: aliceblue;
     }
     .logo{
         font-weight: bold;
         color: rgb(80, 159, 180);
-        text-shadow: 2px 2px rgb(255, 255, 255);
+        text-shadow: 3px 3px rgb(0, 0, 0);
+        
+        font-family: 'Bungee', cursive;
+        font-style: italic;
     }
     .b2{
         padding: 10px 20px;
-    background: rgb(255, 255, 255);
+    background: rgb(80, 159, 180);
+    box-shadow: 7px 7px black;
     color: black;
+    font-weight: bold;
+    margin-right: 20px;
 }
 .button-group{
     display: flex;
@@ -61,8 +64,8 @@
     display: none;
     width: 0;
     flex: 0;
-    background: rgb(250, 250, 250);
-    border: 2px solid rgb(243, 247, 248);
+    background: rgb(80, 159, 180);
+    border: 3px solid rgb(0, 0, 0);
     border-radius: 10px;
     padding: 3px;
 }
@@ -121,7 +124,7 @@ ul.show{
     }
     .logo{
         font-size: 2rem;
-        text-shadow: 1px 1px white;
+        text-shadow: 3px 3px rgb(0, 0, 0);
     }
  
   }
