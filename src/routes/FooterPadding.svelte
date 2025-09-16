@@ -77,7 +77,7 @@
 
 @media(max-width: 900px){
     .poster{
-        width: min(100%, 100%);
+        width: 100%;
     }
     .quote{
         font-size: 2rem;
