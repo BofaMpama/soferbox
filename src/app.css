@@ -9,7 +9,7 @@ body{
 	font-size: 15px;
 	line-height: 1.7;
 	color: #000000;
-	border: 2px solid black;
+	border: 5px solid black;
 	background: rgb(226, 224, 203);
     background-repeat: repeat;
     background-size: 4%;
@@ -17,4 +17,8 @@ body{
 }
 button{
 	border-radius: 10px;
+	border: 5px solid black;
+	display: flex;
+	justify-content: center;
+	align-self: start;
 }

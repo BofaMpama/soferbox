@@ -11,9 +11,9 @@
         <a href="/">SoferBox</a>
     </div>
     <nav class="text-xl  text-black font-bold flex gap-4">
-        <a href="/writings">Poems</a>
-        <a href="/about">Stories</a>
-        <a href="/contact">Blogs</a>
+        <a href="/writings/poems">Poems</a>
+        <a href="/writings/stories">Stories</a>
+        <a href="/writings/blogs">Blogs</a>
     </nav>
       
    <div class="button-group">
@@ -48,8 +48,9 @@
     }
     .b2{
         padding: 10px 20px;
+        border: 3px solid black;
     background: rgb(80, 159, 180);
-    box-shadow: 7px 7px black;
+    box-shadow: 5px 5px black;
     color: black;
     font-weight: bold;
     margin-right: 20px;
