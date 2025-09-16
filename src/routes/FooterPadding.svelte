@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
 
     <div class="background">
         My heart is stirred by a noble theme as I recite my verses for the king; my tongue is the pen of a skillful writer. You are the most excellent of men and your lips have been anointed with grace, since God has blessed you forever. Gird your sword upon your side, O mighty one; clothe yourself with splendor and majesty.
@@ -84,4 +84,4 @@
         margin-bottom: 40px;
     }
 }
-</style>    
+</style>     -->

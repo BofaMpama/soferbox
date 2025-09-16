@@ -46,18 +46,7 @@
        </div>
     </div>
 
-    <div class="more">
-        <h1>More to read</h1>
-
-        <div class="more-poems-container">
-            {#each extraPoems as extraPoem}
-                <div class="more-poem">
-                    <a href={`/writings/poems/${extraPoem.slug}`} sveltekit:prefetch>{extraPoem.title} <span>&rightarrow;</span></a>
-                </div>
-                <hr>
-            {/each}
-        </div>
-    </div>    
+    
 </main>  
 {/key}
   
@@ -65,11 +54,14 @@
 
 <style>
     *{
-        background: rgb(213, 236, 231);
+        background: rgb(226, 224, 203);
     }
 main{
-    padding: 5% 20%;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     padding-top: 150px;
+    padding-bottom: 120px;
 }
 h2{
     font-family: monospace;
@@ -119,61 +111,8 @@ h1{
     }
    
 }
-.more{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 50px;
-    h1{
-        font-size: 44px;
-        margin-top: 10px;
-        font-weight: bold;
-        border: none;
-        width: fit-content;
-        background: none;
-    }
-}
-.more-poems-container{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: rgb(243, 240, 240);
-    border: 3px solid black;
-    padding: 20px;
-    border-radius: 10px;
-}
- .more-poem{
-        margin-top: 10px;
-        background: none;
-        padding: 10px 0;
-        min-width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
 
-        a{
-            text-decoration: none;
-            font-size: 20px;
-            color: black;
-            font-weight: bold;
-            background: none;
-            padding: 10px 0;
-            min-width: fit-content;
-            min-width: 100%;
-            transition: background-color 0.3s, color 0.3s;
-
-            span{
-                font-size: 24px;
-                font-weight: bold;
-                margin-left: auto;
-                background: none;
-            }
-        }
-        a:hover{
-            background: black;
-            color: white;
-        }
-    }
+    
 @media (max-width: 768px) {
     main{
         padding: 5% 10%;

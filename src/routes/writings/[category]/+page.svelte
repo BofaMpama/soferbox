@@ -39,6 +39,7 @@
         overflow-y: scroll;
         overflow: hidden;
         padding-top: 90px;
+        padding-bottom: 90px;
         background: rgb(226, 224, 203);
     }
 
@@ -47,6 +48,7 @@
         height: 40dvh;
         position: relative;
         top: 0;
+        margin: 0 0 50px 0;
     }
     h1 {
         font-family: "Bungee", sans-serif;        font-weight: 900;

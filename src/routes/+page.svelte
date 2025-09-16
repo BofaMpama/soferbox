@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container"> 
 
            {#each poems as poem}
              <div class="writing-box2">

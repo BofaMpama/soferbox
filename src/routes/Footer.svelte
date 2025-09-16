@@ -154,6 +154,7 @@ $footerText: #fff;
     padding-top: 3rem;
     margin-top: 3rem;
     border-top: 1px solid rgba($footerText, 0.2);
+    flex-grow: 1;
     p{
       display:flex;
       a{
