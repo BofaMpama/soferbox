@@ -49,8 +49,10 @@
         top: 0;
     }
     h1 {
+        font-family: "Bungee", sans-serif;        font-weight: 900;
+        font-style: normal;
+        font-size: 100px;
          text-align: left;
-        font-family: fantasy;
         font-size: 100px;
         font-weight: bold;
         letter-spacing: 15px;
@@ -83,7 +85,7 @@
     @media (max-width: 768px) {
 
         h1 {
-            font-size: 2rem;
+            font-size: 5rem;
         }
 
     }

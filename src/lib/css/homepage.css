@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -99,12 +100,12 @@
     }
     .header{
         text-align: left;
-        font-family: fantasy;
+font-family: "Bungee", sans-serif;        font-weight: 900;
+        font-style: normal;
         font-size: 100px;
-        font-weight: bold;
         letter-spacing: 15px;
-        color: rgb(230, 201, 74);
-        text-shadow: 7px 7px black;
+        color: rgb(230, 74, 74);
+        text-shadow: 5px 5px black;
         text-decoration: italic;
         text-transform: uppercase;
         z-index: 1;
