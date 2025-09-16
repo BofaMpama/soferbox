@@ -103,8 +103,8 @@
         font-size: 100px;
         font-weight: bold;
         letter-spacing: 15px;
-        color: skyblue;
-        text-shadow: 9px 9px black;
+        color: rgb(230, 201, 74);
+        text-shadow: 7px 7px black;
         text-decoration: italic;
         text-transform: uppercase;
         z-index: 1;
@@ -190,6 +190,9 @@
     z-index: -1;
     top: 100px;
 
+   
+
+   }  
     .container{
         margin-top: 40px;
         width: 100%;
@@ -200,9 +203,7 @@
         justify-content: center;
         gap: 50px;
 
-    }
-
-   }    
+    }  
        .writing-box2{
           background: wheat;
           border: 5px solid black;

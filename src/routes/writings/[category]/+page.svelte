@@ -1,6 +1,9 @@
 <script lang="ts">
     import {page} from '$app/stores'; 
     import type { PageData } from './$types';
+    import '$lib/css/homepage.css';
+    import retro from '$lib/assets/retro3.jpg';
+
     export let data: PageData;
     const {items} = data;
 
@@ -8,14 +11,19 @@
 </script>
 
 <main>
-    <h1>{category}</h1>
+   <div class="category-background">
+     <h1 class="header">{category}
+    </h1>
+     <img src="{retro}" alt="category background" class="background">
 
+   </div>
     <div class="container">
         
         {#each items as item} 
             <div class="writing-box2">
             <a href={`/writings/${category}/${item.slug}`}>
-                <h3>{item.title}</h3> <span> &rightarrow;</span>
+                <h3>{item.title}</h3>
+                <button>Start reading</button>
             </a>
             </div>
 
@@ -25,52 +33,54 @@
 
 <style>
     main {
-        padding: 2rem 20%;
+        
         min-height: 100dvh;
         height: fit-content;
         overflow-y: scroll;
         overflow: hidden;
-        padding-top: 150px;
-        background-color: rgb(94, 175, 185);
+        padding-top: 90px;
+        background: rgb(226, 224, 203);
     }
 
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        text-transform: capitalize;
-        font-weight: bold;
-    }
-    .container{
-        display:inline-flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-    }
-      .writing-box2{
-          background: #e0faff;
-          border: 3px solid black;
-        width: 300px;
-        height: fit-content;
-        color: #000;
-        border-radius: 10px;
-        padding: 30px;
+    .category-background{
+        min-width: 100%;
+        height: 40dvh;
         position: relative;
-        h3{
-            font-size: 35px;
-            font-weight: bold;
-            text-align: left;
-        }
-
+        top: 0;
+    }
+    h1 {
+         text-align: left;
+        font-family: fantasy;
+        font-size: 100px;
+        font-weight: bold;
+        letter-spacing: 15px;
+        color: rgb(230, 74, 74);
+        text-shadow: 7px 7px black;
+        text-decoration: italic;
+        text-transform: uppercase;
+        z-index: 11;
+        left: 2%;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
         
-    } 
+    }
+    .background{
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+        object-fit: cover;
+        top: 0;
+        z-index: 1;
+        position: absolute;
+    }
+   
+        
+    
 
 
 
     @media (max-width: 768px) {
-        main {
-            padding: 2rem 5%;
-            padding-top: 120px;
-        }
 
         h1 {
             font-size: 2rem;
