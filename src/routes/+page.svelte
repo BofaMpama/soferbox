@@ -63,7 +63,8 @@
         <h1 class="text-5xl font-bold">Recent Poems</h1>
         <div class="nav-buttons">
 
-            <button class="right">Read More<span>&rightarrow;</span></button>
+            <a href={`/writings/poems/`}>
+            <button class="right">Read More<span>&rightarrow;</span></button></a>
         </div>
     </div>
 
