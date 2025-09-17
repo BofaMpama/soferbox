@@ -250,6 +250,17 @@
         align-items: center;
         position: relative;
         bottom: 0;
+        transition: 0.3s;
+               
+        transform: rotate(-2deg) scale(1.02);
+        box-shadow: 3px 3px rgb(0, 0, 0);
+
+        &:hover{
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 4px 4px rgb(0, 0, 0);
+        }
+ 
+    
         h3{
             font-size: 30px;
             width: 300px;
@@ -303,10 +314,13 @@
         background: #a1975b;
         width: 300px;
         min-height: 350px;
+        height: 400px;
         color: #000;
         border-radius: 30px;
         padding: 30px;
         position: sticky;
+
+    
         h3{
             font-size: 40px;
             text-align: left;
@@ -323,6 +337,12 @@
             bottom: 10%;
         }
     }
+            .writing-box2:nth-child(even){
+    transform: rotate(-2deg) scale(1.02);
+}
+.writing-box2:nth-child(odd){
+    transform: rotate(2deg) scale(1.02);
+} 
     .writing-box:nth-of-type(2){
         background: #1f1e1a;
         color: #fff;
@@ -359,7 +379,7 @@
 .stories-container{
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 50px;
 }
 .stories-container > *{
     flex-grow: 1;
@@ -380,6 +400,7 @@
         transform: rotate(-2deg) scale(1.02);
         box-shadow: 3px 3px rgb(0, 0, 0);
     }
+    
 
 
 
@@ -406,7 +427,12 @@
         cursor: pointer;
     }
 }
-   
+.story-box:nth-child(even){
+    transform: rotate(-2deg) scale(1.02);
+}
+.story-box:nth-child(odd){
+    transform: rotate(2deg) scale(1.02);
+}   
 
 @media(max-width: 1100px){
     .sec1{
