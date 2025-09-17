@@ -19,4 +19,5 @@ button{
 	display: flex;
 	justify-content: center;
 	align-self: start;
+	border-radius: 10px;
 }

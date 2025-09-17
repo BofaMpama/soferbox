@@ -84,8 +84,8 @@
        
 </section>
 <section class="stories-section">
-    <h1>Short Stories</h1>
-    <p>Some are facts, some are fiction. But all are a reflection of deep conviction, pun-filled writing, and biblically inspired words.</p>
+    <h1>Short Stories I've Been Writing...</h1>
+    
 
     <div class="stories-container">    
         {#each stories as story}
@@ -94,10 +94,9 @@
             <img src={story.coverImage} alt={story.title} loading="lazy">
             <div class="text-box">
                 <h2>{story.title}</h2>
-                <button>Start reading</button>
             </div></a>
         </div>
-        {/each}         
+        {/each}          
        
       
     </div>

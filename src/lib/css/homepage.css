@@ -78,7 +78,7 @@
         color: white;
         font-weight: bold;
         box-shadow: 4px 4px white;
-        border-radius: 0px;
+        border-radius: 10px;
     }
    }
 }
@@ -156,7 +156,7 @@
     }
       .button-style1{
             background: white;
-            border-radius: 0px;
+            border-radius: 10px;
             padding: 10px 15px;
             color: #000;
             border: 5px solid black;
@@ -242,7 +242,7 @@
         width: 300px;
         height: fit-content;
         color: #000;
-        border-radius: 0px;
+        border-radius: 10px;
         padding: 30px;
         display: flex;
         flex-direction: column;
@@ -257,14 +257,14 @@
             font-weight: bold;
             text-align: left;
             border: 5px solid black;
-            border-radius: 0px;
+            border-radius: 10px;
             padding: 20px;
         }
 
         button{
             background: white;
             border: 5px solid black;
-            border-radius: 0px;
+            border-radius: 10px;
             padding: 10px 15px;
             color: #000;
             box-shadow: 4px 4px black;
@@ -337,13 +337,14 @@
 
 
 .stories-section{
-    background: #000;
-    color: #ffffff;
+    border-top: 5px solid black;
+    background: #ce7878;
+    color: #000000;
     text-align: center;
     padding: 10% 5%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 50px;
     z-index: 1;
 
     h1{
@@ -352,12 +353,13 @@
         line-height: 50px; 
     }
     p{
-        color: rgb(241, 240, 239);
+        color: rgb(0, 0, 0);
     }
 }
 .stories-container{
     display: flex;
     flex-wrap: wrap;
+    gap: 30px;
 }
 .stories-container > *{
     flex-grow: 1;
@@ -366,16 +368,32 @@
     width: 400px;
     height: 400px;
     padding: 20px;
-    border: 5px solid rgb(255, 255, 255);
+    border: 5px solid rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    display: block;
+    box-shadow: 4px 4px rgb(0, 0, 0);
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    &:hover{
+        transform: rotate(-2deg) scale(1.02);
+        box-shadow: 3px 3px rgb(0, 0, 0);
+    }
+
+
 
     img{
+        min-width: 100%;
         width: 100%;
-        height: 65%;
+        height: 200px;
+        background: red;
         object-fit: cover;
-        border-bottom: 5px solid rgb(255, 255, 255);
+        border-bottom: 5px solid rgb(0, 0, 0);
     }
     h2{
-        font-size: 24px;
+        font-size: 34px;
+        font-weight: bold;
         margin: 10px 0;
     }
     button{
@@ -383,7 +401,7 @@
         color: black;
         padding: 10px 20px;
         font-weight: bold;
-        border: none;
+        border: 5px solid black;
         box-shadow: 4px 4px rgb(0, 0, 0);
         cursor: pointer;
     }
