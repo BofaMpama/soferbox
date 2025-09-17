@@ -564,3 +564,9 @@
 
    
 }
+@media(max-width: 500px){
+    .writing-box2{
+        height: fit-content;
+        width: 90%;
+    }
+}
