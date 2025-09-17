@@ -8,7 +8,7 @@ body{
 	font-weight: 300;
 	font-size: 15px;
 	line-height: 1.7;
-	color: #000000;
+	color: #000;
 	border: 5px solid black;
 	background: rgb(226, 224, 203);
     background-repeat: repeat;
@@ -16,8 +16,6 @@ body{
     width: 100%;
 }
 button{
-	border-radius: 10px;
-	border: 5px solid black;
 	display: flex;
 	justify-content: center;
 	align-self: start;

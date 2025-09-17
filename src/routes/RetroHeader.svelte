@@ -66,6 +66,7 @@
     width: 0;
     flex: 0;
     background: rgb(80, 159, 180);
+    border: none;
     border: 3px solid rgb(0, 0, 0);
     border-radius: 10px;
     padding: 3px;
