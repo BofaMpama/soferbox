@@ -43,7 +43,7 @@
         color: rgb(80, 159, 180);
         text-shadow: 3px 3px rgb(0, 0, 0);
         
-        font-family: 'Bungee', cursive;
+        font-family: cursive;
         font-style: italic;
     }
     .b2{

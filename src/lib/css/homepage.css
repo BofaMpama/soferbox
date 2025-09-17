@@ -26,6 +26,9 @@
         p{
             width: 80%;
         }
+        button{
+            border: 3px solid black;
+        }
         .btn{
             background: rgb(255, 255, 255);
             box-shadow: 4px 4px rgb(0, 0, 0);
@@ -75,7 +78,7 @@
         color: white;
         font-weight: bold;
         box-shadow: 4px 4px white;
-        border-radius: 10px;
+        border-radius: 0px;
     }
    }
 }
@@ -153,7 +156,7 @@
     }
       .button-style1{
             background: white;
-            border-radius: 10px;
+            border-radius: 0px;
             padding: 10px 15px;
             color: #000;
             border: 5px solid black;
@@ -239,7 +242,7 @@
         width: 300px;
         height: fit-content;
         color: #000;
-        border-radius: 10px;
+        border-radius: 0px;
         padding: 30px;
         display: flex;
         flex-direction: column;
@@ -254,14 +257,14 @@
             font-weight: bold;
             text-align: left;
             border: 5px solid black;
-            border-radius: 10px;
+            border-radius: 0px;
             padding: 20px;
         }
 
         button{
             background: white;
             border: 5px solid black;
-            border-radius: 10px;
+            border-radius: 0px;
             padding: 10px 15px;
             color: #000;
             box-shadow: 4px 4px black;
