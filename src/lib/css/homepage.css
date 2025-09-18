@@ -238,7 +238,7 @@
           background: wheat;
           border: 5px solid black;
         min-width: 350px;
-        width: 300px;
+        width: 350px;
         height: fit-content;
         color: #000;
         border-radius: 10px;
@@ -566,6 +566,8 @@
 @media(max-width: 500px){
     .writing-box2{
         height: fit-content;
-        width: 90%;
+        min-width: 300px;
+        width: 300px;
+        max-width: 300px;
     }
 }
