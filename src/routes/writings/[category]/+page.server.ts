@@ -19,6 +19,8 @@ export const load: PageServerLoad = async ({ params }) => {
         order: ['-sys.createdAt'],
     });
 
+    
+
     return{
         //To get each content item's title and slug for listing
         items: response.items.map((item) => ({

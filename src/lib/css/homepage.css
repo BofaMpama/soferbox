@@ -380,16 +380,27 @@
     z-index: 1;
     position: relative;
 
+    .right{
+            position: sticky;
+        top: 200px; 
+    }
     h1{
         font-size: 50px;   
         font-weight: bold;
         text-align: left;
         line-height: 50px;
-        position: sticky;
-        top: 200px; 
+    
     }
     p{
         color: rgb(0, 0, 0);
+        text-align: left;
+        font-size: 20px;
+        line-height: 30px;
+        margin-top: 20px;
+
+        span{
+            font-weight: bold;
+        }
     }
 }
 .stories-container{
@@ -407,13 +418,15 @@
     height: fit-content;
     padding: 20px;
     border: 5px solid rgb(0, 0, 0);
+    border-radius: 10px;
     background: rgb(255, 255, 255);
     display: block;
-    box-shadow: 4px 4px rgb(0, 0, 0);
+    box-shadow: 7px 7px rgb(0, 0, 0);
     transition: 0.3s;
     cursor: pointer;
     text-decoration: none;
     color: black;
+    position: relative;
     &:hover{
         transform: rotate(-2deg) scale(1.02);
         box-shadow: 3px 3px rgb(0, 0, 0);
@@ -426,7 +439,7 @@
         min-width: 100%;
         width: 100%;
         height: 200px;
-        background: red;
+        background: rgb(196, 118, 118);
         object-fit: cover;
         border-bottom: 5px solid rgb(0, 0, 0);
     }
@@ -443,6 +456,10 @@
         border: 5px solid black;
         box-shadow: 4px 4px rgb(0, 0, 0);
         cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: none;
     }
 }
 .story-box:nth-child(even){

@@ -83,7 +83,10 @@
        
 </section>
 <section class="stories-section">
-    <h1>Short Stories I've Been Writing...</h1>
+<div class="left">
+        <h1>Short Stories I've Been Writing...</h1>
+    <p>Click on any story to start reading. <span>&RightArrow;</span></p>
+</div>
     
 
     <div class="stories-container">    
@@ -95,9 +98,14 @@
                 {/if}
             <div class="text-box">
                 <h2>{story.title}</h2>
-            </div></a>
+            </div> 
+            <button>Start reading</button>
         </div>
-        {/each}          
+        {/each}   
+        <div class="nav-buttons">
+           <a href={`/writings/stories/`}>
+            <button class="right">Read More<span>&rightarrow;</span></button></a>
+        </div>       
     </div>
 </section>    
 
