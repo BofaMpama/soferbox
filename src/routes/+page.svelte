@@ -8,7 +8,6 @@
     import type { PageData } from './$types';
     export let data: PageData;
 
-    import { onMount } from "svelte";
     const { poems, stories } = data;
 
 </script>
@@ -61,11 +60,7 @@
 <section class="sec4">
     <div class="header">
         <h1 class="text-5xl font-bold">Recent Poems</h1>
-        <div class="nav-buttons">
-
-            <a href={`/writings/poems/`}>
-            <button class="right">Read More<span>&rightarrow;</span></button></a>
-        </div>
+       
     </div>
 
     <div class="container"> 
@@ -79,7 +74,11 @@
             
 
     </div>
+ <div class="nav-buttons">
 
+            <a href={`/writings/poems/`}>
+            <button class="right">Read More<span>&rightarrow;</span></button></a>
+        </div>
     
        
 </section>
@@ -91,14 +90,14 @@
         {#each stories as story}
          <div class="story-box">
             <a href={`/writings/stories/${story.slug}`}>
-            <img src={story.coverImage} alt={story.title} loading="lazy">
+                {#if story.coverImage}
+             <img src={story.coverImage} alt={story.title} loading="lazy">       
+                {/if}
             <div class="text-box">
                 <h2>{story.title}</h2>
             </div></a>
         </div>
         {/each}          
-       
-      
     </div>
 </section>    
 
