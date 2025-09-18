@@ -395,12 +395,9 @@
         color: rgb(0, 0, 0);
         text-align: left;
         font-size: 20px;
+        font-weight: 500;
         line-height: 30px;
         margin-top: 20px;
-
-        span{
-            font-weight: bold;
-        }
     }
 }
 .stories-container{
@@ -600,6 +597,10 @@
     .stories-section{
         padding: 20% 5% 20% 5%;
             flex-wrap: wrap;
+
+            p{
+                font-weight: 700;
+            }
 
             .story-box{
                 width: 300px;
