@@ -104,9 +104,20 @@
         {/each}   
         <div class="nav-buttons">
            <a href={`/writings/stories/`}>
-            <button class="right">Read More<span>&rightarrow;</span></button></a>
+            <button class="right">There's More<span>&rightarrow;</span></button></a>
         </div>       
     </div>
+</section>    
+<section class="blog-section">
+    <h1 class="text-5xl font-bold">From The Blog</h1>
+    <div class="blog-container">
+        <div class="blog-box">
+            <div class="text-box">
+                <h2>Learning to Grow; Understanding What I'm Becoming</h2>
+                <p>Not that I want to be a child forever; nor that I'm in a hurry to grow old. But I'm learning that even as growth is inevitable, the process should be one that is appreciated at every stage...</p>
+                <button>Read More <span>&RightArrow;</span></button>
+            </div>
+        </div>
 </section>    
 
 <style lang="scss">
