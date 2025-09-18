@@ -85,7 +85,7 @@
 <section class="stories-section">
 <div class="left">
         <h1>Short Stories I've Been Writing...</h1>
-    <p>Click on any story to start reading. <span>&RightArrow;</span></p>
+    <p>Click on any story to start reading.</p>
 </div>
     
 
