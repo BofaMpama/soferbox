@@ -536,6 +536,7 @@
         .header{
             line-break: loose;
             word-wrap: break-word;
+            text-shadow: 3px 3px black;
         }
         
     }
