@@ -376,7 +376,6 @@
     text-align: center;
     padding: 10% 5%;
     display: flex;
-    flex-wrap: wrap;
     gap: 50px;
     z-index: 1;
     position: relative;
@@ -583,6 +582,15 @@
     }
     .stories-section{
         padding: 20% 5% 20% 5%;
+            flex-wrap: wrap;
+
+            .story-box{
+                width: 300px;
+                max-width: 90%;
+                height: fit-content;
+                margin: 0 auto;
+            }
+
     }
    
     
