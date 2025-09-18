@@ -137,7 +137,6 @@
     }
     .writing-box{   
         flex: 1;
-    
         border: 5px solid rgb(10, 4, 4);
         padding: 35px;
         position: sticky;
@@ -547,7 +546,7 @@
     }
     .writing-box{
         width: 90%;
-        min-height: 300px;
+        min-height: 400px;
     
      
     }

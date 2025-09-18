@@ -3,6 +3,7 @@ import { client } from '$lib/contentful';
 import type { Asset } from 'contentful';
 
 export const load: PageServerLoad = async () => {
+
   //Fetching a limited number of poems for the homepage
   const response = await client.getEntries({
     content_type: 'poem',
@@ -23,13 +24,19 @@ export const load: PageServerLoad = async () => {
       title: item.fields.title as string,
       slug: item.fields.slug as string,
     })),
+    
       stories: storyResponse.items.map((item) => {
           const cover = item.fields.cover as Asset | undefined;
+
+          let coverImage: string | null = null;
+          if (cover?.fields?.file?.url) {
+              coverImage = 'https:' + cover.fields.file.url;
+          }
 
      return{
        title: item.fields.title as string,
       slug: item.fields.slug as string,
-      coverImage: cover?.fields?.file?.url ? 'https:' + cover?.fields?.file.url : null
+      coverImage
      };
     })
    
