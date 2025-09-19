@@ -23,7 +23,9 @@
 
 </header>
 <ul class:show={show}>
-	<a href="/poems" on:click={() => show = !show}>Poems</a>
+    <a href="/" on:click={() => show = !show}>Home</a>
+	<a href="/about" on:click={() => show = !show}>About The Author</a>
+    <a href="/poems" on:click={() => show = !show}>Poems</a>
 	<a href="/stories" on:click={() => show = !show}>Stories</a>
 	<a href="/blogs" on:click={() => show = !show}>Blogs</a>
 </ul>
@@ -84,15 +86,14 @@ ul.show{
 		height: 100%;
 		top: 0;
 		left: 0;
-		background: #000000;
+		background: rgb(226, 224, 203);
 		transition: 0.5s;
 		z-index: 1000;
 
 		a{
-			color: #fff;		
+			color: #000000;		
 			font-size: 35px;
             font-weight: bold;
-            text-decoration: underline;
 			padding-left: 40px;
 
 		}
