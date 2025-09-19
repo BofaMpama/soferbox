@@ -382,7 +382,7 @@
     position: relative;
 
     .left{
-            position: sticky;
+        position: sticky;
         top: 200px; 
     }
     h1{
@@ -686,6 +686,10 @@
 
             p{
                 font-weight: 600;
+            }
+            .left{
+                position: sticky;
+                top: 100px;
             }
 
             .story-box{
