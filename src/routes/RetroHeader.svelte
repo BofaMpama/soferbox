@@ -13,7 +13,7 @@
     <nav class="text-xl  text-black font-bold flex gap-4">
         <a href="/writings/poems">Poems</a>
         <a href="/writings/stories">Stories</a>
-        <a href="/writings/blogs">Blogs</a>
+        <a href="/writings/blogs">Blog</a>
     </nav>
       
    <div class="button-group">
@@ -27,7 +27,7 @@
 	<a href="/about" on:click={() => show = !show}>About The Author</a>
     <a href="/poems" on:click={() => show = !show}>Poems</a>
 	<a href="/stories" on:click={() => show = !show}>Stories</a>
-	<a href="/blogs" on:click={() => show = !show}>Blogs</a>
+	<a href="/blogs" on:click={() => show = !show}>Blog</a>
 </ul>
 <style>
       header{
