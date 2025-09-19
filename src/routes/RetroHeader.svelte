@@ -25,9 +25,9 @@
 <ul class:show={show}>
     <a href="/" on:click={() => show = !show}>Home</a>
 	<a href="/about" on:click={() => show = !show}>About The Author</a>
-    <a href="/poems" on:click={() => show = !show}>Poems</a>
-	<a href="/stories" on:click={() => show = !show}>Stories</a>
-	<a href="/blogs" on:click={() => show = !show}>Blog</a>
+    <a href="/writings/poems" on:click={() => show = !show}>Poems</a>
+	<a href="/writings/stories" on:click={() => show = !show}>Stories</a>
+	<a href="/writings/blogs" on:click={() => show = !show}>Blog</a>
 </ul>
 <style>
       header{
