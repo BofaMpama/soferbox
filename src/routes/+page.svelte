@@ -141,7 +141,7 @@ $d: 0.08em;
 $n: 3;
 $e: cubic-bezier(0.860, 0.000, 0.070, 1.000); 
 $front: black;
-$back: lightblue;
+$back: rgb(255, 255, 255);
 html{
 	background: white;
 }
