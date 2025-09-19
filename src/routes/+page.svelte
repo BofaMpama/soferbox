@@ -2,6 +2,7 @@
     import '../lib/css/homepage.css';
     import penInHand from '$lib/assets/pen-in-hand.png';
     import scrollMan from '$lib/assets/scroll.jpg';
+    import boff from '$lib/assets/boff-blue.png';
     import html from '$lib/assets/html.png';
     import retro from '$lib/assets/retro3.jpg';
     import writingsData from '$lib/data/writings.json';
@@ -33,7 +34,7 @@
 </p>
   <button class="border-black text-xl text-white bg-black btn">Start Reading</button>
     </div>
-    <img src={scrollMan} alt="Pen in the hands of a writer">
+    <img src={boff} alt="Pen in the hands of a writer">
 
 </section>
 <section class="about">
@@ -112,6 +113,20 @@
     <h1 class="text-5xl font-bold">From The Blog</h1>
     <div class="blog-container">
         <div class="blog-box">
+            <div class="text-box">
+                <h2>Learning to Grow; Understanding What I'm Becoming</h2>
+                <p>Not that I want to be a child forever; nor that I'm in a hurry to grow old. But I'm learning that even as growth is inevitable, the process should be one that is appreciated at every stage...</p>
+                <button>Read More <span>&RightArrow;</span></button>
+            </div>
+        </div>
+         <div class="blog-box">
+            <div class="text-box">
+                <h2>Learning to Grow; Understanding What I'm Becoming</h2>
+                <p>Not that I want to be a child forever; nor that I'm in a hurry to grow old. But I'm learning that even as growth is inevitable, the process should be one that is appreciated at every stage...</p>
+                <button>Read More <span>&RightArrow;</span></button>
+            </div>
+        </div>
+         <div class="blog-box">
             <div class="text-box">
                 <h2>Learning to Grow; Understanding What I'm Becoming</h2>
                 <p>Not that I want to be a child forever; nor that I'm in a hurry to grow old. But I'm learning that even as growth is inevitable, the process should be one that is appreciated at every stage...</p>
