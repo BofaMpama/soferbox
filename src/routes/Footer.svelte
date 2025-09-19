@@ -77,24 +77,15 @@
         </nav>
       </div>
     </div>
-      <div class="footer__copyrights">
+   
+  </div>
+     <div class="footer__copyrights">
         <p>&copy; Copyright 2025. Developed by<a href="https://twitter.com/silvereledev" target="_blank">Bofa Mpama</a></p>
       </div>
-  </div>
 </footer>
 </main>
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
-html, body{
-  height: 100%;
-}
-body{
-  font-family: 'Open Sans', sans-serif;
-   display: flex; flex-wrap: wrap;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding-top: 500px;
-}
 
 // Footer variables
 $footerBg: #000;
@@ -118,6 +109,7 @@ $footerText: #fff;
     display:flex;
     flex-wrap: wrap;
     gap: 50px;
+    width: 100%;
     justify-content: space-between;
   }
   &__col{
