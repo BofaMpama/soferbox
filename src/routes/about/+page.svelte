@@ -70,9 +70,16 @@
     }
 
     @media(max-width: 900px){
+        .left-side{
+            padding-left: 0px;
+        }
+        h1{
+            font-weight: bolder;
+        }
         img{
             margin-top:10%;
         }
+
     }
 </style>
  
