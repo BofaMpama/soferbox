@@ -41,7 +41,7 @@
     <h1>About The Author</h1>
    <div class="right-side"> 
     <p>My name's Bofa. I'm a Christian whose faith struggles to remain silent. I must give expression to the thoughts, beliefs, convictions, and ideas that dwell within me. This blog is the digital scroll on which I write.</p>
-    <button>More About The Author</button>
+    <a href="/about"><button>More About The Author</button></a>
 </div>
 </section>
 <section class="sec2 bg-gray-500" >
