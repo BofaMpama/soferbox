@@ -17,6 +17,9 @@
    
 
 </section>
+<section>
+    <quote>&OpenCurlyDoubleQuote; My heart is stirred up by a noble theme, to recite these verses for my king...&CloseCurlyDoubleQuote;</quote>
+</section>
 <style>
     section{
         min-height: fit-content;
@@ -56,6 +59,18 @@
         object-position: 0 80px;
     }
 
+    section:nth-of-type(2){
+        font-size: 30px;
+        font-style: italic;
+        text-align: center;
+        padding: 50px;
+        color: rgb(100, 100, 100);
+        font-weight: 500;
+
+        quote{
+            text-align: center;
+        }
+    }
     @media(max-width: 1100px){
         section{
             img{
