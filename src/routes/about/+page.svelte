@@ -41,16 +41,11 @@
  
     h1{    
         font-weight: 900;
-        font-style: normal;
-        font-size: 60px;
         font-size: 60px;
         font-weight: bold;
         letter-spacing: 10px;
         color: rgb(230, 74, 74);
-        text-shadow: 7px 7px black;
-        text-decoration: italic;
         text-transform: uppercase;
-
     }
     p{
         font-size: 20px;

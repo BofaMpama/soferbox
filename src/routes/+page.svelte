@@ -2,7 +2,7 @@
     import '../lib/css/homepage.css';
     import penInHand from '$lib/assets/pen-in-hand.png';
     import scrollMan from '$lib/assets/scroll.jpg';
-    import boff from '$lib/assets/boff-blue.png';
+    import boff from '$lib/assets/boff-yellow.png';
     import html from '$lib/assets/html.png';
     import retro from '$lib/assets/retro3.jpg';
     import writingsData from '$lib/data/writings.json';
