@@ -96,6 +96,7 @@
         padding: 20px;
     }
     .pill{
+        min-width: fit-content;
         background: rgb(209, 112, 112);
         padding: 10px 20px;
         border: 3px solid black;
