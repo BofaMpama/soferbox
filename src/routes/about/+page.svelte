@@ -25,7 +25,7 @@
    
 
 </section>
-<div>
+<div class="scripture-section">
     <quote>&OpenCurlyDoubleQuote; My heart is stirred up by a noble theme, to recite these verses for my king...&CloseCurlyDoubleQuote;</quote>
      <div class="pills-container">
         {#each pills as pill}
@@ -66,6 +66,7 @@
     }
     p{
         font-size: 20px;
+        width: 100%;
         line-height: 1.6;
 
     }
@@ -75,14 +76,15 @@
 
     div{
         font-size: 30px;
-        font-style: italic;
-        text-align: center;
         padding: 50px;
         color: rgb(0, 0, 0);
         font-weight: 500;
 
         quote{
             text-align: center;
+            font-style: italic;
+                    text-align: center;
+
         }
     }
 
@@ -136,6 +138,9 @@
     @media(max-width: 900px){
         .left-side{
             padding-left: 0px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         h1{
             font-weight: bolder;
