@@ -10,9 +10,20 @@
 
 <section class="page-hero">
 	<div class="page-hero-copy">
-		<p class="section-kicker">The complete collection</p>
+		<p class="section-kicker">SoferBox / Complete archive</p>
 		<h1>Writings</h1>
 		<p>Choose a shelf and find a thought worth keeping.</p>
+	</div>
+	<div class="collection-art" aria-hidden="true">
+		<div class="collection-paper"></div>
+		<div class="collection-cover">
+			<span class="collection-cover-kicker">SOFERBOX / ARCHIVE</span>
+			<strong>Words<br />worth<br /><em>keeping.</em></strong>
+			<span class="collection-cover-rule"></span>
+			<span class="collection-cover-meta">POEMS · STORIES · REFLECTIONS</span>
+		</div>
+		<span class="collection-seal">OPEN<br />EDITION <b>01</b></span>
+		<span class="collection-caption">A home for the written word</span>
 	</div>
 </section>
 

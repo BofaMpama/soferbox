@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '$lib/css/homepage.css';
-	import boff from '$lib/assets/boff-yellow.png';
 	import writingsData from '$lib/data/writings.json';
 	import type { PageData } from './$types';
 
@@ -27,9 +26,16 @@
 				Open the box <span aria-hidden="true">↗</span>
 			</a>
 		</div>
-		<div class="hero-art">
-			<img src={boff} alt="Bofa, the writer behind SoferBox" fetchpriority="high" />
-			<span class="art-note">Words gathered with care · Est. 2020</span>
+		<div class="hero-art" aria-hidden="true">
+			<div class="archive-sheet archive-sheet-back"></div>
+			<div class="archive-sheet archive-cover">
+				<span class="archive-cover-kicker">SOFERBOX / ARCHIVE</span>
+				<span class="archive-cover-title">Words<br />worth<br /><em>keeping.</em></span>
+				<span class="archive-cover-rule"></span>
+				<span class="archive-cover-meta">POEMS · STORIES · REFLECTIONS</span>
+			</div>
+			<span class="archive-stamp">OPEN<br />EDITION <b>01</b></span>
+			<span class="archive-caption">Collected with care / Est. 2020</span>
 		</div>
 	</section>
 
