@@ -10,9 +10,13 @@ type RichTextNode = {
 	content?: RichTextNode[];
 };
 
-function richTextToPlainHtml(document: Document): string {
+function richTextToPlainHtml(document: Document, preserveLineBreaks = false): string {
 	const escapeHtml = (value: string) =>
-		value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+		value
+			.replaceAll('&', '&amp;')
+			.replaceAll('<', '&lt;')
+			.replaceAll('>', '&gt;')
+			.replaceAll('\n', preserveLineBreaks ? '<br/>' : '\n');
 	const getText = (node: unknown): string => {
 		if (!node || typeof node !== 'object') return '';
 
@@ -79,10 +83,13 @@ export const load: PageServerLoad = async ({ params, url }) => {
 	let renderedBody = '';
 	if (body) {
 		try {
-			renderedBody = documentToHtmlString(body);
+			renderedBody = documentToHtmlString(body, {
+				preserveWhitespace: params.category === 'poems',
+				stripEmptyTrailingParagraph: true
+			});
 		} catch (cause) {
 			console.error(`Failed to render Contentful rich text for "${params.slug}":`, cause);
-			renderedBody = richTextToPlainHtml(body);
+			renderedBody = richTextToPlainHtml(body, params.category === 'poems');
 		}
 	}
 
@@ -124,7 +131,8 @@ export const load: PageServerLoad = async ({ params, url }) => {
 			}),
 			slug: item.fields.slug as string,
 			publishedDate: item.sys.createdAt,
-			excerpt: (item.fields.excerpt as string | undefined) ?? ''
+			excerpt:
+				params.category === 'poems' ? '' : ((item.fields.excerpt as string | undefined) ?? '')
 		},
 		relatedItems: resultData.relatedItems.map((related) => ({
 			title: related.fields.title as string,
