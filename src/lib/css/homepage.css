@@ -1263,7 +1263,7 @@
 	}
 
 	.hero-definition-text {
-		font-size: clamp(0.625rem, 3.6cqi, 0.82rem);
+		font-size: clamp(0.6rem, 3.7cqi, 0.82rem);
 		letter-spacing: -0.025em;
 	}
 
@@ -1289,9 +1289,7 @@
 		grid-template-columns: 1fr;
 		gap: 2.5rem;
 		padding-top: 4rem;
-		padding-right: 0.75rem;
 		padding-bottom: 4rem;
-		padding-left: 0.75rem;
 	}
 
 	.page-hero {
@@ -1359,26 +1357,22 @@
 }
 
 @media (max-width: 360px) {
-	.hero {
-		padding-right: 0.3rem;
-		padding-left: 0.3rem;
-	}
-
 	.hero-definition,
 	.hero-definition-heading {
 		gap: 0.25rem;
 	}
 
 	.hero-pronunciation {
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 	}
 
 	.hero-part-of-speech {
 		padding: 0.1rem 0.2rem;
+		font-size: 0.48rem;
 	}
 
 	.hero-definition-text {
-		font-size: 0.75rem;
+		font-size: clamp(0.6rem, 3.7cqi, 0.75rem);
 		letter-spacing: -0.035em;
 	}
 }
