@@ -79,10 +79,6 @@
 		</div>
 	</section>
 
-	{#if data.contentError}
-		<p class="content-notice content-notice-global" role="status">{data.contentError}</p>
-	{/if}
-
 	<section class="recent-section">
 		<div class="section-heading">
 			<div>
@@ -120,7 +116,7 @@
 				<a class="story-card" href={`/writings/stories/${story.slug}`}>
 					{#if story.coverImage}
 						<img src={story.coverImage} alt="" loading="lazy" />
-					{:else if !data.contentError}
+					{:else if !data.storyLoadFailed}
 						<span class="story-placeholder" aria-hidden="true"></span>
 					{/if}
 					<h3>{story.title}</h3>
