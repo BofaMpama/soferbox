@@ -117,7 +117,11 @@
 					{#if story.coverImage}
 						<img src={story.coverImage} alt="" loading="lazy" />
 					{:else if !data.storyLoadFailed}
-						<span class="story-placeholder" aria-hidden="true"></span>
+						<span class="story-placeholder" aria-hidden="true">
+							<span class="story-placeholder-label">SOFERBOX / FICTION</span>
+							<span class="story-placeholder-glyph">“</span>
+							<span class="story-placeholder-rule"></span>
+						</span>
 					{/if}
 					<h3>{story.title}</h3>
 				</a>

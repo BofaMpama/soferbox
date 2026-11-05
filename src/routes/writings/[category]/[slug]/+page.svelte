@@ -4,7 +4,8 @@
 
 	let { data }: { data: PageData } = $props();
 	const article = data.article;
-	const shareText = encodeURIComponent(`A piece from SoferBox: ${article?.title ?? 'SoferBox'}`);
+	const shareMessage = `A piece from SoferBox: ${article?.title ?? 'SoferBox'}`;
+	const shareText = encodeURIComponent(shareMessage);
 	const shareUrl = encodeURIComponent(data.canonicalUrl);
 </script>
 
@@ -52,7 +53,7 @@
 				rel="noopener noreferrer">LinkedIn</a
 			>
 			<a
-				href={`https://wa.me/?text=${shareText}%20${shareUrl}`}
+				href={`https://wa.me/?text=${encodeURIComponent(`${shareMessage}\n${data.canonicalUrl}`)}`}
 				target="_blank"
 				rel="noopener noreferrer">WhatsApp</a
 			>
