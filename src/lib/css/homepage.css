@@ -12,6 +12,7 @@
 
 .hero-copy {
 	max-width: 650px;
+	container-type: inline-size;
 }
 
 .eyebrow,
@@ -24,8 +25,47 @@
 	text-transform: uppercase;
 }
 
-.hero .eyebrow {
+.hero-definition {
+	display: flex;
+	width: fit-content;
+	max-width: 100%;
+	align-items: center;
+	gap: 0.65rem;
+	margin: 0 0 1.4rem;
 	color: var(--ink);
+	white-space: nowrap;
+}
+
+.hero-definition-heading {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 0.55rem;
+}
+
+.hero-pronunciation {
+	font-family: Georgia, 'Times New Roman', serif;
+	color: #c43d24;
+	font-size: clamp(1.15rem, 3.3vw, 2.45rem);
+	font-style: italic;
+	letter-spacing: -0.06em;
+	line-height: 1;
+}
+
+.hero-part-of-speech {
+	padding: 0.25rem 0.5rem;
+	border-radius: 3px;
+	background: var(--paper);
+	color: var(--ink);
+	font-size: clamp(0.48rem, 0.72vw, 0.65rem);
+	font-weight: 800;
+	letter-spacing: 0.04em;
+}
+
+.hero-definition-text {
+	color: rgba(24, 43, 48, 0.88);
+	font-size: clamp(0.5rem, 3cqi, 0.88rem);
+	line-height: 1.2;
 }
 
 .hero h1 {
@@ -1205,6 +1245,19 @@
 }
 
 @media (max-width: 600px) {
+	.hero-definition {
+		gap: 0.4rem;
+	}
+
+	.hero-pronunciation {
+		font-size: clamp(1.05rem, 6vw, 1.45rem);
+	}
+
+	.hero-part-of-speech {
+		padding: 0.18rem 0.32rem;
+		font-size: clamp(0.43rem, 1.9vw, 0.52rem);
+	}
+
 	.contact-page {
 		padding: clamp(3rem, 12vw, 4rem) 1rem;
 	}

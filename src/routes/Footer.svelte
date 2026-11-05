@@ -1,6 +1,10 @@
 <footer class="site-footer">
 	<div class="footer-top">
-		<a class="footer-brand" href="/">SoferBox<span aria-hidden="true">.</span></a>
+		<a class="footer-brand" href="/">
+			Sofer<span class="brand-accent">Box</span><span class="brand-period" aria-hidden="true"
+				>.</span
+			>
+		</a>
 		<p>A little box for words worth keeping.</p>
 	</div>
 	<div class="footer-bottom">
@@ -38,7 +42,8 @@
 		text-decoration: none;
 	}
 
-	.footer-brand span {
+	.brand-accent,
+	.brand-period {
 		color: var(--yellow);
 	}
 

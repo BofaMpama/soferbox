@@ -3,7 +3,9 @@
 </script>
 
 <header class="site-header">
-	<a class="footer-brand" href="/">SoferBox<span aria-hidden="true">.</span></a>
+	<a class="footer-brand" href="/">
+		Sofer<span class="brand-accent">Box</span><span class="brand-period" aria-hidden="true">.</span>
+	</a>
 
 	<nav class="desktop-nav" aria-label="Main navigation">
 		<a href="/">Home</a>
@@ -63,13 +65,15 @@
 		color: var(--paper);
 	}
 
-.footer-brand {
+	.footer-brand {
 		font-family: Georgia, 'Times New Roman', serif;
 		font-size: clamp(1rem, 6vw, 2.5rem);
 		letter-spacing: -0.07em;
 		text-decoration: none;
 	}
-		.footer-brand span {
+
+	.brand-accent,
+	.brand-period {
 		color: var(--yellow);
 	}
 

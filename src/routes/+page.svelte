@@ -17,7 +17,13 @@
 <main>
 	<section class="hero">
 		<div class="hero-copy">
-			<p class="eyebrow">A writer's little corner of the internet</p>
+			<p class="hero-definition">
+				<span class="hero-definition-heading">
+					<span class="hero-pronunciation">/soˈfɛr/</span>
+					<span class="hero-part-of-speech">NOUN</span>
+				</span>
+				<span class="hero-definition-text">a scribe or writer; one who records by hand</span>
+			</p>
 			<h1>In this place <span>my words are kept.</span></h1>
 			<p class="hero-description">
 				A virtual box for the poems, stories and reflections I’ve been inspired to write and share.
