@@ -945,6 +945,7 @@
 .scripture-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+	align-items: start;
 	gap: 0.65rem;
 	padding: 20px 0 0 0;
 	list-style: none;
@@ -953,10 +954,6 @@
 .scripture-list li {
 	border: 1px solid var(--ink);
 	background: var(--yellow);
-}
-
-.scripture-list li.expanded {
-	background: var(--paper);
 }
 
 .scripture-list button {
@@ -973,6 +970,11 @@
 	font-weight: 700;
 	text-align: left;
 	cursor: pointer;
+	transition: background 160ms ease;
+}
+
+.scripture-list button:hover {
+	background: rgba(242, 238, 223, 0.55);
 }
 
 .scripture-list button span {
@@ -981,22 +983,65 @@
 	line-height: 1;
 }
 
-.scripture-verse {
-	padding: 0 0.85rem 0.85rem;
-	font-size: 0.9rem;
+.scripture-dialog {
+	width: min(100% - 2rem, 540px);
+	max-width: 540px;
+	padding: clamp(1.5rem, 5vw, 2.5rem);
+	border: 1px solid var(--ink);
+	background: var(--paper);
+	color: var(--ink);
+	box-shadow: 10px 10px 0 var(--blue-deep);
 }
 
-.scripture-verse p {
-	margin: 0 0 0.5rem;
+.scripture-dialog::backdrop {
+	background: rgba(24, 43, 48, 0.68);
+	backdrop-filter: blur(3px);
 }
 
-.scripture-verse cite {
+.scripture-dialog .section-kicker {
+	margin-bottom: 0.6rem;
+}
+
+.scripture-dialog h2 {
+	margin: 0;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(2rem, 8vw, 3.2rem);
+	font-weight: 500;
+	letter-spacing: -0.06em;
+	line-height: 1;
+}
+
+.scripture-dialog blockquote {
+	margin: 1.5rem 0 0.75rem;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(1.15rem, 4vw, 1.5rem);
+	line-height: 1.5;
+}
+
+.scripture-dialog > cite {
 	color: var(--blue-deep);
 	font-size: 0.7rem;
 	font-style: normal;
 	font-weight: 800;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
+}
+
+.scripture-dialog-close {
+	display: block;
+	margin: 1.75rem 0 0 auto;
+	padding: 0.65rem 1rem;
+	border: 1px solid var(--ink);
+	background: var(--ink);
+	color: var(--paper);
+	font: inherit;
+	font-size: 0.85rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.scripture-dialog-close:hover {
+	background: var(--blue-deep);
 }
 
 .contact-page {

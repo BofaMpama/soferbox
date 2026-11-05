@@ -32,7 +32,13 @@
 			text: 'All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness:'
 		}
 	];
-	let openScripture = $state<string | null>(null);
+	let verseDialog: HTMLDialogElement;
+	let selectedScripture = $state<(typeof scriptures)[number] | null>(null);
+
+	function showScripture(scripture: (typeof scriptures)[number]) {
+		selectedScripture = scripture;
+		verseDialog.showModal();
+	}
 </script>
 
 <svelte:head>
@@ -68,26 +74,29 @@
 	</p>
 	<ul class="scripture-list">
 		{#each scriptures as scripture (scripture.reference)}
-			<li class:expanded={openScripture === scripture.reference}>
-				<button
-					type="button"
-					aria-expanded={openScripture === scripture.reference}
-					aria-controls={`verse-${scripture.reference.replaceAll(' ', '-').replace(':', '-')}`}
-					onclick={() =>
-						(openScripture = openScripture === scripture.reference ? null : scripture.reference)}
-				>
+			<li>
+				<button type="button" aria-haspopup="dialog" onclick={() => showScripture(scripture)}>
 					{scripture.reference}
-					<span aria-hidden="true">{openScripture === scripture.reference ? '−' : '+'}</span>
+					<span aria-hidden="true">↗</span>
 				</button>
-				<div
-					class="scripture-verse"
-					id={`verse-${scripture.reference.replaceAll(' ', '-').replace(':', '-')}`}
-					hidden={openScripture !== scripture.reference}
-				>
-					<p>{scripture.text}</p>
-					<cite>King James Version</cite>
-				</div>
 			</li>
 		{/each}
 	</ul>
+
+	<dialog
+		bind:this={verseDialog}
+		class="scripture-dialog"
+		onclose={() => (selectedScripture = null)}
+		aria-labelledby="scripture-dialog-title"
+	>
+		{#if selectedScripture}
+			<p class="section-kicker">A passage for the page</p>
+			<h2 id="scripture-dialog-title">{selectedScripture.reference}</h2>
+			<blockquote>{selectedScripture.text}</blockquote>
+			<cite>King James Version</cite>
+			<button class="scripture-dialog-close" type="button" onclick={() => verseDialog.close()}>
+				Close
+			</button>
+		{/if}
+	</dialog>
 </main>
