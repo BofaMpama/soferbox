@@ -3,14 +3,36 @@
 	import boffInBlue from '$lib/assets/boff-in-a-blue-shirt.png';
 
 	const scriptures = [
-		'Habakkuk 2:2',
-		'Psalm 45:1',
-		'Ecclesiastes 12:10',
-		'Proverbs 25:11',
-		'Jeremiah 15:16',
-		'Psalm 119:11',
-		'2 Timothy 3:16'
+		{
+			reference: 'Habakkuk 2:2',
+			text: 'And the LORD answered me, and said, Write the vision, and make it plain upon tables, that he may run that readeth it.'
+		},
+		{
+			reference: 'Psalm 45:1',
+			text: 'My heart is inditing a good matter: I speak of the things which I have made touching the king: my tongue is the pen of a ready writer.'
+		},
+		{
+			reference: 'Ecclesiastes 12:10',
+			text: 'The preacher sought to find out acceptable words: and that which was written was upright, even words of truth.'
+		},
+		{
+			reference: 'Proverbs 25:11',
+			text: 'A word fitly spoken is like apples of gold in pictures of silver.'
+		},
+		{
+			reference: 'Jeremiah 15:16',
+			text: 'Thy words were found, and I did eat them; and thy word was unto me the joy and rejoicing of mine heart: for I am called by thy name, O LORD God of hosts.'
+		},
+		{
+			reference: 'Psalm 119:11',
+			text: 'Thy word have I hid in mine heart, that I might not sin against thee.'
+		},
+		{
+			reference: '2 Timothy 3:16',
+			text: 'All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness:'
+		}
 	];
+	let openScripture = $state<string | null>(null);
 </script>
 
 <svelte:head>
@@ -36,16 +58,36 @@
 		scroll on which I write.
 	</p>
 	<blockquote class="about-quote">
-		“My heart is stirred by a noble theme as I recite my verses for the king.”
+		“My heart is inditing a good matter: I speak of the things which I have made touching the king:
+		my tongue is the pen of a ready writer.”
 		<cite>Psalm 45:1</cite>
 	</blockquote>
 	<p>
-		Scripture has always shaped the way I see the world and helped me in the way I find words to describe it. These are
-		some of the passages I turn to.
+		Scripture has always shaped the way I see the world and helped me in the way I find words to
+		describe it. These are some of the passages I turn to.
 	</p>
 	<ul class="scripture-list">
-		{#each scriptures as scripture (scripture)}
-			<li>{scripture}</li>
+		{#each scriptures as scripture (scripture.reference)}
+			<li class:expanded={openScripture === scripture.reference}>
+				<button
+					type="button"
+					aria-expanded={openScripture === scripture.reference}
+					aria-controls={`verse-${scripture.reference.replaceAll(' ', '-').replace(':', '-')}`}
+					onclick={() =>
+						(openScripture = openScripture === scripture.reference ? null : scripture.reference)}
+				>
+					{scripture.reference}
+					<span aria-hidden="true">{openScripture === scripture.reference ? '−' : '+'}</span>
+				</button>
+				<div
+					class="scripture-verse"
+					id={`verse-${scripture.reference.replaceAll(' ', '-').replace(':', '-')}`}
+					hidden={openScripture !== scripture.reference}
+				>
+					<p>{scripture.text}</p>
+					<cite>King James Version</cite>
+				</div>
+			</li>
 		{/each}
 	</ul>
 </main>

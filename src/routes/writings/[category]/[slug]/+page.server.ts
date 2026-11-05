@@ -5,6 +5,29 @@ import type { Document } from '@contentful/rich-text-types';
 import sanitizeHtml from 'sanitize-html';
 import { error } from '@sveltejs/kit';
 
+type RichTextNode = {
+	value?: string;
+	content?: RichTextNode[];
+};
+
+function richTextToPlainHtml(document: Document): string {
+	const escapeHtml = (value: string) =>
+		value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+	const getText = (node: unknown): string => {
+		if (!node || typeof node !== 'object') return '';
+
+		const richTextNode = node as RichTextNode;
+		if (typeof richTextNode.value === 'string') return richTextNode.value;
+		return Array.isArray(richTextNode.content) ? richTextNode.content.map(getText).join('') : '';
+	};
+
+	return (Array.isArray(document.content) ? document.content : [])
+		.map((node) => getText(node).trim())
+		.filter(Boolean)
+		.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+		.join('');
+}
+
 export const load: PageServerLoad = async ({ params, url }) => {
 	const contentTypes = new Map([
 		['poems', 'poem'],
@@ -53,7 +76,15 @@ export const load: PageServerLoad = async ({ params, url }) => {
 	}
 
 	const body = item.fields.body as Document | undefined;
-	const renderedBody = body ? documentToHtmlString(body) : '';
+	let renderedBody = '';
+	if (body) {
+		try {
+			renderedBody = documentToHtmlString(body);
+		} catch (cause) {
+			console.error(`Failed to render Contentful rich text for "${params.slug}":`, cause);
+			renderedBody = richTextToPlainHtml(body);
+		}
+	}
 
 	return {
 		category: params.category,
