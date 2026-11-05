@@ -2,21 +2,76 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-
-body{
-	font-family: poppins, sans-serif;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 1.7;
-	color: #000;
-	background: rgb(226, 224, 203);
-    background-repeat: repeat;
-    background-size: 4%;
-    width: 100%;
+:root {
+	font-family: 'DM Sans', 'Segoe UI', sans-serif;
+	color: #182b30;
+	background: #f2eedf;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	--paper: #f2eedf;
+	--ink: #182b30;
+	--blue: #a9d8e2;
+	--blue-deep: #2d7280;
+	--red: #d65b4b;
+	--yellow: #f0c866;
+	--line: rgba(24, 43, 48, 0.2);
 }
-button{
-	display: flex;
-	justify-content: center;
-	align-self: start;
-	border-radius: 10px;
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	min-width: 320px;
+	scroll-behavior: smooth;
+}
+
+body {
+	min-width: 320px;
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.65;
+	background-color: var(--paper);
+}
+
+body,
+button,
+a {
+	font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+button,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+a {
+	color: inherit;
+}
+
+button {
+	color: inherit;
+}
+
+::selection {
+	color: var(--paper);
+	background: var(--blue-deep);
+}
+
+:focus-visible {
+	outline: 3px solid var(--red);
+	outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }

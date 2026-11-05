@@ -1,125 +1,75 @@
 <script lang="ts">
-    import type {PageData} from './$types';
-    export let data: PageData;
-    const {poem, extraPoems} = data;
+	import '$lib/css/homepage.css';
+	import type { PageData } from './$types';
 
-    import {page} from '$app/stores';
-    const baseUrl = 'http://soferbox.netlify.app/writings';
+	let { data }: { data: PageData } = $props();
+	const article = data.article;
+	const shareText = encodeURIComponent(`A piece from SoferBox: ${article?.title ?? 'SoferBox'}`);
+	const shareUrl = encodeURIComponent(data.canonicalUrl);
+</script>
 
-    //Svelte reactive statement to get category from URL
-    $: category = $page.params.category;
-    $: slug = $page.params.slug;
+<svelte:head>
+	<title>{article ? `${article.title} — SoferBox` : 'Writing unavailable — SoferBox'}</title>
+	{#if article}
+		<meta name="description" content={article.excerpt || article.title} />
+		<meta property="og:title" content={`${article.title} — SoferBox`} />
+		<meta property="og:description" content={article.excerpt || article.title} />
+	{/if}
+	<meta property="og:url" content={data.canonicalUrl} />
+</svelte:head>
 
-    //full url
-    $: fullUrl = `${baseUrl}/${category}/${slug}`;
+<main class="article-shell">
+	<a class="article-back" href={`/writings/${data.category}`}>← Back to {data.category}</a>
+	{#if data.contentError}
+		<p class="content-notice" role="status">{data.contentError}</p>
+	{:else if article}
+		<time class="article-date" datetime={article.publishedDate}>
+			{new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(article.publishedDate))}
+		</time>
+		<h1>{article.title}</h1>
+		{#if article.excerpt}<p class="article-excerpt">{article.excerpt}</p>{/if}
+		<article class="article-body">
+			<!-- Sanitized Contentful rich text is the only HTML rendered here. -->
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			{@html article.body}
+		</article>
 
-    //social media share links
-    $: twitterShare = `https://twitter.com/intent/tweet?url=${encodeURIComponent(fullUrl)}&text=${encodeURIComponent('Check out my poem!')}`;
-    $: facebookShare = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(fullUrl)}`;
-    $: linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`;
-    $: whatsappShare = `https://wa.me/?text=${encodeURIComponent(`Check out this poem! ${fullUrl}`)}`;
-</script>    
+		<section class="share-section" aria-label="Share this writing">
+			<h2>Pass the words along</h2>
+			<a
+				href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`}
+				target="_blank"
+				rel="noopener noreferrer">Share on X</a
+			>
+			<a
+				href={`https://www.facebook.com/sharer.php?u=${shareUrl}`}
+				target="_blank"
+				rel="noopener noreferrer">Facebook</a
+			>
+			<a
+				href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
+				target="_blank"
+				rel="noopener noreferrer">LinkedIn</a
+			>
+			<a
+				href={`https://wa.me/?text=${shareText}%20${shareUrl}`}
+				target="_blank"
+				rel="noopener noreferrer">WhatsApp</a
+			>
+		</section>
 
-{#key slug}
-<main>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    {#if poem}
-    <h2>{poem.publishedDate}</h2>
-    <h1>{poem.title}</h1>
-    <div class="poem-body">
-        {@html poem.body}
-    </div>  
-
-    {/if}
-   
-
-    <div class="social-media">
-        <h1>Share <i class="fas fa-share-nodes"></i>
-
-</h1> 
-       <div>
-         <a href="{twitterShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i> Twitter</a>
-        <a href="{facebookShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
-        <a href="{linkedinShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> Linkedin</a>
-        <a href="{whatsappShare}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-
-       </div>
-    </div>
-
-    
-</main>  
-{/key}
-  
-  
-
-<style>
-    *{
-        background: rgb(226, 224, 203);
-    }
-main{
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding-top: 150px;
-    padding-bottom: 120px;
-}
-h2{
-    font-family: monospace;
-    font-size: 14px;
-}
-h1{
-    font-size: 50px;
-    font-weight: bold;
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
-
-}
-.poem-body{
-    margin-top: 40px;
-    font-family: monospace;
-    font-size: 18px;
-    word-spacing: 3px;
-    
-}
-.social-media{
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    h1{
-        font-size: 24px;
-        margin: 0;
-        font-weight: bold;
-        border: none;
-        width: fit-content;
-    }
-        div{
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-    a{
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-        border: 2px solid black;
-        padding: 10px;
-        border-radius: 5px;
-        min-width: fit-content;
-        transition: background-color 0.3s, color 0.3s;
-    }
-   
-}
-
-    
-@media (max-width: 768px) {
-    main{
-        padding: 5% 10%;
-        padding-top: 150px;
-    }
-    h1{
-        font-size: 36px;
-    }
-}
-</style>
+		{#if data.relatedItems.length}
+			<section class="related-section">
+				<h2>More from this shelf</h2>
+				<div class="related-list">
+					{#each data.relatedItems as item (item.slug)}
+						<a href={`/writings/${data.category}/${item.slug}`}>
+							<span>{item.title}</span>
+							<span aria-hidden="true">↗</span>
+						</a>
+					{/each}
+				</div>
+			</section>
+		{/if}
+	{/if}
+</main>

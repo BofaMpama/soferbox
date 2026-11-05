@@ -1,46 +1,42 @@
 import type { PageServerLoad } from './$types';
-import { client } from '$lib/contentful';
+import { requestContentful } from '$lib/contentful';
 import type { Asset } from 'contentful';
 
 export const load: PageServerLoad = async () => {
+	const result = await requestContentful(async (client) =>
+		Promise.all([
+			client.getEntries({ content_type: 'poem', order: ['-sys.createdAt'], limit: 5 }),
+			client.getEntries({ content_type: 'story', order: ['-sys.createdAt'], limit: 3 }),
+			client.getEntries({ content_type: 'blog', order: ['-sys.createdAt'], limit: 3 })
+		])
+	);
 
-  //Fetching a limited number of poems for the homepage
-  const response = await client.getEntries({
-    content_type: 'poem',
-    order: ['-sys.createdAt'],
-    limit: 5
-  })
+	if (!result.ok) {
+		return { poems: [], stories: [], blogs: [], contentError: result.error };
+	}
 
-   const storyResponse = await client.getEntries({
-    content_type: 'story',
-    order: ['-sys.createdAt'],
-    limit: 3
-  })
+	const [poemResponse, storyResponse, blogResponse] = result.data;
 
- 
-  return {
+	return {
+		contentError: null,
+		poems: poemResponse.items.map((item) => ({
+			title: item.fields.title as string,
+			slug: item.fields.slug as string
+		})),
+		stories: storyResponse.items.map((item) => {
+			const cover = item.fields.cover as Asset | undefined;
+			const imageUrl = cover?.fields?.file?.url;
 
-    poems: response.items.map((item) => ({
-      title: item.fields.title as string,
-      slug: item.fields.slug as string,
-    })),
-
-      stories: storyResponse.items.map((item) => {
-          const cover = item.fields.cover as Asset | undefined;
-
-          let coverImage: string | null = null;
-          if (cover?.fields?.file?.url) {
-              coverImage = 'https:' + cover.fields.file.url;
-          }
-
-     return{
-       title: item.fields.title as string,
-      slug: item.fields.slug as string,
-      coverImage
-     };
-    })
-   
-  };
-  };
-
- 
+			return {
+				title: item.fields.title as string,
+				slug: item.fields.slug as string,
+				coverImage: imageUrl ? `https:${imageUrl}` : null
+			};
+		}),
+		blogs: blogResponse.items.map((item) => ({
+			title: item.fields.title as string,
+			slug: item.fields.slug as string,
+			excerpt: (item.fields.excerpt as string | undefined) ?? ''
+		}))
+	};
+};

@@ -1,35 +1,43 @@
 import type { PageServerLoad } from './$types';
-import { client } from '$lib/contentful';
+import { requestContentful } from '$lib/contentful';
+import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ params }) => {
-    const { category } = params;
+	const contentTypes = new Map([
+		['poems', 'poem'],
+		['stories', 'story'],
+		['blogs', 'blog']
+	]);
+	const contentType = contentTypes.get(params.category);
 
-    //Checking to ensure the URL is a valid content type
-    const validContentTypes = ['poems', 'stories', 'blogs'];
-    if (!validContentTypes.includes(category)){
-        return {
-            status: 404,
-            error: new Error('Category not found')
-        };
-    }
+	if (!contentType) {
+		error(404, 'Writing category not found');
+	}
 
-    //Fetching entries based on the category from Contentful
-    const response = await client.getEntries({
-        content_type: category.slice(0, -1),
-        order: ['-sys.createdAt'],
-    });
+	const result = await requestContentful((client) =>
+		client.getEntries({
+			content_type: contentType,
+			order: ['-sys.createdAt']
+		})
+	);
 
-    
+	if (!result.ok) {
+		return {
+			category: params.category,
+			items: [],
+			contentError: result.error
+		};
+	}
 
-    return{
-        //To get each content item's title and slug for listing
-        items: response.items.map((item) => ({
-            id: item.sys.id as string,
-            title: item.fields.title as string,
-            slug: item.fields.slug as string,
-            publishedDate: item.sys.createdAt as string,
-            excerpt: item.fields.excerpt as string
-        }))
-    };
-
+	return {
+		category: params.category,
+		contentError: null,
+		items: result.data.items.map((item) => ({
+			id: item.sys.id,
+			title: item.fields.title as string,
+			slug: item.fields.slug as string,
+			publishedDate: item.sys.createdAt,
+			excerpt: (item.fields.excerpt as string | undefined) ?? ''
+		}))
+	};
 };

@@ -1,51 +1,104 @@
-import type {PageServerLoad} from './$types';
-import {client} from '$lib/contentful';
-import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
-import type {Document} from '@contentful/rich-text-types';
+import type { PageServerLoad } from './$types';
+import { requestContentful } from '$lib/contentful';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import type { Document } from '@contentful/rich-text-types';
+import sanitizeHtml from 'sanitize-html';
+import { error } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async ({params}) => {
-    const {slug} = params;
+export const load: PageServerLoad = async ({ params, url }) => {
+	const contentTypes = new Map([
+		['poems', 'poem'],
+		['stories', 'story'],
+		['blogs', 'blog']
+	]);
+	const contentType = contentTypes.get(params.category);
 
-    //to fetch the current poem
-    const response = await client.getEntries({
-        content_type: 'poem',
-        'fields.slug': slug,
-        limit: 1
-    });
+	if (!contentType) {
+		error(404, 'Writing not found');
+	}
 
-    if (response.items.length === 0) {
-        return{
-            status: 404,
-            error: new Error('Poem not found')
-        };
-    }
+	const result = await requestContentful(async (client) => {
+		const response = await client.getEntries({
+			content_type: contentType,
+			'fields.slug': params.slug,
+			limit: 1
+		});
+		const item = response.items[0];
+		if (!item) return null;
 
-    const poemItem = response.items[0];
-    const bodyField = poemItem.fields.body as Document | null;
+		const relatedResponse = await client.getEntries({
+			content_type: contentType,
+			order: ['-sys.createdAt'],
+			'fields.slug[ne]': params.slug,
+			limit: 4
+		});
 
-    const processedBody = bodyField ? documentToHtmlString(bodyField) : '';
+		return { item, relatedItems: relatedResponse.items };
+	});
 
-    // Fetching additional poems excluding the current one
-    const morePoemsResponse = await client.getEntries({
-        content_type: 'poem',
-        order: ['-sys.createdAt'],
-        'fields.slug[ne]': slug,
-        limit: 5
-    })
-    return {
-        poem: {
-            title: poemItem.fields.title as string,
-            body: processedBody,
-            slug: poemItem.fields.slug as string,
-            publishedDate: poemItem.sys.createdAt as string,
-            excerpt: poemItem.fields.excerpt as string
-        },
-        extraPoems: morePoemsResponse.items.map((item) => ({
-            title: item.fields.title as string,
-            slug: item.fields.slug as string,
-            publishedDate: item.sys.createdAt as string
-        }))
-    };
-    
-}
+	if (!result.ok) {
+		return {
+			category: params.category,
+			canonicalUrl: new URL(url.pathname, url.origin).href,
+			article: null,
+			relatedItems: [],
+			contentError: result.error
+		};
+	}
 
+	const resultData = result.data;
+	const item = resultData?.item;
+	if (!item) {
+		error(404, 'Writing not found');
+	}
+
+	const body = item.fields.body as Document | undefined;
+	const renderedBody = body ? documentToHtmlString(body) : '';
+
+	return {
+		category: params.category,
+		canonicalUrl: new URL(url.pathname, url.origin).href,
+		contentError: null,
+		article: {
+			title: item.fields.title as string,
+			body: sanitizeHtml(renderedBody, {
+				allowedTags: [
+					'p',
+					'br',
+					'hr',
+					'h1',
+					'h2',
+					'h3',
+					'h4',
+					'h5',
+					'h6',
+					'strong',
+					'em',
+					'b',
+					'i',
+					'u',
+					's',
+					'ol',
+					'ul',
+					'li',
+					'blockquote',
+					'a',
+					'sup',
+					'sub'
+				],
+				allowedAttributes: {
+					a: ['href']
+				},
+				allowedSchemes: ['http', 'https', 'mailto']
+			}),
+			slug: item.fields.slug as string,
+			publishedDate: item.sys.createdAt,
+			excerpt: (item.fields.excerpt as string | undefined) ?? ''
+		},
+		relatedItems: resultData.relatedItems.map((related) => ({
+			title: related.fields.title as string,
+			slug: related.fields.slug as string,
+			publishedDate: related.sys.createdAt
+		}))
+	};
+};

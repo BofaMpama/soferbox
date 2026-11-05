@@ -1,38 +1,32 @@
-# sv
+# SoferBox
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+SoferBox is a personal writing archive for poems, short stories and reflections. It is built with
+SvelteKit and uses Contentful for published writing.
 
-## Creating a project
+## Local development
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies and start the development server:
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm install
+pnpm dev
 ```
 
-## Building
+Set the following server-side environment variables for local runtime and deployment so
+content-backed pages can load:
 
-To create a production version of your app:
+- `CONTENTFUL_SPACE_ID`
+- `CONTENTFUL_ACCESS_TOKEN`
+
+The Contentful space should contain `poem`, `story` and `blog` content types with `title`, `slug`,
+`excerpt` and rich-text `body` fields. Stories may also include a `cover` asset.
+If Contentful is misconfigured or temporarily unavailable, CMS-backed pages log the error on the
+server and show an availability notice instead of returning an internal server error.
+
+## Validation and production
 
 ```sh
-npm run build
+pnpm check
+pnpm build
+pnpm preview
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

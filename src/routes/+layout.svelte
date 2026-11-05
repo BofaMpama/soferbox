@@ -1,29 +1,17 @@
-<script src="src/lib/components/components.js" lang="ts">
+<script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/box.png';
-	import Header from './Header.svelte';
 	import RetroHeader from './RetroHeader.svelte';
-	import FooterPadding from './FooterPadding.svelte';
 	import Footer from './Footer.svelte';
-	import BubbleFooter from './bubbleFooter.svelte';
-	import { onMount } from 'svelte';
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<meta name="theme-color" content="#f2eedf" />
 </svelte:head>
 
-
-
-	<RetroHeader />
-	
-	<main>
-		{@render children()}
-	</main>
-	<FooterPadding />
-	<Footer />
-
-	
-
+<RetroHeader />
+{@render children()}
+<Footer />

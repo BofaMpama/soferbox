@@ -1,279 +1,93 @@
-<script lang="ts">
-</script>
-<main>
-  <footer class="footer">
-
-  <div class="container">
-    <div class="footer__columns">
-      <div class="footer__col">
-        <h3 class="footer__col-title">
-          <i data-feather="shopping-bag"></i> <span>Quick Links</span></h3>
-        <nav class="footer__nav">
-          <ul class="footer__nav-list">
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-                Home
-              </a>
-            </li>
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-              About The Author
-              </a>
-            </li>
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-                Poems
-              </a>
-            </li>
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-                Short Stories
-              </a>
-            </li>
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-                Blog
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer__col">
-        <h3 class="footer__col-title">
-          <i data-feather="share-2"></i> <span>Social Media</span></h3>
-        <nav class="footer__nav">
-          <ul class="footer__nav-list">
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-                <i data-feather="youtube"></i><span>Youtube</span>
-              </a>
-            </li>
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-                <i data-feather="facebook"></i><span>Facebook</span>
-                
-              </a>
-            </li>
-            <li class="footer__nav-item">
-              <a href="" class="footer__nav-link">
-                <i data-feather="instagram"></i><span>Instagram</span>
-                
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer__col">
-        <h3 class="footer__col-title">
-          <i data-feather="send"></i> <span>Contact</span></h3>
-        <nav class="footer__nav">
-          <ul class="footer__nav-list">
-            <li class="footer__nav-item">
-              <a href="mailto:contact.laboiserie@gmail.com" class="footer__nav-link">
-                contact.soferboxauthor@gmail.com
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-   
-  </div>
-     <div class="footer__copyrights">
-        <p>&copy; Copyright 2025. Developed by<a href="https://twitter.com/silvereledev" target="_blank">Bofa Mpama</a></p>
-      </div>
+<footer class="site-footer">
+	<div class="footer-top">
+		<a class="footer-brand" href="/">SoferBox<span aria-hidden="true">.</span></a>
+		<p>A little box for words worth keeping.</p>
+	</div>
+	<div class="footer-bottom">
+		<nav aria-label="Footer navigation">
+			<a href="/writings">All writings</a>
+			<a href="/about">About</a>
+			<a href="/contact">Contact</a>
+		</nav>
+		<a class="footer-email" href="mailto:contact.soferboxauthor@gmail.com">
+			contact.soferboxauthor@gmail.com
+		</a>
+		<p>© {new Date().getFullYear()} Bofa Mpama</p>
+	</div>
 </footer>
-</main>
-<style lang="scss">
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
-// Footer variables
-$footerBg: #000;
-$footerText: #fff;
-.container{
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
-}
+<style>
+	.site-footer {
+		padding: 3rem clamp(1.25rem, 9vw, 9rem) 1.5rem;
+		background: var(--ink);
+		color: var(--paper);
+	}
 
-.footer{
-  width: 100%;
-  max-width: 100%;
-  position:relative;
-  margin-top: 300px;
-  padding: 3rem 5%;  
-  color: $footerText;
-  background : $footerBg;
-  margin-top: auto;
-  &__columns{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    width: 100%;
-    justify-content: space-between;
-  }
-  &__col{
-    &-title{
-      font-size: 1.6rem;
-      margin-top: 30px;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-       display: flex; flex-wrap: wrap;
-      align-items:center;
-      * ~ span{
-        margin-left: 0rem;
-      }
-    }
-  }
-  a{
-       display: flex; flex-wrap: wrap;
-      align-items:center;
-    color: $footerText;
-    text-decoration: none;    
-      * ~ span{
-        margin-left: 0rem;
-      }
-  }
-  &__nav{
-    &-list{
-      display:flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-  }
-  &__copyrights{
-    padding-top: 3rem;
-    margin-top: 3rem;
-    border-top: 1px solid rgba($footerText, 0.2);
-    flex-grow: 1;
-    p{
-      display:flex;
-      a{
-        margin-left: 0.5rem;
-      }
-    }
-  }
-  @keyframes parralax{
-    0%{
-     background-position: 260px;
-    }
-    100%{
-     background-position: -10000vw;
-    }
-  }
- 
-  @keyframes voiture{
-    0%{
-     transform: rotate(0);
-    }
-    25%{
-     transform: rotate(-5deg);
-    }
-    50%{
-     transform: rotate(0);
-    }
-    75%{
-     transform: rotate(5deg);
-    }
-    100%{
-     transform: rotate(0);
-    }
-  }
-  &__parralax{
-    position:absolute;
-    left:0;
-    top:-300px;
-    height:300px;
-    width: 100%;
-    overflow:hidden;
-    &-premierplan{      
-     background-position: 260px;
-    }
-    &-trees,
-    &-premierplan,
-    &-secondplan{
-      position:absolute;
-      inset: 0;
-      background-repeat: repeat-x;
-      background-position-y: 100% !important;
-      animation: parralax 600s linear infinite;
-    }
-   
-    &-voiture{
-      position:absolute;
-      bottom: 10px;
-      left: 10%;
-      margin-left: 250px;
-      height: 114px;
-      width: 206px;
-      background: url(https://i.ibb.co/0Qhp4DN/voiture-fumee.gif);
-      background-repeat: no-repeat;
-      animation: voiture 1s linear infinite;
-    }
-   
-    &-premierplan{
-      background-image: url(https://i.ibb.co/RQhDWbk/premierplanv3.png);
-      animation-duration: 500s;
-      //background-position-y: 27px !important;
-    }
-    &-secondplan{
-      background-image: url(https://i.ibb.co/J3TjC4W/second-plan.png);
-      animation-duration: 600s;
-    }
-  }
-}
-@media (max-width: 768px) {
+	.footer-top {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 2rem;
+		padding-bottom: 2.5rem;
+	}
 
+	.footer-brand {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		letter-spacing: -0.07em;
+		text-decoration: none;
+	}
 
-  .footer{
-  width: 100%;
-  max-width: 100%;
-  position:relative;
-  margin-top: 300px;
-  padding: 3rem 5%;  
-  color: $footerText;
-  background : $footerBg;
-  margin-top: auto;
-  
+	.footer-brand span {
+		color: var(--yellow);
+	}
 
-  
-  a{
-       display: flex; flex-wrap: wrap;
-      align-items:center;
-    color: $footerText;
-    text-decoration: none;    
-      * ~ span{
-        margin-left: 0rem;
-      }
-  }
- 
-  &__copyrights{
-    padding-top: 3rem;
-    margin-top: 3rem;
-    border-top: 1px solid rgba($footerText, 0.2);
-    p{
-      display:flex;
-      a{
-        margin-left: 0.5rem;
-      }
-    }
-  }
-  @keyframes parralax{
-    0%{
-     background-position: 260px;
-    }
-    100%{
-     background-position: -10000vw;
-    }
-  }
- 
+	.footer-top p {
+		margin: 0 0 0.6rem;
+		color: rgba(242, 238, 223, 0.68);
+	}
 
-   
+	.footer-bottom {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem 2rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid rgba(242, 238, 223, 0.2);
+		color: rgba(242, 238, 223, 0.72);
+		font-size: 0.8rem;
+	}
 
-  }
-}
-  
-  
+	.footer-bottom nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.2rem;
+	}
 
-</style>   
+	.footer-bottom a {
+		color: var(--paper);
+		text-decoration: none;
+	}
+
+	.footer-bottom a:hover {
+		color: var(--yellow);
+	}
+
+	.footer-bottom p {
+		margin: 0;
+	}
+
+	@media (max-width: 600px) {
+		.footer-top {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0;
+		}
+
+		.footer-bottom {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>
