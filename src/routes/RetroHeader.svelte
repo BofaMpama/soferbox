@@ -3,15 +3,20 @@
 </script>
 
 <header class="site-header">
-			<a class="footer-brand" href="/">SoferBox<span aria-hidden="true">.</span></a>
-
+	<a class="footer-brand" href="/">SoferBox<span aria-hidden="true">.</span></a>
 
 	<nav class="desktop-nav" aria-label="Main navigation">
-		<a href="/writings/poems">Poems</a>
-		<a href="/writings/stories">Stories</a>
-		<a href="/writings/blogs">Blog</a>
-		<a href="/about">About</a>
-		<a class="contact-link" href="/contact">Say hello <span aria-hidden="true">↗</span></a>
+		<a href="/">Home</a>
+		<a href="/about">About the Author</a>
+		<details class="writing-dropdown">
+			<summary>Writings</summary>
+			<div class="writing-dropdown-menu">
+				<a href="/writings/poems">Poems</a>
+				<a href="/writings/stories">Stories</a>
+				<a href="/writings/blogs">Blog</a>
+			</div>
+		</details>
+		<a class="contact-link" href="/contact">Contact <span aria-hidden="true">↗</span></a>
 	</nav>
 
 	<button
@@ -29,10 +34,15 @@
 	{#if menuOpen}
 		<nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation">
 			<a href="/" onclick={() => (menuOpen = false)}>Home</a>
-			<a href="/writings/poems" onclick={() => (menuOpen = false)}>Poems</a>
-			<a href="/writings/stories" onclick={() => (menuOpen = false)}>Stories</a>
-			<a href="/writings/blogs" onclick={() => (menuOpen = false)}>Blog</a>
-			<a href="/about" onclick={() => (menuOpen = false)}>About</a>
+			<a href="/about" onclick={() => (menuOpen = false)}>About the Author</a>
+			<details class="writing-dropdown">
+				<summary>Writings</summary>
+				<div class="writing-dropdown-menu">
+					<a href="/writings/poems" onclick={() => (menuOpen = false)}>Poems</a>
+					<a href="/writings/stories" onclick={() => (menuOpen = false)}>Stories</a>
+					<a href="/writings/blogs" onclick={() => (menuOpen = false)}>Blog</a>
+				</div>
+			</details>
 			<a href="/contact" onclick={() => (menuOpen = false)}>Contact</a>
 		</nav>
 	{/if}
@@ -97,6 +107,7 @@
 	}
 
 	.desktop-nav a,
+	.desktop-nav summary,
 	.mobile-nav a {
 		font-size: 0.88rem;
 		font-weight: 600;
@@ -105,8 +116,57 @@
 	}
 
 	.desktop-nav a:hover,
+	.desktop-nav summary:hover,
 	.mobile-nav a:hover {
 		color: var(--yellow);
+	}
+
+	.writing-dropdown {
+		position: relative;
+	}
+
+	.writing-dropdown summary {
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.writing-dropdown summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.writing-dropdown summary::after {
+		display: inline-block;
+		margin-left: 0.35rem;
+		color: var(--yellow);
+		content: '▾';
+		transition: transform 160ms ease;
+	}
+
+	.writing-dropdown[open] summary::after {
+		transform: rotate(180deg);
+	}
+
+	.writing-dropdown-menu {
+		display: grid;
+	}
+
+	.writing-dropdown:not([open]) .writing-dropdown-menu {
+		display: none;
+	}
+
+	.desktop-nav .writing-dropdown-menu {
+		position: absolute;
+		top: calc(100% + 0.8rem);
+		left: -1rem;
+		min-width: 10rem;
+		padding: 0.45rem 0.8rem;
+		border: 1px solid rgba(242, 238, 223, 0.18);
+		background: var(--ink);
+		box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
+	}
+
+	.writing-dropdown-menu a {
+		padding: 0.55rem 0.2rem;
 	}
 
 	.desktop-nav .contact-link {
@@ -167,6 +227,15 @@
 		.mobile-nav a {
 			padding: 0.8rem 0;
 			border-bottom: 1px solid rgba(242, 238, 223, 0.12);
+		}
+
+		.mobile-nav .writing-dropdown summary {
+			padding: 0.8rem 0;
+			border-bottom: 1px solid rgba(242, 238, 223, 0.12);
+		}
+
+		.mobile-nav .writing-dropdown-menu {
+			padding-left: 1rem;
 		}
 	}
 </style>

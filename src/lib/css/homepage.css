@@ -24,6 +24,10 @@
 	text-transform: uppercase;
 }
 
+.hero .eyebrow {
+	color: var(--ink);
+}
+
 .hero h1 {
 	margin: 0;
 	font-family: Georgia, 'Times New Roman', serif;
@@ -35,7 +39,7 @@
 
 .hero h1 span {
 	display: block;
-	color: var(--red);
+	color: #9d3e33;
 	font-style: italic;
 }
 
@@ -224,6 +228,10 @@
 	font-style: italic;
 }
 
+.intro-band .section-kicker {
+	color: var(--yellow);
+}
+
 .intro-copy {
 	max-width: 640px;
 	align-self: center;
@@ -257,6 +265,11 @@
 	position: relative;
 	overflow: hidden;
 	background: #e7dfc9;
+}
+
+.archive-section .section-kicker,
+.archive-section .section-heading .text-link {
+	color: var(--ink);
 }
 
 .archive-section::before {
@@ -328,7 +341,7 @@
 }
 
 .archive-number {
-	color: var(--blue-deep);
+	color: var(--ink);
 	font-size: 0.75rem;
 	font-weight: 800;
 	letter-spacing: 0.14em;
@@ -424,7 +437,13 @@
 }
 
 .stories-section .section-kicker {
-	color: #5a2923;
+	color: var(--ink);
+}
+
+.stories-section .section-heading .text-link,
+.blog-section .section-kicker,
+.blog-section .section-heading .text-link {
+	color: var(--ink);
 }
 
 .stories-section .section-heading h2 {
@@ -531,7 +550,7 @@
 }
 
 .page-hero .section-kicker {
-	color: var(--red);
+	color: var(--ink);
 }
 
 .page-hero-copy {
@@ -895,8 +914,12 @@
 }
 
 .about-hero h1 em {
-	color: var(--red);
+	color: #9d3e33;
 	font-weight: 500;
+}
+
+.about-hero .section-kicker {
+	color: var(--ink);
 }
 
 .about-hero img {
@@ -1045,8 +1068,10 @@
 }
 
 .contact-page {
+	width: 100%;
+	min-width: 0;
 	min-height: 65vh;
-	padding: clamp(4rem, 12vw, 10rem) clamp(1.25rem, 12vw, 12rem);
+	padding: clamp(4rem, 12vw, 10rem) clamp(1.25rem, 8vw, 12rem);
 	background: var(--blue);
 }
 
@@ -1058,12 +1083,16 @@
 
 .contact-email {
 	display: inline-flex;
+	max-width: 100%;
+	min-width: 0;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: 0.9rem;
 	padding: 0.9rem 1.1rem;
 	border: 1px solid var(--ink);
 	background: var(--paper);
 	font-weight: 700;
+	overflow-wrap: anywhere;
 	text-decoration: none;
 }
 
@@ -1106,6 +1135,24 @@
 }
 
 @media (max-width: 600px) {
+	.contact-page {
+		padding: clamp(3rem, 12vw, 4rem) 1rem;
+	}
+
+	.contact-page h1 {
+		font-size: clamp(2.6rem, 11vw, 3.3rem);
+	}
+
+	.contact-page > p:not(.section-kicker) {
+		font-size: 1rem;
+	}
+
+	.contact-email {
+		gap: 0.5rem;
+		padding: 0.75rem 0.8rem;
+		font-size: clamp(0.82rem, 4vw, 1rem);
+	}
+
 	.hero {
 		grid-template-columns: 1fr;
 		gap: 2.5rem;
@@ -1128,6 +1175,14 @@
 	.collection-art {
 		width: min(100%, 330px);
 		min-height: 280px;
+	}
+
+	.hero-art,
+	.collection-art,
+	.about-hero img {
+		max-width: 100%;
+		justify-self: center;
+		margin-inline: auto;
 	}
 
 	.archive-cover-title {

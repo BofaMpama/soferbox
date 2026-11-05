@@ -100,7 +100,7 @@
 					</a>
 				{/each}
 			</div>
-		{:else if !data.contentError}
+		{:else if !data.poemLoadFailed}
 			<p class="empty-note">New poems are on their way. Check back soon.</p>
 		{/if}
 	</section>
@@ -127,7 +127,7 @@
 				</a>
 			{/each}
 		</div>
-	{:else}
+	{:else if !data.storyLoadFailed}
 		<p class="empty-note">The next story is still taking shape.</p>
 	{/if}
 </section>
@@ -151,7 +151,7 @@
 				</a>
 			{/each}
 		</div>
-	{:else if !data.contentError}
+	{:else if !data.blogLoadFailed}
 		<p class="empty-note">A new reflection will be here soon.</p>
 	{/if}
 </section>
