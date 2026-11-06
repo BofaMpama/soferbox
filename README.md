@@ -24,7 +24,9 @@ want line and paragraph breaks preserved in previews. Stories and blogs can incl
 `coverImage` or `cover` asset field for their featured image; the image description is used as its
 alternative text.
 If Contentful is misconfigured or temporarily unavailable, CMS-backed pages log the error on the
-server and show an availability notice instead of returning an internal server error.
+server and show an availability notice instead of returning an internal server error. Temporary
+network failures, rate limits and Contentful server errors are retried once before showing that
+notice.
 
 ## Comments
 

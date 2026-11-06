@@ -81,6 +81,18 @@ button {
 	animation: navigation-loading 1s ease-in-out infinite;
 }
 
+.navigation-loading-label {
+	position: fixed;
+	top: 0.7rem;
+	right: clamp(0.75rem, 3vw, 2rem);
+	z-index: 101;
+	padding: 0.35rem 0.7rem;
+	background: var(--ink);
+	color: var(--paper);
+	font-size: 0.78rem;
+	line-height: 1.4;
+}
+
 .visually-hidden {
 	position: absolute;
 	width: 1px;

@@ -27,7 +27,7 @@
 
 {#if isNavigating}
 	<div class="navigation-loading" role="status" aria-live="polite">
-		<span class="visually-hidden">Loading page</span>
+		<span class="navigation-loading-label">Opening page…</span>
 	</div>
 {/if}
 <RetroHeader />
