@@ -1,5 +1,11 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
+
 	let menuOpen = $state(false);
+
+	afterNavigate(() => {
+		menuOpen = false;
+	});
 </script>
 
 <header class="site-header">
@@ -35,17 +41,17 @@
 
 	{#if menuOpen}
 		<nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation">
-			<a href="/" onclick={() => (menuOpen = false)}>Home</a>
-			<a href="/about" onclick={() => (menuOpen = false)}>About the Author</a>
+			<a href="/">Home</a>
+			<a href="/about">About the Author</a>
 			<details class="writing-dropdown">
 				<summary>Writings</summary>
 				<div class="writing-dropdown-menu">
-					<a href="/writings/poems" onclick={() => (menuOpen = false)}>Poems</a>
-					<a href="/writings/stories" onclick={() => (menuOpen = false)}>Stories</a>
-					<a href="/writings/blogs" onclick={() => (menuOpen = false)}>Blog</a>
+					<a href="/writings/poems">Poems</a>
+					<a href="/writings/stories">Stories</a>
+					<a href="/writings/blogs">Blog</a>
 				</div>
 			</details>
-			<a href="/contact" onclick={() => (menuOpen = false)}>Contact</a>
+			<a href="/contact">Contact</a>
 		</nav>
 	{/if}
 </header>

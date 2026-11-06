@@ -11,8 +11,7 @@
 	<p class="section-kicker">The line is open</p>
 	<h1>Have a thought to share?</h1>
 	<p>
-		I’d love to hear what resonated with you, or simply say hello. Send me an email and we can take
-		it from there.
+		I’d love to hear what resonated with you, or if you have a possible partnership or collaboration, you can send me an email and we'll connect from there.
 	</p>
 	<a class="contact-email" href="mailto:contact.soferboxauthor@gmail.com">
 		contact.soferboxauthor@gmail.com <span aria-hidden="true">↗</span>
