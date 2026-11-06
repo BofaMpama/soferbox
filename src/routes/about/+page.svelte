@@ -59,7 +59,7 @@
 
 <main class="about-copy">
 	<p>
-		My name’s Bofa. I’m a Christian whose faith struggles to remain silent. I must give expression
+		I’m a Christian whose faith struggles to remain silent. I must give expression
 		to the thoughts, beliefs, convictions and ideas that dwell within me. SoferBox is the digital
 		scroll on which I write.
 	</p>
