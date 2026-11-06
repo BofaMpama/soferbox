@@ -1259,12 +1259,12 @@
 	}
 
 	.hero-pronunciation {
-		font-size: clamp(1.65rem, 6.5vw, 2rem);
+		font-size: clamp(1rem, 6.5vw, 1.65rem);
 	}
 
 	.hero-part-of-speech {
 		padding: 0.22rem 0.38rem;
-		font-size: 0.62rem;
+		font-size: 0.45rem;
 	}
 
 	.hero-definition-text {
