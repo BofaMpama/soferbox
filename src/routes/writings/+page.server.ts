@@ -35,7 +35,10 @@ export const load: PageServerLoad = async () => {
 						slug: item.fields.slug as string,
 						publishedDate: item.sys.createdAt,
 						excerpt: (item.fields.excerpt as string | undefined) ?? '',
-						coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string)
+						coverImage: getFeaturedImage(
+							item.fields.coverImage ?? item.fields.cover,
+							item.fields.title as string
+						)
 					}))
 				: []
 		)

@@ -100,7 +100,10 @@ export const load: PageServerLoad = async ({ params, url }) => {
 		contentError: null,
 		article: {
 			title: item.fields.title as string,
-			coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string),
+			coverImage: getFeaturedImage(
+				item.fields.coverImage ?? item.fields.cover,
+				item.fields.title as string
+			),
 			readingTime: getReadingTime(body),
 			body: sanitizeHtml(renderedBody, {
 				allowedTags: [

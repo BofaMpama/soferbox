@@ -19,8 +19,9 @@ content-backed pages can load:
 - `CONTENTFUL_ACCESS_TOKEN`
 
 The Contentful space should contain `poem`, `story` and `blog` content types with `title`, `slug`,
-`excerpt` and rich-text `body` fields. Stories and blogs can include an optional `cover` asset for
-their featured image; the image description is used as its alternative text.
+`excerpt` and rich-text `body` fields. Stories and blogs can include an optional `coverImage` or
+`cover` asset field for their featured image; the image description is used as its alternative
+text.
 If Contentful is misconfigured or temporarily unavailable, CMS-backed pages log the error on the
 server and show an availability notice instead of returning an internal server error.
 

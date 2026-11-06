@@ -35,7 +35,10 @@ export const load: PageServerLoad = async () => {
 					return {
 						title: item.fields.title as string,
 						slug: item.fields.slug as string,
-						coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string)
+						coverImage: getFeaturedImage(
+							item.fields.coverImage ?? item.fields.cover,
+							item.fields.title as string
+						)
 					};
 				})
 			: [],
@@ -44,7 +47,10 @@ export const load: PageServerLoad = async () => {
 					title: item.fields.title as string,
 					slug: item.fields.slug as string,
 					excerpt: (item.fields.excerpt as string | undefined) ?? '',
-					coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string)
+					coverImage: getFeaturedImage(
+						item.fields.coverImage ?? item.fields.cover,
+						item.fields.title as string
+					)
 				}))
 			: []
 	};

@@ -651,6 +651,7 @@
 	font-size: 0.92rem;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
+	white-space: pre-line;
 }
 
 .blog-card span {
@@ -967,6 +968,7 @@
 	margin: 0 0 1.2rem;
 	color: rgba(24, 43, 48, 0.75);
 	font-size: 0.92rem;
+	white-space: pre-line;
 }
 
 .writing-card .writing-card-link {
@@ -1019,6 +1021,7 @@
 	margin: 0 0 2rem;
 	color: rgba(24, 43, 48, 0.75);
 	font-size: 1.15rem;
+	white-space: pre-line;
 }
 
 .article-body {
