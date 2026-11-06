@@ -3,6 +3,9 @@
 	import favicon from '$lib/assets/box.png';
 	import RetroHeader from './RetroHeader.svelte';
 	import Footer from './Footer.svelte';
+	import { dev } from '$app/environment';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	let { children } = $props();
 </script>
