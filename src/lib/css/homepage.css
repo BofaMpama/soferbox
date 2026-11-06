@@ -46,7 +46,7 @@
 
 .hero-pronunciation {
 	font-family: Georgia, 'Times New Roman', serif;
-	color: #783126;
+	color: #c43d24;
 	font-size: clamp(1.75rem, 3vw, 2.5rem);
 	font-style: italic;
 	font-weight: 400;
@@ -66,11 +66,11 @@
 
 .hero-definition-text {
 	flex: 0 1 auto;
-	color: var(--ink);
-	font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+	color: rgba(24, 43, 48, 0.9);
+	font-size: clamp(0.95rem, 1.15vw, 1.05rem);
 	font-weight: 400;
 	line-height: 1.4;
-	text-wrap: pretty;
+	white-space: nowrap;
 }
 
 .hero h1 {
@@ -79,8 +79,7 @@
 	font-size: clamp(3.2rem, 7.3vw, 6.7rem);
 	font-weight: 500;
 	letter-spacing: -0.075em;
-	line-height: 1.08;
-	text-wrap: balance;
+	line-height: 0.96;
 }
 
 .hero h1 span {
@@ -91,24 +90,9 @@
 
 .hero-description {
 	max-width: 440px;
-	margin: 1.25rem 0 0;
-	color: var(--ink);
-	font-size: clamp(1rem, 1.4vw, 1.15rem);
-	text-wrap: pretty;
-}
-
-.hero-byline {
-	margin: 0.35rem 0 1.25rem;
+	margin: 1.8rem 0 2rem;
 	color: rgba(24, 43, 48, 0.8);
-	font-size: 0.88rem;
-	font-style: italic;
-}
-
-.hero-actions {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 0.8rem 1.2rem;
+	font-size: clamp(1rem, 1.4vw, 1.15rem);
 }
 
 .button-link {
@@ -133,24 +117,6 @@
 	transform: translateY(-2px);
 	background: transparent;
 	color: var(--ink);
-}
-
-.hero-secondary-link,
-.hero-latest a {
-	color: var(--ink);
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.2em;
-}
-
-.hero-secondary-link {
-	font-size: 0.9rem;
-	font-weight: 700;
-}
-
-.hero-latest {
-	margin: 0.9rem 0 0;
-	color: var(--ink);
-	font-size: 0.82rem;
 }
 
 .hero-art {
@@ -229,52 +195,14 @@
 
 .archive-cover-title {
 	font-family: Georgia, serif;
-	font-size: clamp(2rem, 4vw, 3.4rem);
-	letter-spacing: -0.055em;
-	line-height: 1;
+	font-size: clamp(2.6rem, 5vw, 4.5rem);
+	letter-spacing: -0.07em;
+	line-height: 0.9;
 }
 
 .archive-cover-title em {
 	color: var(--red);
 	font-weight: 500;
-}
-
-.archive-cover-latest {
-	display: flex;
-	flex-direction: column;
-	gap: 0.2rem;
-}
-
-.archive-cover-latest-label {
-	color: var(--yellow);
-	font-size: 0.55rem;
-	font-weight: 800;
-	letter-spacing: 0.12em;
-}
-
-.archive-cover-latest-title {
-	display: -webkit-box;
-	overflow: hidden;
-	font-family: Georgia, serif;
-	font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-	font-weight: 700;
-	line-height: 1.2;
-	overflow-wrap: anywhere;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-}
-
-.archive-cover-excerpt {
-	display: -webkit-box;
-	overflow: hidden;
-	max-width: 100%;
-	color: rgba(242, 238, 223, 0.88);
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: clamp(0.85rem, 1.3vw, 1rem);
-	font-style: italic;
-	line-height: 1.45;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 3;
 }
 
 .archive-cover-rule {
@@ -289,14 +217,14 @@
 	top: 9%;
 	right: 0;
 	display: grid;
-	width: 5.6rem;
-	height: 5.6rem;
+	width: 5.2rem;
+	height: 5.2rem;
 	align-content: center;
 	border: 1px solid var(--ink);
 	border-radius: 50%;
 	background: var(--yellow);
 	color: var(--ink);
-	font-size: 0.55rem;
+	font-size: 0.58rem;
 	font-weight: 800;
 	letter-spacing: 0.08em;
 	line-height: 1.25;
@@ -305,7 +233,7 @@
 }
 
 .archive-stamp b {
-	font-size: 0.64rem;
+	font-size: 1rem;
 }
 
 .archive-caption {
@@ -483,19 +411,6 @@
 .archive-arrow {
 	align-self: flex-end;
 	font-size: 1.6rem;
-}
-
-.archive-action {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.4rem;
-	color: var(--blue-deep);
-	font-size: 0.85rem;
-	font-weight: 700;
-}
-
-.archive-card:hover .archive-action {
-	color: var(--ink);
 }
 
 .recent-section {
@@ -743,91 +658,6 @@
 	margin-top: auto;
 	color: var(--blue-deep);
 	font-size: 0.83rem;
-	font-weight: 700;
-}
-
-.featured-section {
-	padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 9vw, 9rem);
-	background: var(--paper);
-}
-
-.featured-grid {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 1rem;
-}
-
-.featured-card {
-	display: flex;
-	min-width: 0;
-	min-height: 250px;
-	flex-direction: column;
-	align-items: flex-start;
-	padding: clamp(1.25rem, 2.5vw, 1.7rem);
-	border: 1px solid var(--ink);
-	background: #e7dfc9;
-	text-decoration: none;
-	transition:
-		transform 180ms ease,
-		box-shadow 180ms ease;
-}
-
-.featured-card:nth-child(3n + 2) {
-	background: var(--blue);
-}
-
-.featured-card:nth-child(3n + 3) {
-	background: #edc7a6;
-}
-
-.featured-card:hover {
-	transform: translateY(-4px);
-	box-shadow: 5px 5px 0 var(--ink);
-}
-
-.featured-card-category {
-	color: var(--blue-deep);
-	font-size: 0.72rem;
-	font-weight: 800;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-}
-
-.featured-card time {
-	margin-top: 0.55rem;
-	color: rgba(24, 43, 48, 0.72);
-	font-size: 0.75rem;
-}
-
-.featured-card h3 {
-	margin: 1.1rem 0 0.65rem;
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: clamp(1.35rem, 2.2vw, 1.8rem);
-	font-weight: 500;
-	letter-spacing: -0.035em;
-	line-height: 1.12;
-	overflow-wrap: anywhere;
-}
-
-.featured-card p {
-	display: -webkit-box;
-	overflow: hidden;
-	margin: 0 0 1.2rem;
-	color: rgba(24, 43, 48, 0.82);
-	font-size: 0.92rem;
-	line-height: 1.5;
-	white-space: pre-line;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 3;
-}
-
-.featured-card-link {
-	display: inline-flex;
-	gap: 0.4rem;
-	align-items: center;
-	margin-top: auto;
-	color: var(--blue-deep);
-	font-size: 0.85rem;
 	font-weight: 700;
 }
 
@@ -1132,8 +962,6 @@
 	font-weight: 500;
 	letter-spacing: -0.04em;
 	line-height: 1.08;
-	overflow-wrap: anywhere;
-	text-wrap: balance;
 }
 
 .writing-card p {
@@ -1171,28 +999,11 @@
 	font-weight: 500;
 	letter-spacing: -0.065em;
 	line-height: 1;
-	overflow-wrap: anywhere;
-	text-wrap: balance;
-}
-
-.article-metadata {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	gap: 0.35rem 0.8rem;
-	color: rgba(24, 43, 48, 0.68);
-	font-size: 0.75rem;
-}
-
-.article-metadata > span:first-child {
-	color: var(--blue-deep);
-	font-weight: 800;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
 }
 
 .article-reading-time {
 	display: inline-block;
+	margin-left: 0.8rem;
 	color: rgba(24, 43, 48, 0.65);
 	font-size: 0.8rem;
 }
@@ -1232,83 +1043,9 @@
 	margin: 0 0 1.4rem;
 }
 
-.article-body-poems {
-	max-width: 40rem;
-	margin-inline: auto;
-	font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-	line-height: 1.8;
-	text-align: left;
-	white-space: pre-wrap;
-}
-
-.article-body-poems p {
-	margin-bottom: 2rem;
-}
-
-.article-body-stories,
-.article-body-blogs {
-	max-width: 45rem;
-	margin-inline: auto;
-}
-
-.article-body blockquote {
-	margin: 1.75rem 0;
-	padding-left: 1.25rem;
-	border-left: 3px solid var(--red);
-	font-style: italic;
-}
-
-.article-body a {
-	color: var(--blue-deep);
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.18em;
-}
-
 .article-body img {
 	max-width: 100%;
 	height: auto;
-}
-
-.article-pagination {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 1rem;
-	margin-top: 2.5rem;
-	padding-top: 1.25rem;
-	border-top: 1px solid var(--line);
-}
-
-.article-pagination a {
-	display: grid;
-	align-content: start;
-	gap: 0.45rem;
-	min-width: 0;
-	padding: 0.85rem;
-	border: 1px solid var(--line);
-	text-decoration: none;
-}
-
-.article-pagination a:hover {
-	background: #e7dfc9;
-}
-
-.article-pagination-next {
-	text-align: right;
-}
-
-.article-pagination-label {
-	color: var(--blue-deep);
-	font-size: 0.72rem;
-	font-weight: 800;
-	letter-spacing: 0.06em;
-	text-transform: uppercase;
-}
-
-.article-pagination strong {
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: 1rem;
-	font-weight: 500;
-	overflow-wrap: anywhere;
 }
 
 .share-section {
@@ -1694,15 +1431,6 @@
 	text-transform: uppercase;
 }
 
-.about-scriptures h2 {
-	margin: 2rem 0 0;
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: clamp(1.7rem, 4vw, 2.4rem);
-	font-weight: 500;
-	letter-spacing: -0.04em;
-	line-height: 1.1;
-}
-
 .scripture-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
@@ -1855,7 +1583,6 @@
 
 	.archive-grid,
 	.blog-grid,
-	.featured-grid,
 	.writing-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -1903,9 +1630,8 @@
 
 	.hero-definition-text {
 		min-width: 0;
-		font-size: clamp(0.88rem, 3.5vw, 1rem);
+		font-size: clamp(0.75rem, 3vw, 0.85rem);
 		white-space: normal;
-		text-wrap: pretty;
 	}
 
 	.contact-page {
@@ -1928,9 +1654,9 @@
 
 	.hero {
 		grid-template-columns: 1fr;
-		gap: 1rem;
-		padding-top: 2rem;
-		padding-bottom: 2rem;
+		gap: 2.5rem;
+		padding-top: 4rem;
+		padding-bottom: 4rem;
 	}
 
 	.page-hero {
@@ -1942,7 +1668,7 @@
 
 	.hero-art {
 		width: min(100%, 390px);
-		min-height: 250px;
+		min-height: 370px;
 	}
 
 	.collection-art {
@@ -1959,11 +1685,7 @@
 	}
 
 	.archive-cover-title {
-		font-size: clamp(1.7rem, 8vw, 2.6rem);
-	}
-
-	.archive-cover-excerpt {
-		-webkit-line-clamp: 1;
+		font-size: clamp(2.8rem, 12vw, 4rem);
 	}
 
 	.intro-band {
@@ -1978,7 +1700,6 @@
 
 	.archive-grid,
 	.blog-grid,
-	.featured-grid,
 	.writing-grid,
 	.story-list {
 		grid-template-columns: 1fr;
@@ -1992,10 +1713,6 @@
 		min-height: 260px;
 	}
 
-	.featured-card {
-		min-height: 220px;
-	}
-
 	.poem-row {
 		align-items: flex-start;
 	}
@@ -2007,14 +1724,6 @@
 	.related-list a {
 		flex-direction: column;
 		gap: 0.2rem;
-	}
-
-	.article-pagination {
-		grid-template-columns: 1fr;
-	}
-
-	.article-pagination-next {
-		text-align: left;
 	}
 }
 

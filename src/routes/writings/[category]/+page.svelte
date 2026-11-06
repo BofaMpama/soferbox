@@ -7,22 +7,21 @@
 </script>
 
 <svelte:head>
-	<title>{data.categoryTitle} — SoferBox</title>
-	<meta name="description" content={data.categoryDescription} />
-	<link rel="canonical" href={data.canonicalUrl} />
+	<title>{data.category} — SoferBox</title>
+	<meta name="description" content={`Browse ${data.category} from the SoferBox collection.`} />
 </svelte:head>
 
 <section class="page-hero">
 	<div class="page-hero-copy">
 		<p class="section-kicker">SoferBox / Shelf 01</p>
-		<h1>{data.categoryTitle}</h1>
-		<p>{data.categoryDescription}</p>
+		<h1>{data.category}</h1>
+		<p>Words gathered over time, ready when you are.</p>
 	</div>
 	<div class="collection-art" aria-hidden="true">
 		<div class="collection-paper"></div>
 		<div class="collection-cover">
 			<span class="collection-cover-kicker">SOFERBOX / FIELD NOTES</span>
-			<strong>{data.categoryTitle}</strong>
+			<strong>{data.category}</strong>
 			<span class="collection-cover-rule"></span>
 			<span class="collection-cover-meta">WORDS GATHERED WITH CARE</span>
 		</div>

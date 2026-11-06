@@ -3,13 +3,7 @@ import { requestContentful } from '$lib/contentful';
 import { error } from '@sveltejs/kit';
 import { getAllEntries, getExcerpt, getFeaturedImage } from '$lib/server/writings';
 
-export const load: PageServerLoad = async ({ params, url }) => {
-	const categoryDetails = new Map([
-		['poems', { title: 'Poems', description: 'Read poems from the SoferBox archive.' }],
-		['stories', { title: 'Short Stories', description: 'Read short stories from the archive.' }],
-		['blogs', { title: 'Reflections', description: 'Personal reflections from the journey.' }]
-	]);
-	const details = categoryDetails.get(params.category);
+export const load: PageServerLoad = async ({ params }) => {
 	const contentTypes = new Map([
 		['poems', 'poem'],
 		['stories', 'story'],
@@ -26,9 +20,6 @@ export const load: PageServerLoad = async ({ params, url }) => {
 	if (!result.ok) {
 		return {
 			category: params.category,
-			categoryTitle: details?.title ?? params.category,
-			categoryDescription: details?.description ?? '',
-			canonicalUrl: new URL(url.pathname, url.origin).href,
 			items: [],
 			contentError: result.error
 		};
@@ -36,9 +27,6 @@ export const load: PageServerLoad = async ({ params, url }) => {
 
 	return {
 		category: params.category,
-		categoryTitle: details?.title ?? params.category,
-		categoryDescription: details?.description ?? '',
-		canonicalUrl: new URL(url.pathname, url.origin).href,
 		contentError: null,
 		items: result.data.map((item) => ({
 			id: item.sys.id,

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '$lib/css/homepage.css';
 	import writingsData from '$lib/data/writings.json';
-	import FeaturedWritings from '$lib/components/FeaturedWritings.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -11,20 +10,11 @@
 	<title>SoferBox — a home for words worth keeping</title>
 	<meta
 		name="description"
-		content="Poems, short stories and reflections, kept here as I write them."
+		content="Poems, short stories and reflections by Bofa Mpama — gathered in one little corner of the internet."
 	/>
-	<meta property="og:title" content="SoferBox — a home for words worth keeping" />
-	<meta
-		property="og:description"
-		content="Poems, short stories and reflections, kept here as I write them."
-	/>
-	<link rel="canonical" href="https://soferbox.vercel.app/" />
 </svelte:head>
 
 <main>
-	{#if data.contentError}
-		<p class="content-notice content-notice-global" role="status">{data.contentError}</p>
-	{/if}
 	<section class="hero">
 		<div class="hero-copy">
 			<p class="hero-definition">
@@ -36,46 +26,21 @@
 			</p>
 			<h1>In this place <span>my words are kept.</span></h1>
 			<p class="hero-description">
-				Poems, short stories and reflections, kept here as I write them.
+				A virtual box for the poems, stories and reflections I’ve been inspired to write and share.
 			</p>
-			<p class="hero-byline">by Bofa</p>
-			<div class="hero-actions">
-				<a class="button-link" href="/writings" data-sveltekit-preload-data="tap">
-					Explore the writings <span aria-hidden="true">→</span>
-				</a>
-				<a class="hero-secondary-link" href="/about">About Bofa</a>
-			</div>
-			{#if data.latestPiece}
-				<p class="hero-latest">
-					New: <a href={`/writings/${data.latestPiece.category}/${data.latestPiece.slug}`}
-						>{data.latestPiece.title}</a
-					>, {data.latestPiece.relativeDate}
-				</p>
-			{/if}
+			<a class="button-link" href="/writings/poems" data-sveltekit-preload-data="tap">
+				Open the box <span aria-hidden="true">↗</span>
+			</a>
 		</div>
 		<div class="hero-art" aria-hidden="true">
 			<div class="archive-sheet archive-sheet-back"></div>
 			<div class="archive-sheet archive-cover">
 				<span class="archive-cover-kicker">SOFERBOX / ARCHIVE</span>
-				<span class="archive-cover-title">Words worth<br /> <em>keeping.</em></span>
-				{#if data.latestPiece}
-					<div class="archive-cover-latest">
-						<span class="archive-cover-latest-label">NEW IN THE BOX</span>
-						<span class="archive-cover-latest-title">{data.latestPiece.title}</span>
-						{#if data.latestPiece.excerpt}
-							<span class="archive-cover-excerpt">{data.latestPiece.excerpt}</span>
-						{/if}
-					</div>
-				{/if}
+				<span class="archive-cover-title">Words<br />worth<br /><em>keeping.</em></span>
 				<span class="archive-cover-rule"></span>
 				<span class="archive-cover-meta">POEMS · STORIES · REFLECTIONS</span>
 			</div>
-			<span class="archive-stamp">
-				<span>EDITION 01</span>
-				{#if data.contentCount !== null}
-					<b>{data.contentCount} {data.contentCount === 1 ? 'PIECE' : 'PIECES'}</b>
-				{/if}
-			</span>
+			<span class="archive-stamp">OPEN<br />EDITION <b>01</b></span>
 			<span class="archive-caption">Collected with care / Est. 2020</span>
 		</div>
 	</section>
@@ -114,11 +79,91 @@
 						<h3>{info.title}</h3>
 						<p>{info.description}</p>
 					</div>
-					<span class="archive-action">Browse {info.title} <span aria-hidden="true">→</span></span>
+					<span class="archive-arrow" aria-hidden="true">↗</span>
 				</a>
 			{/each}
 		</div>
 	</section>
 
-	<FeaturedWritings items={data.featuredItems} hasFeaturedSelection={data.hasFeaturedSelection} />
+	<section class="recent-section">
+		<div class="section-heading">
+			<div>
+				<p class="section-kicker">Fresh from the page</p>
+				<h2>Recent poems.</h2>
+			</div>
+			<a class="text-link" href="/writings/poems" data-sveltekit-preload-data="tap"
+				>All poems <span aria-hidden="true">→</span></a
+			>
+		</div>
+		{#if data.poems.length}
+			<div class="poem-list">
+				{#each data.poems as poem (poem.slug)}
+					<a class="poem-row" href={`/writings/poems/${poem.slug}`}>
+						<h3>{poem.title}</h3>
+						<span aria-hidden="true">↗</span>
+					</a>
+				{/each}
+			</div>
+		{:else if !data.poemLoadFailed}
+			<p class="empty-note">New poems are on their way. Check back soon.</p>
+		{/if}
+	</section>
 </main>
+
+<section class="stories-section">
+	<div class="section-heading">
+		<p class="section-kicker">Fiction, with a pulse</p>
+		<h2>Short stories I’ve been writing…</h2>
+		<a class="text-link" href="/writings/stories" data-sveltekit-preload-data="tap"
+			>See every story <span aria-hidden="true">→</span></a
+		>
+	</div>
+	{#if data.stories.length}
+		<div class="story-list">
+			{#each data.stories as story (story.slug)}
+				<a class="story-card" href={`/writings/stories/${story.slug}`}>
+					{#if story.coverImage}
+						<img src={story.coverImage.url} alt={story.coverImage.alt} loading="lazy" />
+					{:else if !data.storyLoadFailed}
+						<span class="story-placeholder" aria-hidden="true">
+							<span class="story-placeholder-label">SOFERBOX / FICTION</span>
+							<span class="story-placeholder-glyph">“</span>
+							<span class="story-placeholder-rule"></span>
+						</span>
+					{/if}
+					<h3>{story.title}</h3>
+				</a>
+			{/each}
+		</div>
+	{:else if !data.storyLoadFailed}
+		<p class="empty-note">The next story is still taking shape.</p>
+	{/if}
+</section>
+
+<section class="blog-section">
+	<div class="section-heading">
+		<div>
+			<p class="section-kicker">Notes from the journey</p>
+			<h2>From the blog.</h2>
+		</div>
+		<a class="text-link" href="/writings/blogs" data-sveltekit-preload-data="tap"
+			>All reflections <span aria-hidden="true">→</span></a
+		>
+	</div>
+	{#if data.blogs.length}
+		<div class="blog-grid">
+			{#each data.blogs as blog (blog.slug)}
+				<a class="blog-card" href={`/writings/blogs/${blog.slug}`}>
+					{#if blog.coverImage}
+						<img src={blog.coverImage.url} alt={blog.coverImage.alt} loading="lazy" />
+					{/if}
+					<h3>{blog.title}</h3>
+					{#if blog.excerpt}<p>{blog.excerpt}</p>{/if}
+					<span>Read the story →</span>
+				</a>
+			{/each}
+		</div>
+	{:else if !data.blogLoadFailed}
+		<p class="empty-note">A new reflection will be here soon.</p>
+	{/if}
+</section>

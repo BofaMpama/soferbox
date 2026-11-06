@@ -18,14 +18,11 @@ content-backed pages can load:
 - `CONTENTFUL_SPACE_ID`
 - `CONTENTFUL_ACCESS_TOKEN`
 
-The Contentful space should contain `poem`, `story` and `blog` content types with `title`, `slug`
-and rich-text `body` fields. Add an optional multi-line text or rich-text `excerpt` field when you
-want an author-written preview; the site never generates an excerpt from the writing itself.
-To curate homepage features, add an optional Boolean `featured` field to each content type and
-enable it on the entries you want to feature. Until any entries are marked, the homepage shows the
-latest item from each available collection. Stories and blogs can include an optional `coverImage`
-or `cover` asset field for their featured image; the image description is used as its alternative
-text.
+The Contentful space should contain `poem`, `story` and `blog` content types with `title`, `slug`,
+`excerpt` and rich-text `body` fields. Use a multi-line text or rich-text field for `excerpt` if you
+want line and paragraph breaks preserved in previews. Stories and blogs can include an optional
+`coverImage` or `cover` asset field for their featured image; the image description is used as its
+alternative text.
 If Contentful is misconfigured or temporarily unavailable, CMS-backed pages log the error on the
 server and show an availability notice instead of returning an internal server error. Temporary
 network failures, rate limits and Contentful server errors are retried once before showing that
