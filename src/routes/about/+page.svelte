@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '$lib/css/homepage.css';
 	import boffInBlue from '$lib/assets/BoffSmiling.jpg';
+	import SocialLinks from '$lib/components/SocialLinks.svelte';
 
 	const scriptures = [
 		{
@@ -59,9 +60,9 @@
 
 <main class="about-copy">
 	<p>
-		I’m a Christian whose faith struggles to remain silent. I must give expression
-		to the thoughts, beliefs, convictions and ideas that dwell within me. SoferBox is the digital
-		scroll on which I write.
+		I’m a Christian whose faith struggles to remain silent. I must give expression to the thoughts,
+		beliefs, convictions and ideas that dwell within me. SoferBox is the digital scroll on which I
+		write.
 	</p>
 	<blockquote class="about-quote">
 		“My heart is inditing a good matter: I speak of the things which I have made touching the king:
@@ -99,4 +100,10 @@
 			</button>
 		{/if}
 	</dialog>
+	<section class="about-socials" aria-labelledby="about-socials-heading">
+		<p class="section-kicker">Stay in touch</p>
+		<h2 id="about-socials-heading">Find me beyond the page.</h2>
+		<p>More notes, snapshots and conversations from the journey.</p>
+		<SocialLinks />
+	</section>
 </main>

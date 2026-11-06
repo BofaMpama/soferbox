@@ -57,25 +57,58 @@
 		<section class="share-section" aria-label="Share this writing">
 			<h2>Pass the words along</h2>
 			<a
+				class="share-link"
 				href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`}
 				target="_blank"
-				rel="noopener noreferrer">Share on X</a
+				rel="noopener noreferrer"
 			>
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<path
+						d="M18.9 1.2h3.7l-8 9.2L24 22.9h-7.4l-5.8-7.6-6.7 7.6H.5l8.6-9.8L0 1.2h7.6l5.2 6.9zm-1.3 19.5h2L6.5 3.2H4.4z"
+					/>
+				</svg>
+				<span>Share on X</span>
+			</a>
 			<a
+				class="share-link"
 				href={`https://www.facebook.com/sharer.php?u=${shareUrl}`}
 				target="_blank"
-				rel="noopener noreferrer">Facebook</a
+				rel="noopener noreferrer"
 			>
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<path
+						d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8z"
+					/>
+				</svg>
+				<span>Facebook</span>
+			</a>
 			<a
+				class="share-link"
 				href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
 				target="_blank"
-				rel="noopener noreferrer">LinkedIn</a
+				rel="noopener noreferrer"
 			>
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<path
+						d="M5.2 8.6a2 2 0 1 0 0-4 2 2 0 0 0 0 4M3.5 10h3.4v10.5H3.5zM9 10h3.2v1.4h.1a3.5 3.5 0 0 1 3.2-1.7c3.4 0 4 2.2 4 5.1v5.7h-3.4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5.1H9z"
+					/>
+				</svg>
+				<span>LinkedIn</span>
+			</a>
 			<a
+				class="share-link"
 				href={`https://wa.me/?text=${encodeURIComponent(`${shareMessage}\n${data.canonicalUrl}`)}`}
 				target="_blank"
-				rel="noopener noreferrer">WhatsApp</a
+				rel="noopener noreferrer"
 			>
+				<svg class="share-whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+					<path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3.5 20l1-4.5a8.4 8.4 0 1 1 16-3.8Z" />
+					<path
+						d="M9 8.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4 0 .5l-.5.7c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.3.6-.1.8-.5 1.4-1.2 1.7-.6.3-1.4.4-2.2.1-1.2-.4-2.3-1.1-3.3-2-.9-.9-1.7-2-2-3.1-.3-1 0-2 .4-2.7Z"
+					/>
+				</svg>
+				<span>WhatsApp</span>
+			</a>
 		</section>
 
 		<Comments />

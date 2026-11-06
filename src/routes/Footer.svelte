@@ -1,3 +1,7 @@
+<script lang="ts">
+	import SocialLinks from '$lib/components/SocialLinks.svelte';
+</script>
+
 <footer class="site-footer">
 	<div class="footer-top">
 		<a class="footer-brand" href="/">
@@ -7,6 +11,7 @@
 		</a>
 		<p>A little box for words worth keeping.</p>
 	</div>
+	<SocialLinks compact />
 	<div class="footer-bottom">
 		<nav aria-label="Footer navigation">
 			<a href="/writings">All writings</a>
