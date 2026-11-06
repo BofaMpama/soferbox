@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { requestContentful } from '$lib/contentful';
 import { error } from '@sveltejs/kit';
+import { getAllEntries, getFeaturedImage } from '$lib/server/writings';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const contentTypes = new Map([
@@ -14,12 +15,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		error(404, 'Writing category not found');
 	}
 
-	const result = await requestContentful((client) =>
-		client.getEntries({
-			content_type: contentType,
-			order: ['-sys.createdAt']
-		})
-	);
+	const result = await requestContentful((client) => getAllEntries(client, contentType));
 
 	if (!result.ok) {
 		return {
@@ -32,12 +28,14 @@ export const load: PageServerLoad = async ({ params }) => {
 	return {
 		category: params.category,
 		contentError: null,
-		items: result.data.items.map((item) => ({
+		items: result.data.map((item) => ({
 			id: item.sys.id,
+			category: params.category,
 			title: item.fields.title as string,
 			slug: item.fields.slug as string,
 			publishedDate: item.sys.createdAt,
-			excerpt: (item.fields.excerpt as string | undefined) ?? ''
+			excerpt: (item.fields.excerpt as string | undefined) ?? '',
+			coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string)
 		}))
 	};
 };

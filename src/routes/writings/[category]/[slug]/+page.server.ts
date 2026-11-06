@@ -4,6 +4,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import type { Document } from '@contentful/rich-text-types';
 import sanitizeHtml from 'sanitize-html';
 import { error } from '@sveltejs/kit';
+import { getFeaturedImage, getReadingTime } from '$lib/server/writings';
 
 type RichTextNode = {
 	value?: string;
@@ -99,6 +100,8 @@ export const load: PageServerLoad = async ({ params, url }) => {
 		contentError: null,
 		article: {
 			title: item.fields.title as string,
+			coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string),
+			readingTime: getReadingTime(body),
 			body: sanitizeHtml(renderedBody, {
 				allowedTags: [
 					'p',

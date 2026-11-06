@@ -1,6 +1,10 @@
 <script lang="ts">
 	import '$lib/css/homepage.css';
 	import writingsData from '$lib/data/writings.json';
+	import WritingArchive from '$lib/components/WritingArchive.svelte';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
@@ -40,4 +44,17 @@
 			</a>
 		{/each}
 	</div>
+	<section class="complete-archive" aria-labelledby="complete-archive-heading">
+		<div class="section-heading">
+			<div>
+				<p class="section-kicker">Find something to keep</p>
+				<h2 id="complete-archive-heading">Search the complete archive.</h2>
+			</div>
+		</div>
+		{#if data.contentError}
+			<p class="content-notice" role="status">{data.contentError}</p>
+		{:else}
+			<WritingArchive items={data.items} showCategoryFilter />
+		{/if}
+	</section>
 </main>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '$lib/css/homepage.css';
+	import Comments from '$lib/components/Comments.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -15,6 +16,16 @@
 		<meta name="description" content={article.excerpt || article.title} />
 		<meta property="og:title" content={`${article.title} — SoferBox`} />
 		<meta property="og:description" content={article.excerpt || article.title} />
+		<meta name="twitter:title" content={`${article.title} — SoferBox`} />
+		<meta name="twitter:description" content={article.excerpt || article.title} />
+		<meta property="og:type" content="article" />
+		{#if article.coverImage}
+			<meta property="og:image" content={article.coverImage.url} />
+			<meta property="og:image:alt" content={article.coverImage.alt} />
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:image" content={article.coverImage.url} />
+			<meta name="twitter:image:alt" content={article.coverImage.alt} />
+		{/if}
 	{/if}
 	<meta property="og:url" content={data.canonicalUrl} />
 </svelte:head>
@@ -27,8 +38,16 @@
 		<time class="article-date" datetime={article.publishedDate}>
 			{new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(article.publishedDate))}
 		</time>
+		<span class="article-reading-time">{article.readingTime} min read</span>
 		<h1>{article.title}</h1>
 		{#if article.excerpt}<p class="article-excerpt">{article.excerpt}</p>{/if}
+		{#if article.coverImage}
+			<img
+				class="article-feature-image"
+				src={article.coverImage.url}
+				alt={article.coverImage.alt}
+			/>
+		{/if}
 		<article class="article-body">
 			<!-- Sanitized Contentful rich text is the only HTML rendered here. -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -58,6 +77,8 @@
 				rel="noopener noreferrer">WhatsApp</a
 			>
 		</section>
+
+		<Comments />
 
 		{#if data.relatedItems.length}
 			<section class="related-section">

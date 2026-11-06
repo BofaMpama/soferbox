@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { requestContentful } from '$lib/contentful';
-import type { Asset } from 'contentful';
+import { getFeaturedImage } from '$lib/server/writings';
 
 export const load: PageServerLoad = async () => {
 	const [poemResult, storyResult, blogResult] = await Promise.all([
@@ -32,13 +32,10 @@ export const load: PageServerLoad = async () => {
 			: [],
 		stories: storyResult.ok
 			? storyResult.data.items.map((item) => {
-					const cover = item.fields.cover as Asset | undefined;
-					const imageUrl = cover?.fields?.file?.url;
-
 					return {
 						title: item.fields.title as string,
 						slug: item.fields.slug as string,
-						coverImage: imageUrl ? `https:${imageUrl}` : null
+						coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string)
 					};
 				})
 			: [],
@@ -46,7 +43,8 @@ export const load: PageServerLoad = async () => {
 			? blogResult.data.items.map((item) => ({
 					title: item.fields.title as string,
 					slug: item.fields.slug as string,
-					excerpt: (item.fields.excerpt as string | undefined) ?? ''
+					excerpt: (item.fields.excerpt as string | undefined) ?? '',
+					coverImage: getFeaturedImage(item.fields.cover, item.fields.title as string)
 				}))
 			: []
 	};

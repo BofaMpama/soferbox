@@ -121,7 +121,7 @@
 			{#each data.stories as story (story.slug)}
 				<a class="story-card" href={`/writings/stories/${story.slug}`}>
 					{#if story.coverImage}
-						<img src={story.coverImage} alt="" loading="lazy" />
+						<img src={story.coverImage.url} alt={story.coverImage.alt} loading="lazy" />
 					{:else if !data.storyLoadFailed}
 						<span class="story-placeholder" aria-hidden="true">
 							<span class="story-placeholder-label">SOFERBOX / FICTION</span>
@@ -151,6 +151,9 @@
 		<div class="blog-grid">
 			{#each data.blogs as blog (blog.slug)}
 				<a class="blog-card" href={`/writings/blogs/${blog.slug}`}>
+					{#if blog.coverImage}
+						<img src={blog.coverImage.url} alt={blog.coverImage.alt} loading="lazy" />
+					{/if}
 					<h3>{blog.title}</h3>
 					{#if blog.excerpt}<p>{blog.excerpt}</p>{/if}
 					<span>Read the story →</span>
