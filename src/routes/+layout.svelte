@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/box.png';
 	import RetroHeader from './RetroHeader.svelte';
 	import Footer from './Footer.svelte';
@@ -8,6 +9,15 @@
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	let { children } = $props();
+	let isNavigating = $state(false);
+
+	beforeNavigate(() => {
+		isNavigating = true;
+	});
+
+	afterNavigate(() => {
+		isNavigating = false;
+	});
 </script>
 
 <svelte:head>
@@ -15,6 +25,11 @@
 	<meta name="theme-color" content="#f2eedf" />
 </svelte:head>
 
+{#if isNavigating}
+	<div class="navigation-loading" role="status" aria-live="polite">
+		<span class="visually-hidden">Loading page</span>
+	</div>
+{/if}
 <RetroHeader />
 {@render children()}
 <Footer />

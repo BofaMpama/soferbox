@@ -34,7 +34,7 @@
 <main class="writing-page">
 	<div class="archive-grid">
 		{#each writingsData as info, index (info.title)}
-			<a class="archive-card" href={info.link}>
+			<a class="archive-card" href={info.link} data-sveltekit-preload-data="tap">
 				<span class="archive-number">0{index + 1} / COLLECTION</span>
 				<div>
 					<h2>{info.title}</h2>

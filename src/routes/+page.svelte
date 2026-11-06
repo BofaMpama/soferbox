@@ -28,7 +28,7 @@
 			<p class="hero-description">
 				A virtual box for the poems, stories and reflections I’ve been inspired to write and share.
 			</p>
-			<a class="button-link" href="/writings/poems">
+			<a class="button-link" href="/writings/poems" data-sveltekit-preload-data="tap">
 				Open the box <span aria-hidden="true">↗</span>
 			</a>
 		</div>
@@ -73,7 +73,7 @@
 		</div>
 		<div class="archive-grid">
 			{#each writingsData as info, index (info.title)}
-				<a class="archive-card" href={info.link}>
+				<a class="archive-card" href={info.link} data-sveltekit-preload-data="tap">
 					<span class="archive-number">0{index + 1} / COLLECTION</span>
 					<div>
 						<h3>{info.title}</h3>
@@ -91,7 +91,9 @@
 				<p class="section-kicker">Fresh from the page</p>
 				<h2>Recent poems.</h2>
 			</div>
-			<a class="text-link" href="/writings/poems">All poems <span aria-hidden="true">→</span></a>
+			<a class="text-link" href="/writings/poems" data-sveltekit-preload-data="tap"
+				>All poems <span aria-hidden="true">→</span></a
+			>
 		</div>
 		{#if data.poems.length}
 			<div class="poem-list">
@@ -112,7 +114,7 @@
 	<div class="section-heading">
 		<p class="section-kicker">Fiction, with a pulse</p>
 		<h2>Short stories I’ve been writing…</h2>
-		<a class="text-link" href="/writings/stories"
+		<a class="text-link" href="/writings/stories" data-sveltekit-preload-data="tap"
 			>See every story <span aria-hidden="true">→</span></a
 		>
 	</div>
@@ -144,7 +146,8 @@
 			<p class="section-kicker">Notes from the journey</p>
 			<h2>From the blog.</h2>
 		</div>
-		<a class="text-link" href="/writings/blogs">All reflections <span aria-hidden="true">→</span></a
+		<a class="text-link" href="/writings/blogs" data-sveltekit-preload-data="tap"
+			>All reflections <span aria-hidden="true">→</span></a
 		>
 	</div>
 	{#if data.blogs.length}

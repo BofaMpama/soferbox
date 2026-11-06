@@ -60,6 +60,47 @@ button {
 	background: var(--blue-deep);
 }
 
+.navigation-loading {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 3px;
+	overflow: hidden;
+	background: rgba(214, 91, 75, 0.18);
+	pointer-events: none;
+}
+
+.navigation-loading::after {
+	position: absolute;
+	width: 38%;
+	height: 100%;
+	background: var(--red);
+	content: '';
+	animation: navigation-loading 1s ease-in-out infinite;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	clip-path: inset(50%);
+}
+
+@keyframes navigation-loading {
+	from {
+		transform: translateX(-100%);
+	}
+
+	to {
+		transform: translateX(265%);
+	}
+}
+
 :focus-visible {
 	outline: 3px solid var(--red);
 	outline-offset: 4px;
