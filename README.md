@@ -26,20 +26,12 @@ server and show an availability notice instead of returning an internal server e
 
 ## Comments
 
-Comments use Giscus, which stores discussions in GitHub Discussions rather than requiring a
-separate database. Commenters need a GitHub account. To enable comments:
-
-1. Enable Discussions for the public GitHub repository and install/authorize the Giscus app.
-2. Select a Discussions category at [giscus.app](https://giscus.app) and copy its repository and
-   category settings.
-3. Configure these environment variables for local development and deployment:
-   - `PUBLIC_GISCUS_REPO` (for example, `owner/repository`)
-   - `PUBLIC_GISCUS_REPO_ID`
-   - `PUBLIC_GISCUS_CATEGORY`
-   - `PUBLIC_GISCUS_CATEGORY_ID`
-
-Discussions are matched to writing pages by pathname. Until all four settings are present, article
-pages show a configuration notice instead of an empty comments panel.
+Comments use Giscus, which stores discussions in the public `BofaMpama/soferbox` GitHub Discussions
+repository rather than requiring a separate database. Commenters need a GitHub account. The
+repository must have Discussions enabled and the Giscus app authorized to access it. The public
+repository and Announcements category IDs are configured in `src/lib/components/Comments.svelte`;
+no deployment environment variables are needed. Discussions are matched to writing pages by
+pathname.
 
 ## Validation and production
 
