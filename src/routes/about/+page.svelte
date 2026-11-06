@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '$lib/css/homepage.css';
-	import boffInBlue from '$lib/assets/boff-in-a-blue-shirt.png';
+	import boffInBlue from '$lib/assets/BoffSmiling.jpg';
 
 	const scriptures = [
 		{
