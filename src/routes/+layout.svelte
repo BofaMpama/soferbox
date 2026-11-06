@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import favicon from '$lib/assets/BoxOfWritings.png';
+	import favicon from '$lib/assets/box.png';
 	import RetroHeader from './RetroHeader.svelte';
 	import Footer from './Footer.svelte';
 
