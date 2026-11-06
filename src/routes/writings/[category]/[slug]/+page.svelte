@@ -111,7 +111,7 @@
 			</a>
 		</section>
 
-		<Comments />
+		<Comments category={data.category} slug={article.slug} />
 
 		{#if data.relatedItems.length}
 			<section class="related-section">

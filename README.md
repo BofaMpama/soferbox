@@ -26,12 +26,21 @@ server and show an availability notice instead of returning an internal server e
 
 ## Comments
 
-Comments use Giscus, which stores discussions in the public `BofaMpama/soferbox` GitHub Discussions
-repository rather than requiring a separate database. Commenters need a GitHub account. The
-repository must have Discussions enabled and the Giscus app authorized to access it. The public
-repository and Announcements category IDs are configured in `src/lib/components/Comments.svelte`;
-no deployment environment variables are needed. Discussions are matched to writing pages by
-pathname.
+Comments use a private Supabase table; readers can submit a display name and comment without
+creating an account or providing an email address. New comments stay pending until approved in the
+Supabase dashboard. To configure comments:
+
+1. Create a Supabase project and run [`supabase/comments.sql`](./supabase/comments.sql) in its SQL
+   Editor.
+2. Set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in the local environment and deployment
+   environment. Use the Supabase project's Secret key; keep it server-side and never give it a
+   `PUBLIC_` prefix.
+3. In the Supabase table editor, change a comment's `status` from `pending` to `approved` to publish
+   it, or to `rejected` to discard it.
+
+The API validates comment lengths, checks same-origin submissions, and includes a hidden honeypot
+field. Only approved comments are returned publicly; the database has row-level security enabled
+and grants table access only to the server-side service role.
 
 ## Validation and production
 

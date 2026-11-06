@@ -1258,12 +1258,103 @@
 	font-weight: 500;
 }
 
-.comments-setup-notice {
-	padding: 1rem 1.2rem;
-	border-left: 3px solid var(--blue-deep);
-	background: rgba(255, 255, 255, 0.55);
-	color: var(--ink);
+.comments-intro {
+	margin: -0.5rem 0 1.5rem;
+	color: rgba(24, 43, 48, 0.76);
+}
+
+.comment-form {
+	display: grid;
+	gap: 0.65rem;
+	max-width: 42rem;
+	padding: 1.25rem;
+	border: 1px solid var(--line);
+	background: rgba(255, 255, 255, 0.4);
+}
+
+.comment-form label {
 	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.comment-form input,
+.comment-form textarea {
+	width: 100%;
+	padding: 0.7rem 0.8rem;
+	border: 1px solid var(--line);
+	border-radius: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font: inherit;
+}
+
+.comment-form textarea {
+	resize: vertical;
+}
+
+.comment-submit,
+.comment-retry {
+	width: fit-content;
+	padding: 0.65rem 1rem;
+	border: 1px solid var(--ink);
+	background: var(--ink);
+	color: var(--paper);
+	font: inherit;
+	cursor: pointer;
+}
+
+.comment-submit:disabled {
+	opacity: 0.65;
+	cursor: wait;
+}
+
+.comment-feedback {
+	margin: 0.5rem 0;
+	font-size: 0.9rem;
+}
+
+.comment-error {
+	color: #9d3025;
+}
+
+.comment-list {
+	display: grid;
+	gap: 1rem;
+	max-width: 42rem;
+	margin-top: 1.5rem;
+}
+
+.comment {
+	padding: 1rem 1.1rem;
+	border-left: 2px solid var(--blue-deep);
+	background: rgba(255, 255, 255, 0.38);
+}
+
+.comment-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.3rem 0.8rem;
+}
+
+.comment-meta time {
+	color: rgba(24, 43, 48, 0.68);
+	font-size: 0.8rem;
+}
+
+.comment p {
+	margin: 0.6rem 0 0;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.comment-honeypot {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
 }
 
 .about-hero {
