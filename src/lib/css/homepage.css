@@ -29,43 +29,48 @@
 	display: flex;
 	width: fit-content;
 	max-width: 100%;
-	align-items: center;
-	gap: 0.65rem;
+	flex-wrap: wrap;
+	align-items: baseline;
+	column-gap: 0.6rem;
+	row-gap: 0.15rem;
 	margin: 0 0 1.4rem;
 	color: var(--ink);
-	white-space: nowrap;
 }
 
 .hero-definition-heading {
 	display: flex;
 	flex: 0 0 auto;
-	align-items: center;
+	align-items: baseline;
 	gap: 0.55rem;
+	white-space: nowrap;
 }
 
 .hero-pronunciation {
 	font-family: Georgia, 'Times New Roman', serif;
 	color: #c43d24;
-	font-size: clamp(1.15rem, 3.3vw, 2.45rem);
+	font-size: clamp(1.75rem, 3vw, 2.5rem);
 	font-style: italic;
+	font-weight: 400;
 	letter-spacing: -0.06em;
 	line-height: 1;
 }
 
 .hero-part-of-speech {
-	padding: 0.25rem 0.5rem;
-	border-radius: 3px;
-	background: var(--paper);
-	color: var(--ink);
-	font-size: clamp(0.48rem, 0.72vw, 0.65rem);
-	font-weight: 800;
-	letter-spacing: 0.04em;
+	padding: 0.24rem 0.42rem;
+	border-radius: 4px;
+	background: #e2e3e5;
+	color: #27313a;
+	font-size: clamp(0.6rem, 0.7vw, 0.7rem);
+	font-weight: 500;
+	letter-spacing: 0.03em;
 }
 
 .hero-definition-text {
-	color: rgba(24, 43, 48, 0.88);
-	font-size: clamp(0.5rem, 3cqi, 0.88rem);
-	line-height: 1.2;
+	flex: 1 1 12rem;
+	color: rgba(24, 43, 48, 0.9);
+	font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+	font-weight: 400;
+	line-height: 1.4;
 }
 
 .hero h1 {
@@ -1246,25 +1251,24 @@
 
 @media (max-width: 600px) {
 	.hero-definition {
-		gap: 0.25rem;
+		column-gap: 0.55rem;
 	}
 
 	.hero-definition-heading {
-		gap: 0.3rem;
+		gap: 0.4rem;
 	}
 
 	.hero-pronunciation {
-		font-size: clamp(0.95rem, 5vw, 1.3rem);
+		font-size: clamp(1.65rem, 6.5vw, 2rem);
 	}
 
 	.hero-part-of-speech {
-		padding: 0.15rem 0.25rem;
-		font-size: 0.5rem;
+		padding: 0.22rem 0.38rem;
+		font-size: 0.62rem;
 	}
 
 	.hero-definition-text {
-		font-size: clamp(0.6rem, 3.7cqi, 0.82rem);
-		letter-spacing: -0.025em;
+		font-size: 1rem;
 	}
 
 	.contact-page {
@@ -1357,22 +1361,7 @@
 }
 
 @media (max-width: 360px) {
-	.hero-definition,
-	.hero-definition-heading {
-		gap: 0.25rem;
-	}
-
-	.hero-pronunciation {
-		font-size: 0.85rem;
-	}
-
-	.hero-part-of-speech {
-		padding: 0.1rem 0.2rem;
-		font-size: 0.48rem;
-	}
-
-	.hero-definition-text {
-		font-size: clamp(0.6rem, 3.7cqi, 0.75rem);
-		letter-spacing: -0.035em;
+	.hero-definition {
+		column-gap: 0.45rem;
 	}
 }
