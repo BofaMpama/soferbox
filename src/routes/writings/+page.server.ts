@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { requestContentful } from '$lib/contentful';
-import { getAllEntries, getFeaturedImage } from '$lib/server/writings';
+import { getAllEntries, getExcerpt, getFeaturedImage } from '$lib/server/writings';
 
 const categories = [
 	['poems', 'poem'],
@@ -34,7 +34,7 @@ export const load: PageServerLoad = async () => {
 						title: item.fields.title as string,
 						slug: item.fields.slug as string,
 						publishedDate: item.sys.createdAt,
-						excerpt: (item.fields.excerpt as string | undefined) ?? '',
+						excerpt: getExcerpt(item.fields.excerpt),
 						coverImage: getFeaturedImage(
 							item.fields.coverImage ?? item.fields.cover,
 							item.fields.title as string

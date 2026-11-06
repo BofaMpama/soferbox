@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { requestContentful } from '$lib/contentful';
-import { getFeaturedImage } from '$lib/server/writings';
+import { getExcerpt, getFeaturedImage } from '$lib/server/writings';
 
 export const load: PageServerLoad = async () => {
 	const [poemResult, storyResult, blogResult] = await Promise.all([
@@ -46,7 +46,7 @@ export const load: PageServerLoad = async () => {
 			? blogResult.data.items.map((item) => ({
 					title: item.fields.title as string,
 					slug: item.fields.slug as string,
-					excerpt: (item.fields.excerpt as string | undefined) ?? '',
+					excerpt: getExcerpt(item.fields.excerpt),
 					coverImage: getFeaturedImage(
 						item.fields.coverImage ?? item.fields.cover,
 						item.fields.title as string

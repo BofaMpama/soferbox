@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { requestContentful } from '$lib/contentful';
 import { error } from '@sveltejs/kit';
-import { getAllEntries, getFeaturedImage } from '$lib/server/writings';
+import { getAllEntries, getExcerpt, getFeaturedImage } from '$lib/server/writings';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const contentTypes = new Map([
@@ -34,7 +34,7 @@ export const load: PageServerLoad = async ({ params }) => {
 			title: item.fields.title as string,
 			slug: item.fields.slug as string,
 			publishedDate: item.sys.createdAt,
-			excerpt: (item.fields.excerpt as string | undefined) ?? '',
+			excerpt: getExcerpt(item.fields.excerpt),
 			coverImage: getFeaturedImage(
 				item.fields.coverImage ?? item.fields.cover,
 				item.fields.title as string

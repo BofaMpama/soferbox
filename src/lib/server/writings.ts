@@ -46,6 +46,29 @@ export function getFeaturedImage(cover: unknown, title: string) {
 	};
 }
 
+function getExcerptText(value: unknown): string {
+	if (typeof value === 'string') return value.replace(/\r\n?/g, '\n').trim();
+	if (!value || typeof value !== 'object') return '';
+
+	const node = value as { nodeType?: unknown; value?: unknown; content?: unknown };
+	if (typeof node.value === 'string') return node.value.replace(/\r\n?/g, '\n').trim();
+	if (node.nodeType === 'hard-break') return '\n';
+	if (!Array.isArray(node.content)) {
+		return getLocalizedString(value)?.replace(/\r\n?/g, '\n').trim() ?? '';
+	}
+
+	const content = node.content.map(getExcerptText).filter(Boolean);
+	if (node.nodeType === 'document') return content.join('\n\n');
+	if (node.nodeType === 'unordered-list' || node.nodeType === 'ordered-list') {
+		return content.join('\n');
+	}
+	return content.join('');
+}
+
+export function getExcerpt(value: unknown): string {
+	return getExcerptText(value);
+}
+
 function getRichTextValue(node: unknown): string {
 	if (!node || typeof node !== 'object') return '';
 

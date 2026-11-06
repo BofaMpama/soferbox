@@ -4,7 +4,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import type { Document } from '@contentful/rich-text-types';
 import sanitizeHtml from 'sanitize-html';
 import { error } from '@sveltejs/kit';
-import { getFeaturedImage, getReadingTime } from '$lib/server/writings';
+import { getExcerpt, getFeaturedImage, getReadingTime } from '$lib/server/writings';
 
 type RichTextNode = {
 	value?: string;
@@ -137,8 +137,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 			}),
 			slug: item.fields.slug as string,
 			publishedDate: item.sys.createdAt,
-			excerpt:
-				params.category === 'poems' ? '' : ((item.fields.excerpt as string | undefined) ?? '')
+			excerpt: params.category === 'poems' ? '' : getExcerpt(item.fields.excerpt)
 		},
 		relatedItems: resultData.relatedItems.map((related) => ({
 			title: related.fields.title as string,
