@@ -27,8 +27,8 @@
 
 	const categoryNames: Record<string, string> = {
 		poems: 'Poems',
-		stories: 'Stories',
-		blogs: 'Blogs'
+		stories: 'Short stories',
+		blogs: 'Reflections'
 	};
 
 	const visibleItems = $derived.by(() => {
@@ -36,7 +36,11 @@
 		return items
 			.filter((item) => !selectedCategory || item.category === selectedCategory)
 			.filter(
-				(item) => !query || `${item.title} ${item.excerpt}`.toLocaleLowerCase().includes(query)
+				(item) =>
+					!query ||
+					`${item.title} ${item.excerpt} ${categoryNames[item.category]}`
+						.toLocaleLowerCase()
+						.includes(query)
 			)
 			.slice()
 			.sort((first, second) => {

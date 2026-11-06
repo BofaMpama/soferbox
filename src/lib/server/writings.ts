@@ -66,7 +66,17 @@ function getExcerptText(value: unknown): string {
 }
 
 export function getExcerpt(value: unknown): string {
-	return getExcerptText(value);
+	const excerpt = getExcerptText(value)
+		.split('\n')
+		.map((line) =>
+			line
+				.replace(/^click the link to read(?: the full piece)?\.?\s*/i, '')
+				.replace(/\s*the full piece\.?\s*$/i, '')
+		)
+		.join('\n')
+		.trim();
+
+	return excerpt.replace(/^(?:the full piece\.?\s*)+$/gim, '').trim();
 }
 
 function getRichTextValue(node: unknown): string {
@@ -79,7 +89,7 @@ function getRichTextValue(node: unknown): string {
 		: '';
 }
 
-export function getReadingTime(body: unknown): number {
+export function getReadingTime(body: unknown): number | null {
 	const wordCount = getRichTextValue(body).trim().split(/\s+/).filter(Boolean).length;
-	return Math.max(1, Math.ceil(wordCount / 200));
+	return wordCount ? Math.max(1, Math.ceil(wordCount / 200)) : null;
 }

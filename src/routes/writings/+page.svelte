@@ -10,6 +10,12 @@
 <svelte:head>
 	<title>Writings — SoferBox</title>
 	<meta name="description" content="Browse poems, short stories and reflections from SoferBox." />
+	<link rel="canonical" href="https://soferbox.vercel.app/writings" />
+	<meta property="og:title" content="Writings — SoferBox" />
+	<meta
+		property="og:description"
+		content="Browse poems, short stories and reflections from SoferBox."
+	/>
 </svelte:head>
 
 <section class="page-hero">
@@ -40,7 +46,7 @@
 					<h2>{info.title}</h2>
 					<p>{info.description}</p>
 				</div>
-				<span class="archive-arrow" aria-hidden="true">↗</span>
+				<span class="archive-action">Browse {info.title} <span aria-hidden="true">→</span></span>
 			</a>
 		{/each}
 	</div>

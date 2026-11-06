@@ -30,15 +30,22 @@
 	<meta property="og:url" content={data.canonicalUrl} />
 </svelte:head>
 
-<main class="article-shell">
-	<a class="article-back" href={`/writings/${data.category}`}>← Back to {data.category}</a>
+<main class={`article-shell article-${data.category}`}>
+	<a class="article-back" href={`/writings/${data.category}`}>← Back to {data.categoryTitle}</a>
 	{#if data.contentError}
 		<p class="content-notice" role="status">{data.contentError}</p>
 	{:else if article}
-		<time class="article-date" datetime={article.publishedDate}>
-			{new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(article.publishedDate))}
-		</time>
-		<span class="article-reading-time">{article.readingTime} min read</span>
+		<div class="article-metadata">
+			<span>{data.categoryTitle}</span>
+			<time class="article-date" datetime={article.publishedDate}>
+				{new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(
+					new Date(article.publishedDate)
+				)}
+			</time>
+			{#if article.readingTime}<span class="article-reading-time"
+					>{article.readingTime} min read</span
+				>{/if}
+		</div>
 		<h1>{article.title}</h1>
 		{#if article.excerpt}<p class="article-excerpt">{article.excerpt}</p>{/if}
 		{#if article.coverImage}
@@ -48,11 +55,33 @@
 				alt={article.coverImage.alt}
 			/>
 		{/if}
-		<article class="article-body">
+		<article class={`article-body article-body-${data.category}`}>
 			<!-- Sanitized Contentful rich text is the only HTML rendered here. -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html article.body}
 		</article>
+
+		{#if data.previousItem || data.nextItem}
+			<nav class="article-pagination" aria-label={`More ${data.categoryTitle.toLowerCase()}`}>
+				{#if data.previousItem}
+					<a href={`/writings/${data.category}/${data.previousItem.slug}`}>
+						<span class="article-pagination-label">← Previous in this collection</span>
+						<strong>{data.previousItem.title}</strong>
+					</a>
+				{:else}
+					<span></span>
+				{/if}
+				{#if data.nextItem}
+					<a
+						class="article-pagination-next"
+						href={`/writings/${data.category}/${data.nextItem.slug}`}
+					>
+						<span class="article-pagination-label">Next in this collection →</span>
+						<strong>{data.nextItem.title}</strong>
+					</a>
+				{/if}
+			</nav>
+		{/if}
 
 		<section class="share-section" aria-label="Share this writing">
 			<h2>Pass the words along</h2>

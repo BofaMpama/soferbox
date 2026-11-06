@@ -48,6 +48,7 @@
 		name="description"
 		content="Meet Bofa Mpama, the Christian writer behind SoferBox and the words gathered here."
 	/>
+	<link rel="canonical" href="https://soferbox.vercel.app/about" />
 </svelte:head>
 
 <section class="about-hero">
@@ -69,20 +70,23 @@
 		my tongue is the pen of a ready writer.”
 		<cite>Psalm 45:1</cite>
 	</blockquote>
-	<p>
-		Scripture has always shaped the way I see the world and helped me in the way I find words to
-		describe it. These are some of the passages I turn to.
-	</p>
-	<ul class="scripture-list">
-		{#each scriptures as scripture (scripture.reference)}
-			<li>
-				<button type="button" aria-haspopup="dialog" onclick={() => showScripture(scripture)}>
-					{scripture.reference}
-					<span aria-hidden="true">↗</span>
-				</button>
-			</li>
-		{/each}
-	</ul>
+	<section class="about-scriptures" aria-labelledby="about-scriptures-heading">
+		<p>
+			Scripture has always shaped the way I see the world and helped me in the way I find words to
+			describe it. These are some of the passages I turn to.
+		</p>
+		<h2 id="about-scriptures-heading">Passages I turn to</h2>
+		<ul class="scripture-list">
+			{#each scriptures as scripture (scripture.reference)}
+				<li>
+					<button type="button" aria-haspopup="dialog" onclick={() => showScripture(scripture)}>
+						{scripture.reference}
+						<span aria-hidden="true">↗</span>
+					</button>
+				</li>
+			{/each}
+		</ul>
+	</section>
 
 	<dialog
 		bind:this={verseDialog}

@@ -34,6 +34,12 @@ function richTextToPlainHtml(document: Document, preserveLineBreaks = false): st
 }
 
 export const load: PageServerLoad = async ({ params, url }) => {
+	const categoryTitles = new Map([
+		['poems', 'Poems'],
+		['stories', 'Short Stories'],
+		['blogs', 'Reflections']
+	]);
+	const categoryTitle = categoryTitles.get(params.category) ?? params.category;
 	const contentTypes = new Map([
 		['poems', 'poem'],
 		['stories', 'story'],
@@ -54,22 +60,53 @@ export const load: PageServerLoad = async ({ params, url }) => {
 		const item = response.items[0];
 		if (!item) return null;
 
-		const relatedResponse = await client.getEntries({
-			content_type: contentType,
-			order: ['-sys.createdAt'],
-			'fields.slug[ne]': params.slug,
-			limit: 4
-		});
+		const [previousResponse, nextResponse, relatedResponse] = await Promise.all([
+			client.getEntries({
+				content_type: contentType,
+				'sys.createdAt[gt]': item.sys.createdAt,
+				order: ['sys.createdAt'],
+				limit: 1
+			}),
+			client.getEntries({
+				content_type: contentType,
+				'sys.createdAt[lt]': item.sys.createdAt,
+				order: ['-sys.createdAt'],
+				limit: 1
+			}),
+			client.getEntries({
+				content_type: contentType,
+				order: ['-sys.createdAt'],
+				'fields.slug[ne]': params.slug,
+				limit: 8
+			})
+		]);
+		const previousItem = previousResponse.items[0] ?? null;
+		const nextItem = nextResponse.items[0] ?? null;
+		const adjacentSlugs = new Set(
+			[previousItem?.fields.slug, nextItem?.fields.slug].filter(
+				(slug): slug is string => typeof slug === 'string'
+			)
+		);
 
-		return { item, relatedItems: relatedResponse.items };
+		return {
+			item,
+			previousItem,
+			nextItem,
+			relatedItems: relatedResponse.items
+				.filter((related) => !adjacentSlugs.has(related.fields.slug as string))
+				.slice(0, 4)
+		};
 	});
 
 	if (!result.ok) {
 		return {
 			category: params.category,
+			categoryTitle,
 			canonicalUrl: new URL(url.pathname, url.origin).href,
 			article: null,
 			relatedItems: [],
+			previousItem: null,
+			nextItem: null,
 			contentError: result.error
 		};
 	}
@@ -96,6 +133,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 
 	return {
 		category: params.category,
+		categoryTitle,
 		canonicalUrl: new URL(url.pathname, url.origin).href,
 		contentError: null,
 		article: {
@@ -104,7 +142,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 				item.fields.coverImage ?? item.fields.cover,
 				item.fields.title as string
 			),
-			readingTime: getReadingTime(body),
+			readingTime: params.category === 'poems' ? null : getReadingTime(body),
 			body: sanitizeHtml(renderedBody, {
 				allowedTags: [
 					'p',
@@ -143,6 +181,18 @@ export const load: PageServerLoad = async ({ params, url }) => {
 			title: related.fields.title as string,
 			slug: related.fields.slug as string,
 			publishedDate: related.sys.createdAt
-		}))
+		})),
+		previousItem: resultData.previousItem
+			? {
+					title: resultData.previousItem.fields.title as string,
+					slug: resultData.previousItem.fields.slug as string
+				}
+			: null,
+		nextItem: resultData.nextItem
+			? {
+					title: resultData.nextItem.fields.title as string,
+					slug: resultData.nextItem.fields.slug as string
+				}
+			: null
 	};
 };
