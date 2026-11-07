@@ -26,6 +26,10 @@
 	<link rel="icon" href={favicon} />
 	<meta name="theme-color" content="#f2eedf" />
 	<meta property="og:image" content={shareImageUrl} />
+	<meta property="og:image:secure_url" content={shareImageUrl} />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1734" />
+	<meta property="og:image:height" content="907" />
 	<meta property="og:image:alt" content="SoferBox" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:image" content={shareImageUrl} />
