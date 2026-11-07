@@ -1,7 +1,7 @@
 [
     {
         "title": "Poems",
-        "description": "Minimal words that tell my outlook on life - inspired by scripture.",
+        "description": "These words are for me before anyone else. But if they're worth writing, theyre worth sharing also.",
         "link": "/writings/poems"
     },
       {
@@ -10,8 +10,8 @@
         "link": "/writings/stories"
     },
       {
-        "title": "Blogs",
-        "description": "Meaningful experiences so impactful I couldn't help but write about.",
+        "title": "Reflections",
+        "description": "I think deeply a lot of the time. Here's a couple thoughts that made their way to the page.",
         "link": "/writings/blogs"
     }
 ]

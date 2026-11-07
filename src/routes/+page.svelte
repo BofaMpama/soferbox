@@ -26,7 +26,7 @@
 			</p>
 			<h1>In this place <span>my words are kept.</span></h1>
 			<p class="hero-description">
-				A virtual box for the poems, stories and reflections I’ve been inspired to write and share.
+This is my virtual box, a collection of poems, stories and reflections. I'm glad to share these works with you.
 			</p>
 			<a class="button-link" href="/writings/poems" data-sveltekit-preload-data="tap">
 				Open the box <span aria-hidden="true">↗</span>
@@ -144,7 +144,7 @@
 	<div class="section-heading">
 		<div>
 			<p class="section-kicker">Notes from the journey</p>
-			<h2>From the blog.</h2>
+			<h2>Read my mind.</h2>
 		</div>
 		<a class="text-link" href="/writings/blogs" data-sveltekit-preload-data="tap"
 			>All reflections <span aria-hidden="true">→</span></a

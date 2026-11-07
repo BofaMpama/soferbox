@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start SoferBox dev server",
+			"type": "shell",
+			"command": "pnpm dev -- --host 127.0.0.1",
+			"isBackground": true,
+			"inAgents": true,
+			"problemMatcher": []
+		}
+	]
+}

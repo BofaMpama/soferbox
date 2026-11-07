@@ -1,7 +1,8 @@
 <script lang="ts">
 	import '../app.css';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
-	import favicon from '$lib/assets/box.png';
+	import favicon from '$lib/assets/SB-FAVICON.png';
+	import shareImage from '$lib/assets/SoferBox-OG.png';
 	import RetroHeader from './RetroHeader.svelte';
 	import Footer from './Footer.svelte';
 	import { dev } from '$app/environment';
@@ -10,6 +11,7 @@
 
 	let { children } = $props();
 	let isNavigating = $state(false);
+	const shareImageUrl = new URL(shareImage, 'https://soferbox.vercel.app').href;
 
 	beforeNavigate(() => {
 		isNavigating = true;
@@ -23,6 +25,11 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<meta name="theme-color" content="#f2eedf" />
+	<meta property="og:image" content={shareImageUrl} />
+	<meta property="og:image:alt" content="SoferBox" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content={shareImageUrl} />
+	<meta name="twitter:image:alt" content="SoferBox" />
 </svelte:head>
 
 {#if isNavigating}

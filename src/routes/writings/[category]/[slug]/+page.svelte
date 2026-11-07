@@ -19,13 +19,6 @@
 		<meta name="twitter:title" content={`${article.title} — SoferBox`} />
 		<meta name="twitter:description" content={article.excerpt || article.title} />
 		<meta property="og:type" content="article" />
-		{#if article.coverImage}
-			<meta property="og:image" content={article.coverImage.url} />
-			<meta property="og:image:alt" content={article.coverImage.alt} />
-			<meta name="twitter:card" content="summary_large_image" />
-			<meta name="twitter:image" content={article.coverImage.url} />
-			<meta name="twitter:image:alt" content={article.coverImage.alt} />
-		{/if}
 	{/if}
 	<meta property="og:url" content={data.canonicalUrl} />
 </svelte:head>
