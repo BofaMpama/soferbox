@@ -46,20 +46,18 @@
 			}
 			return;
 		}
-	
-		try {
-			await navigator.share({
-				title: `${article?.title ?? 'SoferBox'} — SoferBox`,
-				text: `A piece from SoferBox: ${article?.title ?? 'SoferBox'}`,
-				url: data.canonicalUrl
-			});
-			shareStatus = '';
-		} catch (error) {
-			if (error instanceof Error && error.name === 'AbortError') return;
-			console.error('Failed to open the native share options:', error);
-			shareStatus = 'Unable to open sharing options. You can copy the link instead.';
-		}
-	}
+	const pieceTitle = article?.title ?? 'SoferBox';
+try {
+	await navigator.share({
+		text: `A piece from SoferBox: ${pieceTitle}\n${data.canonicalUrl}`
+	});
+	shareStatus = '';
+} catch (error) {
+	if (error instanceof Error && error.name === 'AbortError') return;
+	console.error('Failed to open the native share options:', error);
+	shareStatus = 'Unable to open sharing options. You can copy the link instead.';
+}
+}
 
 	const fallbackShareImageUrl = new URL('/SoferBox-OG.jpg', data.canonicalUrl).href;
 	const articleShareImageUrl = article?.coverImage?.url ?? fallbackShareImageUrl;
