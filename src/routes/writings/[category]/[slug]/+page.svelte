@@ -40,29 +40,29 @@
 	}
 
 	async function sharePiece() {
-		if (!navigator.share) {
-			if (await copyLink()) {
-				shareStatus = 'Sharing is unavailable here, so the link was copied instead.';
-			}
-			return;
-		}
+	const pieceTitle = article?.title ?? 'SoferBox';
+	const shareText = `A piece from SoferBox: ${pieceTitle}\n${data.canonicalUrl}`;
 
+	if (!navigator.share) {
 		try {
-			await navigator.share({
-				title: `${article?.title ?? 'SoferBox'} — SoferBox`,
-				text: `A piece from SoferBox: ${article?.title ?? 'SoferBox'}`,
-				url: data.canonicalUrl
-			});
-			shareStatus = '';
+			await navigator.clipboard.writeText(shareText);
+			shareStatus = 'Sharing is unavailable here, so the text and link were copied instead.';
 		} catch (error) {
-			if (error instanceof Error && error.name === 'AbortError') return;
-			console.error('Failed to open the native share options:', error);
-			shareStatus = 'Unable to open sharing options. You can copy the link instead.';
+			console.error('Failed to copy share text:', error);
+			shareStatus = 'Unable to copy. You can copy the link instead.';
 		}
+		return;
 	}
 
-	const fallbackShareImageUrl = new URL('/SoferBox-OG.jpg', data.canonicalUrl).href;
-	const articleShareImageUrl = article?.coverImage?.url ?? fallbackShareImageUrl;
+	try {
+		await navigator.share({ text: shareText });
+		shareStatus = '';
+	} catch (error) {
+		if (error instanceof Error && error.name === 'AbortError') return;
+		console.error('Failed to open the native share options:', error);
+		shareStatus = 'Unable to open sharing options. You can copy the link instead.';
+	}
+}
 </script>
 
 <svelte:head>
