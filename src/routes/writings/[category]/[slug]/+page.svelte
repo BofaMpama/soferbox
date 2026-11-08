@@ -49,7 +49,7 @@
 	const pieceTitle = article?.title ?? 'SoferBox';
 try {
 	await navigator.share({
-		text: `Read "${pieceTitle}" on SoferBox:\n${data.canonicalUrl}`
+		text: `${pieceTitle}\n${data.canonicalUrl}`
 	});
 	shareStatus = '';
 } catch (error) {
