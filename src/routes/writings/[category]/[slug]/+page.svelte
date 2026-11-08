@@ -46,7 +46,7 @@
 			}
 			return;
 		}
-		const pieceTitle = article?.title ?? 'SoferBox';
+	
 		try {
 			await navigator.share({
 				title: `${article?.title ?? 'SoferBox'} — SoferBox`,
