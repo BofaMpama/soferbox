@@ -5,9 +5,44 @@
 
 	let { data }: { data: PageData } = $props();
 	const article = data.article;
-	const shareMessage = `A piece from SoferBox: ${article?.title ?? 'SoferBox'}`;
-	const shareText = encodeURIComponent(shareMessage);
-	const shareUrl = encodeURIComponent(data.canonicalUrl);
+	let shareStatus = $state('');
+
+	async function copyLink(): Promise<boolean> {
+		try {
+			await navigator.clipboard.writeText(data.canonicalUrl);
+			shareStatus = 'Link copied to clipboard.';
+			return true;
+		} catch (error) {
+			console.error('Failed to copy the writing link:', error);
+			shareStatus = 'Could not copy the link. Copy the page URL from your browser instead.';
+			return false;
+		}
+	}
+
+	async function sharePiece() {
+		if (!navigator.share) {
+			if (await copyLink()) {
+				shareStatus = 'Sharing is unavailable here, so the link was copied instead.';
+			}
+			return;
+		}
+
+		try {
+			await navigator.share({
+				title: `${article?.title ?? 'SoferBox'} — SoferBox`,
+				text: `A piece from SoferBox: ${article?.title ?? 'SoferBox'}`,
+				url: data.canonicalUrl
+			});
+			shareStatus = '';
+		} catch (error) {
+			if (error instanceof Error && error.name === 'AbortError') return;
+			console.error('Failed to open the native share options:', error);
+			shareStatus = 'Unable to open sharing options. You can copy the link instead.';
+		}
+	}
+
+	const fallbackShareImageUrl = new URL('/SoferBox-OG.jpg', data.canonicalUrl).href;
+	const articleShareImageUrl = article?.coverImage?.url ?? fallbackShareImageUrl;
 </script>
 
 <svelte:head>
@@ -20,6 +55,11 @@
 		<meta name="twitter:description" content={article.excerpt || article.title} />
 		<meta property="og:type" content="article" />
 	{/if}
+	<meta property="og:image" content={articleShareImageUrl} />
+	<meta property="og:image:secure_url" content={articleShareImageUrl} />
+	<meta property="og:image:alt" content={article?.coverImage?.alt ?? 'SoferBox'} />
+	<meta name="twitter:image" content={articleShareImageUrl} />
+	<meta name="twitter:image:alt" content={article?.coverImage?.alt ?? 'SoferBox'} />
 	<meta property="og:url" content={data.canonicalUrl} />
 </svelte:head>
 
@@ -48,60 +88,24 @@
 		</article>
 
 		<section class="share-section" aria-label="Share this writing">
-			<h2>Pass the words along</h2>
-			<a
-				class="share-link"
-				href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<svg viewBox="0 0 24 24" aria-hidden="true">
-					<path
-						d="M18.9 1.2h3.7l-8 9.2L24 22.9h-7.4l-5.8-7.6-6.7 7.6H.5l8.6-9.8L0 1.2h7.6l5.2 6.9zm-1.3 19.5h2L6.5 3.2H4.4z"
-					/>
+			<h2>Share this piece</h2>
+			<button class="share-link" type="button" onclick={sharePiece}>
+				<svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true">
+					<circle cx="18" cy="5" r="3" />
+					<circle cx="6" cy="12" r="3" />
+					<circle cx="18" cy="19" r="3" />
+					<path d="m8.7 10.6 6.6-4.2m-6.6 7 6.6 4.2" />
 				</svg>
-				<span>Share on X</span>
-			</a>
-			<a
-				class="share-link"
-				href={`https://www.facebook.com/sharer.php?u=${shareUrl}`}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<svg viewBox="0 0 24 24" aria-hidden="true">
-					<path
-						d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8z"
-					/>
+				<span>Share this piece</span>
+			</button>
+			<button class="share-link" type="button" onclick={copyLink}>
+				<svg class="copy-icon" viewBox="0 0 24 24" aria-hidden="true">
+					<rect x="8" y="8" width="12" height="13" rx="1.5" />
+					<path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
 				</svg>
-				<span>Facebook</span>
-			</a>
-			<a
-				class="share-link"
-				href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<svg viewBox="0 0 24 24" aria-hidden="true">
-					<path
-						d="M5.2 8.6a2 2 0 1 0 0-4 2 2 0 0 0 0 4M3.5 10h3.4v10.5H3.5zM9 10h3.2v1.4h.1a3.5 3.5 0 0 1 3.2-1.7c3.4 0 4 2.2 4 5.1v5.7h-3.4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5.1H9z"
-					/>
-				</svg>
-				<span>LinkedIn</span>
-			</a>
-			<a
-				class="share-link"
-				href={`https://wa.me/?text=${encodeURIComponent(`${shareMessage}\n${data.canonicalUrl}`)}`}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<svg class="share-whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
-					<path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3.5 20l1-4.5a8.4 8.4 0 1 1 16-3.8Z" />
-					<path
-						d="M9 8.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4 0 .5l-.5.7c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.3.6-.1.8-.5 1.4-1.2 1.7-.6.3-1.4.4-2.2.1-1.2-.4-2.3-1.1-3.3-2-.9-.9-1.7-2-2-3.1-.3-1 0-2 .4-2.7Z"
-					/>
-				</svg>
-				<span>WhatsApp</span>
-			</a>
+				<span>Copy link</span>
+			</button>
+			{#if shareStatus}<p class="share-status" role="status">{shareStatus}</p>{/if}
 		</section>
 
 		<Comments category={data.category} slug={article.slug} />
@@ -112,7 +116,10 @@
 				<div class="related-list">
 					{#each data.relatedItems as item (item.slug)}
 						<a href={`/writings/${data.category}/${item.slug}`}>
-							<span>{item.title}</span>
+							<div class="related-copy">
+								<strong>{item.title}</strong>
+								{#if item.excerpt}<span>{item.excerpt}</span>{/if}
+							</div>
 							<span aria-hidden="true">↗</span>
 						</a>
 					{/each}

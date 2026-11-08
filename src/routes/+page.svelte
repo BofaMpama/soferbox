@@ -26,7 +26,8 @@
 			</p>
 			<h1>In this place <span>my words are kept.</span></h1>
 			<p class="hero-description">
-This is my virtual box, a collection of poems, stories and reflections. I'm glad to share these works with you.
+				This is my virtual box, a collection of poems, stories and reflections. I'm glad to share
+				these works with you.
 			</p>
 			<a class="button-link" href="/writings/poems" data-sveltekit-preload-data="tap">
 				Open the box <span aria-hidden="true">↗</span>
@@ -99,7 +100,10 @@ This is my virtual box, a collection of poems, stories and reflections. I'm glad
 			<div class="poem-list">
 				{#each data.poems as poem (poem.slug)}
 					<a class="poem-row" href={`/writings/poems/${poem.slug}`}>
-						<h3>{poem.title}</h3>
+						<div class="poem-row-copy">
+							<h3>{poem.title}</h3>
+							{#if poem.excerpt}<p>{poem.excerpt}</p>{/if}
+						</div>
 						<span aria-hidden="true">↗</span>
 					</a>
 				{/each}

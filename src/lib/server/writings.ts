@@ -69,6 +69,15 @@ export function getExcerpt(value: unknown): string {
 	return getExcerptText(value);
 }
 
+export function getExcerptLine(value: unknown): string {
+	return (
+		getExcerpt(value)
+			.split(/\r?\n/)
+			.map((line) => line.replace(/\s+/g, ' ').trim())
+			.find(Boolean) ?? ''
+	);
+}
+
 function getRichTextValue(node: unknown): string {
 	if (!node || typeof node !== 'object') return '';
 
