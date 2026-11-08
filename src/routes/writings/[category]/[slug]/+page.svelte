@@ -7,16 +7,36 @@
 	const article = data.article;
 	let shareStatus = $state('');
 
+	function copyLinkWithFallback(): boolean {
+		const input = document.createElement('textarea');
+		input.value = data.canonicalUrl;
+		input.setAttribute('readonly', '');
+		input.style.position = 'fixed';
+		input.style.opacity = '0';
+		document.body.appendChild(input);
+		input.select();
+		try {
+			return document.execCommand('copy');
+		} finally {
+			input.remove();
+		}
+	}
+
 	async function copyLink(): Promise<boolean> {
 		try {
 			await navigator.clipboard.writeText(data.canonicalUrl);
-			shareStatus = 'Link copied to clipboard.';
-			return true;
 		} catch (error) {
-			console.error('Failed to copy the writing link:', error);
-			shareStatus = 'Could not copy the link. Copy the page URL from your browser instead.';
-			return false;
+			try {
+				if (!copyLinkWithFallback()) throw error;
+			} catch (fallbackError) {
+				console.error('Failed to copy the writing link:', error, fallbackError);
+				shareStatus = 'Could not copy the link. Copy the page URL from your browser instead.';
+				return false;
+			}
 		}
+
+		shareStatus = 'Link copied to clipboard.';
+		return true;
 	}
 
 	async function sharePiece() {

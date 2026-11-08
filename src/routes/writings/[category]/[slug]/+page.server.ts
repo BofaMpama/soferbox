@@ -139,7 +139,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 			publishedDate: item.sys.createdAt,
 			excerpt:
 				params.category === 'poems'
-					? getExcerptLine(item.fields.excerpt) || getExcerptLine(body)
+					? getExcerptLine(body) || getExcerptLine(item.fields.excerpt)
 					: getExcerpt(item.fields.excerpt)
 		},
 		relatedItems: resultData.relatedItems.map((related) => ({
@@ -147,7 +147,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 			slug: related.fields.slug as string,
 			excerpt:
 				params.category === 'poems'
-					? getExcerptLine(related.fields.excerpt) || getExcerptLine(related.fields.body)
+					? getExcerptLine(related.fields.body) || getExcerptLine(related.fields.excerpt)
 					: '',
 			publishedDate: related.sys.createdAt
 		}))

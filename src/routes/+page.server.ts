@@ -28,7 +28,7 @@ export const load: PageServerLoad = async () => {
 			? poemResult.data.items.map((item) => ({
 					title: item.fields.title as string,
 					slug: item.fields.slug as string,
-					excerpt: getExcerptLine(item.fields.excerpt) || getExcerptLine(item.fields.body)
+					excerpt: getExcerptLine(item.fields.body) || getExcerptLine(item.fields.excerpt)
 				}))
 			: [],
 		stories: storyResult.ok
