@@ -21,7 +21,7 @@
 			<div class="writing-dropdown-menu">
 				<a href="/writings/poems" data-sveltekit-preload-data="tap">Poems</a>
 				<a href="/writings/stories" data-sveltekit-preload-data="tap">Stories</a>
-				<a href="/writings/blogs" data-sveltekit-preload-data="tap">Blog</a>
+				<a href="/writings/blogs" data-sveltekit-preload-data="tap">Reflections</a>
 			</div>
 		</details>
 		<a class="contact-link" href="/contact">Contact <span aria-hidden="true">↗</span></a>
@@ -48,7 +48,7 @@
 				<div class="writing-dropdown-menu">
 					<a href="/writings/poems" data-sveltekit-preload-data="tap">Poems</a>
 					<a href="/writings/stories" data-sveltekit-preload-data="tap">Stories</a>
-					<a href="/writings/'blogs'" data-sveltekit-preload-data="tap">Reflections</a>
+					<a href="/writings/blogs" data-sveltekit-preload-data="tap">Reflections</a>
 				</div>
 			</details>
 			<a href="/contact">Contact</a>
