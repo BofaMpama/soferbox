@@ -2,6 +2,11 @@
 	import '$lib/css/homepage.css';
 	import Comments from '$lib/components/Comments.svelte';
 	import type { PageData } from './$types';
+	import { optimizedImage } from '$lib/utils/images';
+
+const articleShareImageUrl =
+	optimizedImage(article?.coverImage?.url, { width: 1200, height: 630 }) ??
+	fallbackShareImageUrl;
 
 	let { data }: { data: PageData } = $props();
 	const article = data.article;
@@ -60,7 +65,9 @@ try {
 }
 
 	const fallbackShareImageUrl = new URL('/SoferBox-OG.jpg', data.canonicalUrl).href;
-	const articleShareImageUrl = article?.coverImage?.url ?? fallbackShareImageUrl;
+	const articleShareImageUrl =
+		optimizedImage(article?.coverImage?.url, { width: 1200, height: 630 }) ??
+		fallbackShareImageUrl;
 </script>
 
 <svelte:head>
@@ -73,6 +80,8 @@ try {
 		<meta name="twitter:description" content={article.excerpt || article.title} />
 		<meta property="og:type" content="article" />
 	{/if}
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 	<meta property="og:image" content={articleShareImageUrl} />
 	<meta property="og:image:secure_url" content={articleShareImageUrl} />
 	<meta property="og:image:alt" content={article?.coverImage?.alt ?? 'SoferBox'} />
@@ -93,11 +102,17 @@ try {
 		<h1>{article.title}</h1>
 		{#if article.excerpt}<p class="article-excerpt">{article.excerpt}</p>{/if}
 		{#if article.coverImage}
-			<img
-				class="article-feature-image"
-				src={article.coverImage.url}
-				alt={article.coverImage.alt}
-			/>
+		<img
+		src={optimizedImage(article.coverImage.url, { width: 800, format: 'webp' })}
+		srcset="
+			{optimizedImage(article.coverImage.url, { width: 480, format: 'webp' })} 480w,
+			{optimizedImage(article.coverImage.url, { width: 800, format: 'webp' })} 800w,
+			{optimizedImage(article.coverImage.url, { width: 1200, format: 'webp' })} 1200w
+		"
+		sizes="(max-width: 800px) 100vw, 800px"
+		alt={article.coverImage.alt ?? article.title}
+		loading="lazy"
+	/>
 		{/if}
 		<article class="article-body">
 			<!-- Sanitized Contentful rich text is the only HTML rendered here. -->
