@@ -4,10 +4,6 @@
 	import type { PageData } from './$types';
 	import { optimizedImage } from '$lib/utils/images';
 
-const articleShareImageUrl =
-	optimizedImage(article?.coverImage?.url, { width: 1200, height: 630 }) ??
-	fallbackShareImageUrl;
-
 	let { data }: { data: PageData } = $props();
 	const article = data.article;
 	let shareStatus = $state('');
