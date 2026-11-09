@@ -2,7 +2,7 @@ import { env } from '$env/dynamic/private';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
-const categories = new Set(['poems', 'stories', 'blogs']);
+const categories = new Set(['poems', 'stories', 'reflections']);
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const maxRequestLength = 5000;
 
