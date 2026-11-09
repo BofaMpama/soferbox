@@ -4,6 +4,8 @@
 	import type { PageData } from './$types';
 	import { optimizedImage } from '$lib/utils/images';
 
+
+
 	let { data }: { data: PageData } = $props();
 	const article = data.article;
 	let shareStatus = $state('');

@@ -1,6 +1,6 @@
 create table if not exists public.comments (
 	id bigint generated always as identity primary key,
-	category text not null check (category in ('poems', 'stories', 'reflections')),
+	category text not null check (category in ('poems', 'stories', 'blogs')),
 	slug text not null check (char_length(slug) between 1 and 200),
 	name text not null check (char_length(trim(name)) between 1 and 60),
 	body text not null check (char_length(trim(body)) between 1 and 2000),

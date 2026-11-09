@@ -5,7 +5,7 @@ import { getAllEntries, getExcerpt, getFeaturedImage } from '$lib/server/writing
 const categories = [
 	['poems', 'poem'],
 	['stories', 'story'],
-	['reflections', 'reflection']
+	['blogs', 'blog']
 ] as const;
 
 export const load: PageServerLoad = async () => {

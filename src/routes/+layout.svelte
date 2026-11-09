@@ -13,7 +13,7 @@
 	let isNavigating = $state(false);
 	let shareImageUrl = $derived(new URL('/SoferBox-OG.jpg', page.url).href);
 	let hasArticleShareImage = $derived(
-		/^\/writings\/(?:poems|stories|reflections)\/[^/]+\/?$/.test(page.url.pathname)
+		/^\/writings\/(?:poems|stories|blogs)\/[^/]+\/?$/.test(page.url.pathname)
 	);
 
 	beforeNavigate(() => {

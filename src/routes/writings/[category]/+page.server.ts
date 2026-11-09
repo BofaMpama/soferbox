@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	const contentTypes = new Map([
 		['poems', 'poem'],
 		['stories', 'story'],
-		['reflections', 'reflection']
+		['blogs', 'blog']
 	]);
 	const contentType = contentTypes.get(params.category);
 
