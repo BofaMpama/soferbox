@@ -144,30 +144,30 @@
 	{/if}
 </section>
 
-<section class="blog-section">
+<section class="reflection-section">
 	<div class="section-heading">
 		<div>
 			<p class="section-kicker">Notes from the journey</p>
 			<h2>Read my mind.</h2>
 		</div>
-		<a class="text-link" href="/writings/blogs" data-sveltekit-preload-data="tap"
+		<a class="text-link" href="/writings/reflections" data-sveltekit-preload-data="tap"
 			>All reflections <span aria-hidden="true">→</span></a
 		>
 	</div>
-	{#if data.blogs.length}
-		<div class="blog-grid">
-			{#each data.blogs as blog (blog.slug)}
-				<a class="blog-card" href={`/writings/blogs/${blog.slug}`}>
-					{#if blog.coverImage}
-						<img src={blog.coverImage.url} alt={blog.coverImage.alt} loading="lazy" />
+	{#if data.reflections.length}
+		<div class="reflection-grid">
+			{#each data.reflections as reflection (reflection.slug)}
+				<a class="reflection-card" href={`/writings/reflections/${reflection.slug}`}>
+					{#if reflection.coverImage}
+						<img src={reflection.coverImage.url} alt={reflection.coverImage.alt} loading="lazy" />
 					{/if}
-					<h3>{blog.title}</h3>
-					{#if blog.excerpt}<p>{blog.excerpt}</p>{/if}
+					<h3>{reflection.title}</h3>
+					{#if reflection.excerpt}<p>{reflection.excerpt}</p>{/if}
 					<span>Read the story →</span>
 				</a>
 			{/each}
 		</div>
-	{:else if !data.blogLoadFailed}
+	{:else if !data.reflectionLoadFailed}
 		<p class="empty-note">A new reflection will be here soon.</p>
 	{/if}
 </section>
