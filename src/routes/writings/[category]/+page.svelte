@@ -15,7 +15,7 @@
 	<div class="page-hero-copy">
 		<p class="section-kicker">SoferBox / Shelf 01</p>
 		<h1>{data.category}</h1>
-		<p>Words gathered over time, ready when you are.</p>
+		<p>Here my thoughts and reflections are captured.</p>
 	</div>
 	<div class="collection-art" aria-hidden="true">
 		<div class="collection-paper"></div>
