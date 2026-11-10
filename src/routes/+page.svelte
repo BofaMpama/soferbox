@@ -29,7 +29,7 @@
 				This is my virtual box, a collection of poems, stories and reflections. I'm glad to share
 				these works with you.
 			</p>
-			<a class="button-link" href="/writings/poems" data-sveltekit-preload-data="tap">
+			<a class="button-link" href="/writings" data-sveltekit-preload-data="tap">
 				Open the box <span aria-hidden="true">↗</span>
 			</a>
 		</div>
