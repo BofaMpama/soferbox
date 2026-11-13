@@ -1,14 +1,15 @@
+
 <script lang="ts">
 	import '$lib/css/homepage.css';
 	import Comments from '$lib/components/Comments.svelte';
 	import type { PageData } from './$types';
 	import { optimizedImage } from '$lib/utils/images';
 
-
-
 	let { data }: { data: PageData } = $props();
 	const article = data.article;
 	let shareStatus = $state('');
+
+	const authorName = 'Bofa Mpama';
 
 	function copyLinkWithFallback(): boolean {
 		const input = document.createElement('textarea');
@@ -18,6 +19,7 @@
 		input.style.opacity = '0';
 		document.body.appendChild(input);
 		input.select();
+
 		try {
 			return document.execCommand('copy');
 		} finally {
@@ -49,35 +51,61 @@
 			}
 			return;
 		}
-	const pieceTitle = article?.title ?? 'SoferBox';
-try {
-	await navigator.share({
-		text: `Read "${pieceTitle}" on SoferBox:\n${data.canonicalUrl}`
-	});
-	shareStatus = '';
-} catch (error) {
-	if (error instanceof Error && error.name === 'AbortError') return;
-	console.error('Failed to open the native share options:', error);
-	shareStatus = 'Unable to open sharing options. You can copy the link instead.';
-}
-}
+
+		const pieceTitle = article?.title ?? 'SoferBox';
+
+		try {
+			await navigator.share({
+				title: `${pieceTitle} — By ${authorName} | SoferBox`,
+				text: `Read "${pieceTitle}" by ${authorName} on SoferBox:\n${data.canonicalUrl}`
+			});
+			shareStatus = '';
+		} catch (error) {
+			if (error instanceof Error && error.name === 'AbortError') return;
+			console.error('Failed to open the native share options:', error);
+			shareStatus = 'Unable to open sharing options. You can copy the link instead.';
+		}
+	}
 
 	const fallbackShareImageUrl = new URL('/SoferBox-OG.jpg', data.canonicalUrl).href;
+
 	const articleShareImageUrl =
 		optimizedImage(article?.coverImage?.url, { width: 1200, height: 630 }) ??
 		fallbackShareImageUrl;
 </script>
 
 <svelte:head>
-	<title>{article ? `${article.title} — SoferBox` : 'Writing unavailable — SoferBox'}</title>
+	<title>
+		{article
+			? `${article.title} — By ${authorName} | SoferBox`
+			: 'Writing unavailable — SoferBox'}
+	</title>
+
 	{#if article}
 		<meta name="description" content={article.excerpt || article.title} />
-		<meta property="og:title" content={`${article.title} — SoferBox`} />
-		<meta property="og:description" content={article.excerpt || article.title} />
-		<meta name="twitter:title" content={`${article.title} — SoferBox`} />
-		<meta name="twitter:description" content={article.excerpt || article.title} />
+
+		<meta
+			property="og:title"
+			content={`${article.title} — By ${authorName} | SoferBox`}
+		/>
+		<meta
+			property="og:description"
+			content={`${article.excerpt || article.title} — Written by ${authorName}.`}
+		/>
+
+		<meta
+			name="twitter:title"
+			content={`${article.title} — By ${authorName} | SoferBox`}
+		/>
+		<meta
+			name="twitter:description"
+			content={`${article.excerpt || article.title} — Written by ${authorName}.`}
+		/>
+
 		<meta property="og:type" content="article" />
+		<meta property="article:author" content={authorName} />
 	{/if}
+
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:image" content={articleShareImageUrl} />
@@ -89,29 +117,45 @@ try {
 </svelte:head>
 
 <main class="article-shell">
-	<a class="article-back" href={`/writings/${data.category}`}>← Back to {data.category}</a>
+	<a class="article-back" href={`/writings/${data.category}`}>
+		← Back to {data.category}
+	</a>
+
 	{#if data.contentError}
 		<p class="content-notice" role="status">{data.contentError}</p>
 	{:else if article}
 		<time class="article-date" datetime={article.publishedDate}>
-			{new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(article.publishedDate))}
+			{new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(
+				new Date(article.publishedDate)
+			)}
 		</time>
+
 		<span class="article-reading-time">{article.readingTime} min read</span>
+
 		<h1>{article.title}</h1>
-		{#if article.excerpt}<p class="article-excerpt">{article.excerpt}</p>{/if}
-		{#if article.coverImage}
-		<img
-		src={optimizedImage(article.coverImage.url, { width: 800, format: 'webp' })}
-		srcset="
-			{optimizedImage(article.coverImage.url, { width: 480, format: 'webp' })} 480w,
-			{optimizedImage(article.coverImage.url, { width: 800, format: 'webp' })} 800w,
-			{optimizedImage(article.coverImage.url, { width: 1200, format: 'webp' })} 1200w
-		"
-		sizes="(max-width: 800px) 100vw, 800px"
-		alt={article.coverImage.alt ?? article.title}
-		loading="lazy"
-	/>
+
+		<p class="article-author">
+			By <span>{authorName}</span>
+		</p>
+
+		{#if article.excerpt}
+			<p class="article-excerpt">{article.excerpt}</p>
 		{/if}
+
+		{#if article.coverImage}
+			<img
+				src={optimizedImage(article.coverImage.url, { width: 800, format: 'webp' })}
+				srcset="
+					{optimizedImage(article.coverImage.url, { width: 480, format: 'webp' })} 480w,
+					{optimizedImage(article.coverImage.url, { width: 800, format: 'webp' })} 800w,
+					{optimizedImage(article.coverImage.url, { width: 1200, format: 'webp' })} 1200w
+				"
+				sizes="(max-width: 800px) 100vw, 800px"
+				alt={article.coverImage.alt ?? article.title}
+				loading="lazy"
+			/>
+		{/if}
+
 		<article class="article-body">
 			<!-- Sanitized Contentful rich text is the only HTML rendered here. -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -120,6 +164,7 @@ try {
 
 		<section class="share-section" aria-label="Share this writing">
 			<h2>Share this piece</h2>
+
 			<button class="share-link" type="button" onclick={sharePiece}>
 				<svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true">
 					<circle cx="18" cy="5" r="3" />
@@ -129,6 +174,7 @@ try {
 				</svg>
 				<span>Share this piece</span>
 			</button>
+
 			<button class="share-link" type="button" onclick={copyLink}>
 				<svg class="copy-icon" viewBox="0 0 24 24" aria-hidden="true">
 					<rect x="8" y="8" width="12" height="13" rx="1.5" />
@@ -136,7 +182,10 @@ try {
 				</svg>
 				<span>Copy link</span>
 			</button>
-			{#if shareStatus}<p class="share-status" role="status">{shareStatus}</p>{/if}
+
+			{#if shareStatus}
+				<p class="share-status" role="status">{shareStatus}</p>
+			{/if}
 		</section>
 
 		<Comments category={data.category} slug={article.slug} />
@@ -144,12 +193,15 @@ try {
 		{#if data.relatedItems.length}
 			<section class="related-section">
 				<h2>More from this shelf</h2>
+
 				<div class="related-list">
 					{#each data.relatedItems as item (item.slug)}
 						<a href={`/writings/${data.category}/${item.slug}`}>
 							<div class="related-copy">
 								<strong>{item.title}</strong>
-								{#if item.excerpt}<span>{item.excerpt}</span>{/if}
+								{#if item.excerpt}
+									<span>{item.excerpt}</span>
+								{/if}
 							</div>
 							<span aria-hidden="true">↗</span>
 						</a>
