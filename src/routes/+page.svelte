@@ -116,7 +116,7 @@
 
 <section class="stories-section">
 	<div class="section-heading">
-		<p class="section-kicker">Fiction, with a pulse</p>
+		<p class="section-kicker">Truth and fiction intertwined</p>
 		<h2>Short stories I’ve been writing…</h2>
 		<a class="text-link" href="/writings/stories" data-sveltekit-preload-data="tap"
 			>See every story <span aria-hidden="true">→</span></a
